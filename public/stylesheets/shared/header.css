@@ -1,0 +1,13 @@
+header{
+  background-color: rgb(121, 9, 9);
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.nav-link{
+  font-size: 2rem;
+  text-transform: uppercase;
+}

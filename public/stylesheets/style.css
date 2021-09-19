@@ -1,0 +1,35 @@
+@import './shared/header.css';
+@import './shared/footer.css';
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 62.5%;
+
+}
+body{
+  height: 100vh;
+  width: 100vw;
+  background-color: lightgray;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.container{
+  border: 2px solid green;
+  flex: 1;
+}
+h1{
+  font-size: 3rem;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
