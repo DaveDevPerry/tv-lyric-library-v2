@@ -1,1 +1,19 @@
-<h3>songs view</h3>
+
+
+<a class="btn btn-add" href="/songs/new">Add Song</a>
+
+<br />
+<% songs.forEach(song => { %>
+  <div class="song-row">
+    <div class="song-title"><%= song.title %></div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/songs/<%= song.id %>">View</a>
+    <a class="btn btn-primary"  href="/songs/<%= song.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm',
+                {url: `/songs/${song.id}` }) %>
+    
+    </div>
+  </div>
+  
+  
+  <% }) %> 

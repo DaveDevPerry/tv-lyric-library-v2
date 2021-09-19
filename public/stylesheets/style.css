@@ -1,4 +1,6 @@
 @import './shared/header.css';
+@import './shared//song.css';
+@import './shared//buttons.css';
 @import './shared/footer.css';
 
 *{
@@ -22,6 +24,7 @@ body{
 .container{
   border: 2px solid green;
   flex: 1;
+  padding: 1rem;
 }
 h1{
   font-size: 3rem;
