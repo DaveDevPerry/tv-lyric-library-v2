@@ -1,8 +1,9 @@
-<h2 class="page-header"><%= lyric.lyric %></h2>
+<h2 class="page-header"><%= line.line %></h2>
+<%= console.log(line.line) %>
 <div class="btn-row">
-  <a class="btn btn-primary" href="/lyric/<%= lyric.id %>/edit">Edit</a>
+  <a class="btn btn-primary" href="/line/<%= line.id %>/edit">Edit</a>
   <%- include('../partials/deleteForm',
-      {url: `/lyric/${lyric.id}` }) %>
+      {url: `/line/${line.id}` }) %>
 </div>
 
    

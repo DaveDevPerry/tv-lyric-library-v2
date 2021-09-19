@@ -5,6 +5,7 @@
 <% lyrics.forEach(lyric => { %>
   <div class="lyric-row">
     <div class="lyric-title"><%= lyric.lyric %></div>
+   
     <div class="btn-row">
       <a class="btn btn-primary" href="/lyric/<%= lyric.id %>">View</a>
     <a class="btn btn-primary"  href="/lyric/<%= lyric.id %>/edit">Edit</a>

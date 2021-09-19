@@ -1,15 +1,15 @@
 
-<a class="btn btn-add" href="/lyric/new">Add lyric</a>
+<a class="btn btn-add" href="/line/new">Add line</a>
 
 <br />
-<% lyrics.forEach(lyric => { %>
-  <div class="lyric-row">
-    <div class="lyric-title"><%= lyric.lyric %></div>
+<% lines.forEach(line => { %>
+  <div class="line-row">
+    <div class="line-title"><%= line.line %></div>
     <div class="btn-row">
-      <a class="btn btn-primary" href="/lyric/<%= lyric.id %>">View</a>
-    <a class="btn btn-primary"  href="/lyric/<%= lyric.id %>/edit">Edit</a>
+      <a class="btn btn-primary" href="/line/<%= line.id %>">View</a>
+    <a class="btn btn-primary"  href="/line/<%= line.id %>/edit">Edit</a>
     <%- include('../partials/deleteForm',
-                {url: `/lyric/${lyric.id}` }) %>
+                {url: `/line/${line.id}` }) %>
     
     </div>
   </div>
