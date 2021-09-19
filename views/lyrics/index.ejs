@@ -1,0 +1,19 @@
+
+
+<a class="btn btn-add" href="/lyrics/new">Add lyric</a>
+
+<br />
+<% lyrics.forEach(lyric => { %>
+  <div class="lyric-row">
+    <div class="lyric-title"><%= lyric.title %></div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/lyrics/<%= lyric.id %>">View</a>
+    <a class="btn btn-primary"  href="/lyrics/<%= lyric.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm',
+                {url: `/lyrics/${lyric.id}` }) %>
+    
+    </div>
+  </div>
+  
+  
+  <% }) %> 

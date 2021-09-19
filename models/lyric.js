@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const lyricSchema = new mongoose.Schema({
-  lyricLine: {
+  lyric: {
     type: String,
   },
     likeCount: {

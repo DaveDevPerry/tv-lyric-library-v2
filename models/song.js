@@ -5,8 +5,8 @@ const songSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  // lyrics: {
-  //   type: []
+  // line: {
+  //   type: [ mongoose.Schema.Types.ObjectId] // contains array of line
   // },
   // order: {
   //   type: [String],
