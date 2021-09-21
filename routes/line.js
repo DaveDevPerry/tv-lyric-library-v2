@@ -1,58 +1,79 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
-const Lyric = require('../models/lyric')
-const Line = require('../models/line')
+const Lyric = require('../models/lyric');
+const Line = require('../models/line');
 
+router.get('/', async (req, res) => {
+	try {
+		const lines = await Line.find({})
+			.populate([
+				{
+					path: 'lyric',
+					model: 'Lyric',
+					select: '_id lyric',
+				},
+			])
+			.exec();
 
-router.get('/', async (req,res)=>{
-  try{
-    const lines = await Line.find({})
-		console.log(lines)
-    res.render('line/index', {
-      lines: lines,
-    })
-  } catch {
-    res.redirect('/')
-  }
-  
-})
+		console.log(lines);
+		res.render('line/index', {
+			lines: lines,
+		});
+	} catch {
+		res.redirect('/');
+	}
+});
 
 // new song route
-router.get('/new', (req,res)=>{
-  res.render('line/new', { line: new Line()})
-})
+router.get('/new', async (req, res) => {
+	try {
+		const lyrics = await Lyric.find({})
+			.populate([
+				{
+					path: 'lyric',
+					model: 'Lyric',
+					select: '_id lyric likeCount',
+				},
+			])
+			.exec();
 
+		res.render('line/new', {
+			line: new Line(),
+			lyrics: lyrics,
+		});
+	} catch {
+		res.redirect('/');
+	}
+});
 
 // create line - POST route
-router.post('/', async (req,res)=>{
-  const line = new Line({
-    line: req.body.line,
-  });
-  try{
-    const newLine = await line.save();
-    res.redirect(`line/${newLine.id}`)
-    console.log(newLine)
-  }catch (error) {
-res.render('line/new', {
-  line: line,
-  error: 'error creating line'
-})
-  }
-})
+router.post('/', async (req, res) => {
+	const line = new Line({
+		line: req.body.line,
+	});
+	try {
+		const newLine = await line.save();
+		res.redirect(`line/${newLine.id}`);
+		console.log(newLine);
+	} catch (error) {
+		res.render('line/new', {
+			line: line,
+			error: 'error creating line',
+		});
+	}
+});
 
-
-router.get('/:id', async (req,res)=>{
-  try{
-    const line = await Line.findById(req.params.id)
-    res.render('line/show', {
-      line: line,
-    })
-  }catch(error){
-    console.log(error)
-    res.redirect('/')
-  }
-})
-
+router.get('/:id', async (req, res) => {
+	try {
+		const line = await Line.findById(req.params.id);
+		res.render('line/show', {
+			line: line,
+		});
+	} catch (error) {
+		console.log(error);
+		res.redirect('/');
+	}
+});
 
 router.get('/:id/edit', async (req, res) => {
 	try {
@@ -62,7 +83,6 @@ router.get('/:id/edit', async (req, res) => {
 		res.redirect('/line');
 	}
 });
-
 
 router.put('/:id', async (req, res) => {
 	let line;
@@ -83,7 +103,6 @@ router.put('/:id', async (req, res) => {
 	}
 });
 
-
 router.delete('/:id', async (req, res) => {
 	let line;
 	try {
@@ -98,7 +117,5 @@ router.delete('/:id', async (req, res) => {
 		}
 	}
 });
-
-
 
 module.exports = router;

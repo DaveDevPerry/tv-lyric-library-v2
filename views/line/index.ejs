@@ -1,18 +1,14 @@
-
 <a class="btn btn-add" href="/line/new">Add line</a>
 
 <br />
 <% lines.forEach(line => { %>
-  <div class="line-row">
-    <div class="line-title"><%= line.line %></div>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="/line/<%= line.id %>">View</a>
-    <a class="btn btn-primary"  href="/line/<%= line.id %>/edit">Edit</a>
-    <%- include('../partials/deleteForm',
-                {url: `/line/${line.id}` }) %>
-    
-    </div>
-  </div>
-  
-  
-  <% }) %> 
+<div class="line-row">
+	<div class="line-title"><%= line.lyric %></div>
+	<div class="btn-row">
+		<a class="btn btn-primary" href="/line/<%= line.id %>">View</a>
+		<a class="btn btn-primary" href="/line/<%= line.id %>/edit">Edit</a>
+		<%- include('../partials/deleteForm', {url: `/line/${line.id}` }) %>
+	</div>
+</div>
+
+<% }) %>
