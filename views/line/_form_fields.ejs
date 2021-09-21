@@ -2,21 +2,6 @@
 	<div class="form-item">
 		<label>line</label>
 		<input type="text" name="line" value="<%= line.line %>" />
-		<input type="text" name="line" value="<%= line.lyric %>" />
 	</div>
 </div>
 <br />
-
-<div class="form-item">
-	<label>lyrics</label>
-	<select name="lyric">
-		<% lines.forEach(lyric => { %>
-		<option
-			selected
-			label="<%= lyric.lyric %>"
-			value="<%= lyric.id %>"
-		></option>
-
-		<% } %> <% }) %>
-	</select>
-</div>

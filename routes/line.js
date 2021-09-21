@@ -25,25 +25,10 @@ router.get('/', async (req, res) => {
 });
 
 // new song route
-router.get('/new', async (req, res) => {
-	try {
-		const lyrics = await Lyric.find({})
-			.populate([
-				{
-					path: 'lyric',
-					model: 'Lyric',
-					select: '_id lyric likeCount',
-				},
-			])
-			.exec();
-
-		res.render('line/new', {
-			line: new Line(),
-			lyrics: lyrics,
-		});
-	} catch {
-		res.redirect('/');
-	}
+router.get('/new', (req, res) => {
+	res.render('line/new', {
+		line: new Line(),
+	});
 });
 
 // create line - POST route
