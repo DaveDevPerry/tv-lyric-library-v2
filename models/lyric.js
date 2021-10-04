@@ -10,7 +10,12 @@ const lyricSchema = new mongoose.Schema({
 	},
 	createdAt: {
 		type: Date,
-		default: new Date(),
+		required: true,
+		default: Date.now,
+	},
+	song: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Song',
 	},
 });
 

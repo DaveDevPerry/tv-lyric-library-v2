@@ -1,5 +1,12 @@
 <h2 class="page-header"><%= song.title %></h2>
-<h2 class="page-header"><%= song.songLyrics %></h2>
+<h2 class="page-header"><%= song.allLyrics %></h2>
+
+<%= lyrics %>
+<ul>
+	<% lyrics.forEach((lyric)=> { %>
+	<li><%= lyric %></li>
+	<% }) %>
+</ul>
 
 <div class="btn-row">
 	<a class="btn btn-primary" href="/songs/<%= song.id %>/edit">Edit</a>

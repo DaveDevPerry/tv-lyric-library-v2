@@ -8,10 +8,18 @@ const lineSchema = new mongoose.Schema({
 		},
 	},
 
-	line: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Lyric',
-	},
+	line: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Lyric',
+		},
+	],
+	// lyricsInLine: [
+	// 	{
+	// 		type: mongoose.Schema.Types.ObjectId,
+	// 		ref: 'Lyric',
+	// 	},
+	// ],
 });
 
 module.exports = mongoose.model('Line', lineSchema);

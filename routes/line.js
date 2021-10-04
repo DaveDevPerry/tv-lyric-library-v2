@@ -5,6 +5,16 @@ const Line = require('../models/line');
 
 router.get('/', async (req, res) => {
 	try {
+		const lyrics = await Lyric.find({});
+		const line = await Line.find({})
+			.populate([
+				{
+					path: 'lyric',
+					model: 'Lyric',
+					select: '_id lyric',
+				},
+			])
+			.exec();
 		const lines = await Line.find({})
 			.populate([
 				{
@@ -18,6 +28,8 @@ router.get('/', async (req, res) => {
 		console.log(lines);
 		res.render('line/index', {
 			lines: lines,
+			line: line,
+			lyrics: lyrics,
 		});
 	} catch {
 		res.redirect('/');
