@@ -39,3 +39,6 @@ a {
 	display: flex;
 	flex-direction: column;
 }
+.form-row {
+	display: flex;
+}

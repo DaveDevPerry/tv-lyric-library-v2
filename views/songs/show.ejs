@@ -1,12 +1,24 @@
 <h2 class="page-header"><%= song.title %></h2>
-<h2 class="page-header"><%= song.allLyrics %></h2>
+<h2 class="page-header"><%= song.lineCount %> Lines</h2>
 
-<%= lyrics %>
-<ul>
-	<% lyrics.forEach((lyric)=> { %>
-	<li><%= lyric %></li>
-	<% }) %>
-</ul>
+<div>
+	<ul>
+		<% song.lyrics.forEach((lyric)=>{ %>
+		<li>
+			<form action="/lyric" method="POST" class="form-grow">
+				<div class="form-row">
+					<label><%= lyric.lyricRef %></label>
+					<input type="text" name="lyric" value="<%= lyric.lyric %>" />
+					<div class="btn-grid">
+						<a class="btn btn-danger" href="/lyric">Cancel</a>
+						<button class="btn btn-primary" type="submit">Create</button>
+					</div>
+				</div>
+			</form>
+		</li>
+		<% }) %>
+	</ul>
+</div>
 
 <div class="btn-row">
 	<a class="btn btn-primary" href="/songs/<%= song.id %>/edit">Edit</a>

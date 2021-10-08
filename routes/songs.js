@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 			lyric: lyric,
 			likeCount: 1,
 			inSong: await song.id,
-			lyricRef: (await index) + 1 + (await song.id),
+			lyricRef: 'line' + ((await index) + 1),
 		});
 		newLyric.createLine(newLyric);
 		song.lyrics.push(await newLyric);
@@ -70,23 +70,24 @@ router.post('/', async (req, res) => {
 	}
 });
 
-// router.get('/:id', async (req, res) => {
-// 	try {
-// 		const song = await Song.findById(req.params.id);
-// 		const allLyrics = await song.allLyrics;
-// 		let str = await allLyrics[0];
-// 		const lyrics = await str.split(',');
+router.get('/:id', async (req, res) => {
+	try {
+		const song = await Song.findById(req.params.id);
+		const lyrics = await Lyric.find({});
+		// const allLyrics = await song.allLyrics;
+		// let str = await allLyrics[0];
+		// const lyrics = await str.split(',');
 
-// 		// const lyrics = await song.allLyrics.split(',');
-// 		res.render('songs/show', {
-// 			song: song,
-// 			lyrics: lyrics,
-// 		});
-// 	} catch (error) {
-// 		console.log(error);
-// 		res.redirect('/');
-// 	}
-// });
+		// const lyrics = await song.allLyrics.split(',');
+		res.render('songs/show', {
+			song: song,
+			lyrics: lyrics,
+		});
+	} catch (error) {
+		console.log(error);
+		res.redirect('/');
+	}
+});
 
 // router.get('/:id/edit', async (req, res) => {
 // 	try {
