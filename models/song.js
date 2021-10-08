@@ -2,32 +2,13 @@ const mongoose = require('mongoose');
 const Lyric = require('../models/lyric');
 const line = require('./line');
 
-// const moveSchema = new Schema({
-// 	name: String,
-// 	keys: String,
-// });
-
-// const characterSchema = new Schema({
-// 	name: { type: String, unique: true },
-// 	// Array of subdocuments
-// 	specials: [moveSchema],
-// 	// Single subdocument
-// 	ultimate: moveSchema,
-// });
-
-const testLineSchema = new mongoose.Schema({
-	lyricInLine: String,
-	likes: Number,
-});
-module.exports = mongoose.model('TestLineSchema', testLineSchema);
-
 const songSchema = new mongoose.Schema({
 	title: {
 		type: String,
 		required: true,
 		unique: true,
 	},
-	allLyricsInLines: [testLineSchema],
+	allLyricsInLines: [],
 	initialLyrics: {
 		type: String,
 		required: false,
@@ -53,6 +34,11 @@ const songSchema = new mongoose.Schema({
 	// 	ref: 'Lyric',
 	// },
 	lines: [],
+	line: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: false,
+		ref: 'Line',
+	},
 	// songLines: [],
 	// createdAt: {
 	// 	type: Date,
@@ -61,6 +47,11 @@ const songSchema = new mongoose.Schema({
 	// },
 	postLyrics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lyric' }],
 
+	// author: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	required: true,
+	// 	ref: 'Author',
+	// },
 	// line: {
 	//   type: [ mongoose.Schema.Types.ObjectId] // contains array of line
 	// },

@@ -20,13 +20,32 @@ const lineSchema = new mongoose.Schema({
 	// 		ref: 'Lyric',
 	// 	},
 	// ],
+	lineRef: {
+		type: String,
+	},
+	lyric: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: false,
+		ref: 'Lyric',
+	},
 	singleLine: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Line',
 		},
 	],
-	singleLines: [],
+	singleLines: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Lyric',
+		},
+	],
 });
+
+// lineSchema.methods.createOriginalLine = function (newLyric) {
+// 	console.log('creating a line', newLyric);
+// 	newLyric.save();
+// 	console.log('lyric saved?');
+// };
 
 module.exports = mongoose.model('Line', lineSchema);
