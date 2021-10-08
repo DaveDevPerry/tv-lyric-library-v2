@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 			])
 			.exec();
 
-		console.log(lines);
+		// console.log(lines);
 		res.render('line/index', {
 			lines: lines,
 			line: line,

@@ -1,16 +1,19 @@
 <a class="btn btn-add" href="/line/new">Add line</a>
 
-<div class="line-row">
-	<div class="line-title"><%= line %></div>
-	<div class="line-title"><%= lines[0].lyricsInLine %></div>
-	<div class="line-title"><%= lyrics[0].lyric %></div>
-	<div class="line-title"><%= line.lyricsInLine %></div>
 
+<ul class="line-list">
+	<li> 1 <%= line %></li>
+	<li> 2  <%= line.lyrics %></li>
+	<li></li>
+</ul>
+
+
+	<!-- 
 	<ul>
 		<% lyrics.forEach((lyric)=>{ %>
 		<li><%= lyric.lyric %></li>
 		<% }) %>
-	</ul>
+	</ul> -->
 
 	<div class="btn-row">
 		<a class="btn btn-primary" href="/line/<%= line.id %>">View</a>
