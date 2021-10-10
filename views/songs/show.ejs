@@ -2,18 +2,9 @@
 <h2 class="page-header"><%= song.lineCount %> Lines</h2>
 
 <div>
-	<!-- <h6>1 <%= song.lyricLines %></h6> -->
 	<br />
 
 	<!-- works -->
-	<!-- <h1>2 <%= song.lyricLines[0].lyricsInLine[0].lyric %></h1>
-	<br /> -->
-
-	<!-- <ul>
-		<% song.lyricLines[0].lyricsInLine.forEach((line) => { %>
-		<li>lyric - <%= line.lyric %></li>
-		<% }) %>
-	</ul> -->
 
 	<ul>
 		<% song.lyricLines.forEach((line) => { %>
@@ -25,15 +16,59 @@
 		<% }) %>
 	</ul>
 
+	<br />
+
 	<ul>
 		<% song.lyricLines.forEach((lyric)=>{ %>
 		<li>
 			<form action="/lyric" method="POST" class="form-grow">
 				<div class="form-row">
-					<label><%= lyric.lyricsInLine[0].lineNumber %></label>
-					<input type="text" name="lyric" value="<%= lyric.lyric %>" />
+					<label><%= lyric.lyricsInLine[0].lineNumber %>:</label>&nbsp;
+					<input
+						type="text"
+						name="lyric"
+						value="<%= lyric.lyricsInLine[0].lyric %>"
+					/>
+					&nbsp;<i class="fas fa-thumbs-up"></i>
+					<span class="blue"><%= lyric.lyricsInLine[0].likeCount %></span>
+
 					<div class="btn-grid">
-						<a class="btn btn-danger" href="/lyric">Cancel</a>
+						<button class="btn btn-primary" type="submit">Create</button>
+					</div>
+				</div>
+			</form>
+		</li>
+		<% }) %>
+	</ul>
+
+	<br />
+	<ul>
+		<% song.lyricLines.forEach((lyric)=>{ %>
+		<li>
+			<form action="/lyric" method="POST" class="form-grow">
+				<div class="form-row">
+					<p><%= lyric.lyricsInLine[0].lineNumber %>:</p>
+					&nbsp;
+					<select name="lyric">
+						<% lyric.lyricsInLine.forEach(lyric => { %> <% if(lyric.id ===
+						song.lyric) { %>
+						<option selected value="<%= lyric.id %>">
+							<p><%= lyric.lyric %><span><%= lyric.likeCount %></span></p>
+						</option>
+						<% } else { %>
+						<option value="<%= lyric.id %>">
+							<p><%= lyric.lyric %> here<span><%= lyric.likeCount %></span></p>
+						</option>
+						<% } %> <% }) %>
+					</select>
+					<input
+						type="text"
+						name="lyric"
+						value="<% lyric.lyricsInLine[0].lyric %>"
+						placeholder="add new lyric here, if not listed above"
+						class="input-create"
+					/>
+					<div class="btn-grid">
 						<button class="btn btn-primary" type="submit">Create</button>
 					</div>
 				</div>

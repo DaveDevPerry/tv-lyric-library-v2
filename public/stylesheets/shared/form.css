@@ -1,0 +1,16 @@
+select {
+	width: 200px;
+}
+option {
+	width: 200px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+option p {
+	width: 200px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: lightgreen;
+}
