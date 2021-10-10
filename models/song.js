@@ -1,63 +1,66 @@
 const mongoose = require('mongoose');
-const Lyric = require('../models/lyric');
-const line = require('./line');
 
 const songSchema = new mongoose.Schema({
+	// user: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'User',
+	// 	required: true,
+	// },
+	createdAt: {
+		type: Date,
+		required: true,
+		default: Date.now,
+	},
 	title: {
 		type: String,
 		required: true,
 		unique: true,
 	},
-	allLyricsInLines: [],
 	initialLyrics: {
 		type: String,
 		required: false,
 	},
+	splitLyrics: [],
+	lineCount: {
+		type: Number,
+		default: 0,
+	},
+	lyricLines: [
+		{
+			// user: {
+			// 	type: mongoose.Schema.Types.ObjectId,
+			// 	ref: 'User',
+			// },
+			// createdAt: {
+			// 	type: Date,
+			// 	required: true,
+			// 	default: Date.now,
+			// },
+			lineNumber: Number,
+			lyricsInLine: [
+				{
+					type: mongoose.Schema.Types.ObjectId,
+					ref: 'ALine',
+				},
+			],
+		},
+	],
+
 	singleLines: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Line',
 		},
 	],
-	lineCount: {
-		type: Number,
-		default: 0,
-	},
-	// allLyrics: {
-	// 	type: String,
-	// 	required: false,
-	// },
-	splitLyrics: [],
 	lyrics: [],
-	// songLyrics: {
-	// 	type: mongoose.Schema.Types.ObjectId,
-	// 	ref: 'Lyric',
-	// },
 	lines: [],
 	line: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: false,
 		ref: 'Line',
 	},
-	// songLines: [],
-	// createdAt: {
-	// 	type: Date,
-	// 	required: true,
-	// 	default: Date.now,
-	// },
 	postLyrics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lyric' }],
-
-	// author: {
-	// 	type: mongoose.Schema.Types.ObjectId,
-	// 	required: true,
-	// 	ref: 'Author',
-	// },
-	// line: {
-	//   type: [ mongoose.Schema.Types.ObjectId] // contains array of line
-	// },
-	// order: {
-	//   type: [String],
-	// }
+	allLyricsInLines: [],
 });
 
 songSchema.methods.createLine = function (str) {

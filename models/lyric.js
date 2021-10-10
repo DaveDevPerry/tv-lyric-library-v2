@@ -27,19 +27,6 @@ const lyricSchema = new mongoose.Schema({
 	},
 });
 
-// lyricSchema.methods.createLine = function (newLyric) {
-// 	console.log('creating a line', newLyric);
-// 	newLyric.save();
-// 	console.log('lyric saved?');
-// 	const createLyricLine = async (newLyric) => {
-// 		console.log('new lyric', newLyric);
-// 		const newLine = await new Line({
-// 			lineRef:
-// 		});
-// 		newLine.createOriginalLine(newLine);
-// 		song.lyrics.push(await newLyric);
-// 	};
-// };
 lyricSchema.methods.createLine = function (newLyric) {
 	console.log('creating a line', newLyric);
 	newLyric.save();

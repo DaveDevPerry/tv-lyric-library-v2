@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Song = require('../models/song');
 const Lyric = require('../models/lyric');
-const Line = require('../models/line');
-const line = require('../models/line');
-const SingleLine = require('../models/singleLine');
+const ALine = require('../models/aLine');
 
 // all songs route
 router.get('/', async (req, res) => {
@@ -29,13 +27,25 @@ router.post('/', async (req, res) => {
 
 	const createLyric = async (lyric, index) => {
 		console.log('lyric', lyric);
-		const newLyric = await new Lyric({
+		const newLyric = await new ALine({
 			lyric: lyric,
 			likeCount: 1,
 			inSong: await song.id,
 			lyricRef: 'line' + ((await index) + 1),
+			lineNumber: (await index) + 1,
 		});
 		newLyric.createLine(newLyric);
+		// create song.lyricsLine Object
+		const newInitialLine = await {
+			// user: req.body.user,
+			createdAt: Date.now,
+			lineNumber: newLyric.lyricRef,
+			hello: 'hello',
+			lyricsInLine: [],
+		};
+		await newInitialLine.lyricsInLine.push(await newLyric);
+
+		song.lyricLines.push(await newInitialLine);
 		song.lyrics.push(await newLyric);
 	};
 
@@ -43,37 +53,85 @@ router.post('/', async (req, res) => {
 		song = await new Song({});
 		song.title = req.body.title;
 		song.initialLyrics = req.body.initialLyrics;
-
+		// splits initial lyrics string into each lyric line string
 		const lyricsToSplit = await song.initialLyrics.split(',');
 		song.lineCount = await lyricsToSplit.length;
 		console.log('lyrics to split', lyricsToSplit);
 		lyricsToSplit.forEach(async (lyric, index) => {
 			console.log('index', await index);
 			song.splitLyrics.push(await lyric);
-
+			// creates a new Aline schema for each individual line
 			createLyric(lyric, index);
 		});
 
-		// song.lyrics.push();
-
-		// song.lyrics.foreach
-		// const newLyrics = await song.lyrics;
-		// console.log('newLyrics array', newLyrics);
-
-		// foreach create a line ref
-
-		// save song
 		await song.save();
 		res.redirect('songs');
-	} catch {
+	} catch (err) {
 		res.send('oh');
+		console.log(err);
 	}
 });
+// // create song - POST route
+// router.post('/', async (req, res) => {
+// 	let song;
+
+// 	const createLyric = async (lyric, index) => {
+// 		console.log('lyric', lyric);
+// 		const newLyric = await new Lyric({
+// 			lyric: lyric,
+// 			likeCount: 1,
+// 			inSong: await song.id,
+// 			lyricRef: 'line' + ((await index) + 1),
+// 		});
+// 		newLyric.createLine(newLyric);
+// 		song.lyrics.push(await newLyric);
+// 	};
+
+// 	try {
+// 		song = await new Song({});
+// 		song.title = req.body.title;
+// 		song.initialLyrics = req.body.initialLyrics;
+
+// 		const lyricsToSplit = await song.initialLyrics.split(',');
+// 		song.lineCount = await lyricsToSplit.length;
+// 		console.log('lyrics to split', lyricsToSplit);
+// 		lyricsToSplit.forEach(async (lyric, index) => {
+// 			console.log('index', await index);
+// 			song.splitLyrics.push(await lyric);
+
+// 			createLyric(lyric, index);
+// 		});
+
+// 		await song.save();
+// 		res.redirect('songs');
+// 	} catch {
+// 		res.send('oh');
+// 	}
+// });
 
 router.get('/:id', async (req, res) => {
 	try {
-		const song = await Song.findById(req.params.id);
-		const lyrics = await Lyric.find({});
+		const song = await Song.findById(req.params.id)
+			.populate([
+				{
+					path: 'lyricLines.lyricsInLine',
+					model: 'ALine',
+					select: '_id lineNumber lyric likeCount createdAt',
+				},
+			])
+			.exec();
+		// song.lyricLines
+		const lyricLines = await song.lyricLines;
+		// await lyricLines
+		// 	.populate([
+		// 		{
+		// 			path: 'lyricLines',
+		// 			model: 'ALine',
+		// 			select: '_id lineNumber lyric likeCount createdAt',
+		// 		},
+		// 	])
+		// 	.exec();
+		// const lyrics = await Lyric.find({});
 		// const allLyrics = await song.allLyrics;
 		// let str = await allLyrics[0];
 		// const lyrics = await str.split(',');
@@ -81,7 +139,8 @@ router.get('/:id', async (req, res) => {
 		// const lyrics = await song.allLyrics.split(',');
 		res.render('songs/show', {
 			song: song,
-			lyrics: lyrics,
+			lyricLines: lyricLines,
+			// lyrics: lyrics,
 		});
 	} catch (error) {
 		console.log(error);

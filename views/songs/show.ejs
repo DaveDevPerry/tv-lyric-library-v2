@@ -2,12 +2,35 @@
 <h2 class="page-header"><%= song.lineCount %> Lines</h2>
 
 <div>
+	<!-- <h6>1 <%= song.lyricLines %></h6> -->
+	<br />
+
+	<!-- works -->
+	<!-- <h1>2 <%= song.lyricLines[0].lyricsInLine[0].lyric %></h1>
+	<br /> -->
+
+	<!-- <ul>
+		<% song.lyricLines[0].lyricsInLine.forEach((line) => { %>
+		<li>lyric - <%= line.lyric %></li>
+		<% }) %>
+	</ul> -->
+
 	<ul>
-		<% song.lyrics.forEach((lyric)=>{ %>
+		<% song.lyricLines.forEach((line) => { %>
+		<li>
+			line <%= line.lyricsInLine[0].lineNumber %> - <%=
+			line.lyricsInLine[0].lyric %> - Likes <%= line.lyricsInLine[0].likeCount
+			%>
+		</li>
+		<% }) %>
+	</ul>
+
+	<ul>
+		<% song.lyricLines.forEach((lyric)=>{ %>
 		<li>
 			<form action="/lyric" method="POST" class="form-grow">
 				<div class="form-row">
-					<label><%= lyric.lyricRef %></label>
+					<label><%= lyric.lyricsInLine[0].lineNumber %></label>
 					<input type="text" name="lyric" value="<%= lyric.lyric %>" />
 					<div class="btn-grid">
 						<a class="btn btn-danger" href="/lyric">Cancel</a>
