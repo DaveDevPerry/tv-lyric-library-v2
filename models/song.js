@@ -53,20 +53,20 @@ const songSchema = new mongoose.Schema({
 		},
 	],
 
-	singleLines: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'Line',
-		},
-	],
+	// singleLines: [
+	// 	{
+	// 		type: mongoose.Schema.Types.ObjectId,
+	// 		ref: 'Line',
+	// 	},
+	// ],
 	lyrics: [],
 	lines: [],
-	line: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: false,
-		ref: 'Line',
-	},
-	postLyrics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lyric' }],
+	// line: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	required: false,
+	// 	ref: 'Line',
+	// },
+	// postLyrics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lyric' }],
 	allLyricsInLines: [],
 });
 
