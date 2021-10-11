@@ -1,19 +1,20 @@
-header{
-  background-color: rgb(121, 9, 9);
-  color: white;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+header {
+	background-color: rgb(121, 9, 9);
+	color: white;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
 }
-nav ul{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 1rem;
+nav ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: 1rem;
+	flex-wrap: wrap;
 }
-.nav-link{
-  font-size: 2rem;
-  text-transform: uppercase;
+.nav-link {
+	font-size: 2rem;
+	text-transform: uppercase;
 }

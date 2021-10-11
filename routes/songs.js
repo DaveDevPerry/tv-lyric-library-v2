@@ -122,17 +122,17 @@ router.get('/:id', async (req, res) => {
 		// .exec();
 		// song.lyricLines
 
-		console.log(await song.id);
+		// console.log(await song.id);
 		const lyricLines = await ALine.find({});
-		console.log(await lyricLines);
+		// console.log(await lyricLines);
 		const songLyrics = lyricLines.filter(function (line) {
-			console.log('songId', line.songId);
-			console.log('song Id', song.id);
+			// console.log('songId', line.songId);
+			// console.log('song Id', song.id);
 			if (line.songId === song.id) {
 				return line;
 			}
 		});
-		console.log(await songLyrics);
+		// console.log(await songLyrics);
 		// await lyricLines
 		// 	.populate([
 		// 		{
@@ -146,14 +146,19 @@ router.get('/:id', async (req, res) => {
 		// const allLyrics = await song.allLyrics;
 		// let str = await allLyrics[0];
 		// const lyrics = await str.split(',');
-
+		// console.log('lyrics to sort', songLyrics);
 		// const lyrics = await song.allLyrics.split(',');
 		res.render('songs/show', {
 			song: song,
 			lyricLines: lyricLines,
-			songLyrics: songLyrics,
+			// songLyrics: songLyrics,
+			songLyrics: songLyrics.sort(function (a, b) {
+				// console.log('a', a.likeCount);
+				return b.likeCount - a.likeCount;
+			}),
 			// lyrics: lyrics,
 		});
+		// console.log('lyrics to sort', songLyrics);
 	} catch (error) {
 		console.log(error);
 		res.redirect('/');

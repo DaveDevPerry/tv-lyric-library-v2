@@ -1,6 +1,27 @@
-.song-row{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+.song-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+.lyric-line-row {
+	/* border: 1px solid red; */
+	font-size: 1.6rem;
+	padding: 0.2rem 0;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	column-gap: 1rem;
+}
+.lyric-line-row p:first-child {
+	font-weight: bold;
+	text-align: right;
+	/* padding-left: 0.5rem; */
+}
+.lyric-line {
+	/* width: 400px; */
+	font-size: 1.6rem;
+}
+.lyric-line::first-letter {
+	text-transform: capitalize;
 }
