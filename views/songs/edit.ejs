@@ -18,7 +18,7 @@
 				<input
 					type="text"
 					name="lyric"
-					placeholder="add new lyric here, if different"
+					placeholder="type new lyric here"
 					class="input-create hide"
 				/>
 
@@ -43,23 +43,15 @@
 
 	changeBtns.forEach((btn) => {
 		btn.addEventListener('click', (e) => {
-			console.log('e', e);
-			// console.log('this', this);
-			console.log(e.target.parentElement.firstElementChild);
-			console.log(e.target.parentElement.lastElementChild);
-			// e.target.parentElement.lastElementChild.classList.toggle('hide');
-			// e.target.parentElement.firstElementChild.classList.toggle('hide');
-			// e.target.parentElement.lastElementChild.classList.toggle('hide');
+			// console.log('e', e);
+
+			// console.log(e.target.parentElement.firstElementChild);
+			// console.log(e.target.parentElement.lastElementChild);
+
 			e.target.parentElement.childNodes[1].classList.toggle('hide');
 			e.target.parentElement.childNodes[3].classList.toggle('hide');
 			e.target.parentElement.childNodes[5].classList.toggle('hide');
 			e.target.parentElement.childNodes[7].classList.toggle('hide');
-			// e.target.parentElement.lastElementChild.classList.toggle('hide');
-			// e.target.parentElement.lastElementChild.classList.toggle('hide');
-			// e.target.parentElement.childNodes.forEach((child) => {
-			// 	// child.classList.toggle('hide');
-			// 	console.log(child);
-			// });
 		});
 	});
 

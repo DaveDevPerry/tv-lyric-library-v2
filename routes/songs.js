@@ -24,9 +24,8 @@ router.get('/new', (req, res) => {
 // create song - POST route
 router.post('/', async (req, res) => {
 	let song;
-
 	const createLyric = async (lyric, index) => {
-		console.log('lyric', lyric);
+		// console.log('lyric', lyric);
 		const newLyric = await new ALine({
 			lyric: lyric,
 			likeCount: 1,
@@ -35,17 +34,6 @@ router.post('/', async (req, res) => {
 			lineNumber: (await index) + 1,
 		});
 		newLyric.createLine(newLyric);
-		// create song.lyricsLine Object
-		// const newInitialLine = await {
-		// 	// user: req.body.user,
-		// 	createdAt: Date.now,
-		// 	lineNumber: newLyric.lyricRef,
-		// 	hello: 'hello',
-		// 	lyricsInLine: [],
-		// };
-		// await newInitialLine.lyricsInLine.push(await newLyric);
-
-		// song.lyricLines.push(await newInitialLine);
 		song.lyricLines.push(await newLyric);
 	};
 
@@ -56,9 +44,9 @@ router.post('/', async (req, res) => {
 		// splits initial lyrics string into each lyric line string
 		const lyricsToSplit = await song.initialLyrics.split(',');
 		song.lineCount = await lyricsToSplit.length;
-		console.log('lyrics to split', lyricsToSplit);
+		// console.log('lyrics to split', lyricsToSplit);
 		lyricsToSplit.forEach(async (lyric, index) => {
-			console.log('index', await index);
+			// console.log('index', await index);
 			song.splitLyrics.push(await lyric);
 			// creates a new Aline schema for each individual line
 			createLyric(lyric, index);
@@ -168,44 +156,103 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
 	try {
 		const song = await Song.findById(req.params.id);
-		console.log(await song.id);
+		// console.log(await song.id);
 		const lyricLines = await ALine.find({});
-		console.log(await lyricLines);
+		// console.log(await lyricLines);
 		const songLyrics = lyricLines.filter(function (line) {
-			console.log('songId', line.songId);
-			console.log('song Id', song.id);
+			// console.log('songId', line.songId);
+			// console.log('song Id', song.id);
 			if (line.songId === song.id) {
 				return line;
 			}
 		});
-		console.log(await songLyrics);
-		res.render('songs/edit', { song: song, songLyrics: songLyrics });
+		// console.log(await songLyrics);
+		res.render('songs/edit', {
+			song: song,
+			songLyrics: songLyrics.sort(function (a, b) {
+				return b.likeCount - a.likeCount;
+			}),
+		});
 	} catch {
 		res.redirect('/songs');
 	}
 });
 
+// update song
 router.put('/:id', async (req, res) => {
 	let song;
+	let updateLine;
 	try {
 		song = await Song.findOneAndUpdate({ id: req.params.id });
 		console.log('song to update', await song);
-		console.log('body', req.body);
-		// console.log('all form item', req.body.allFormItems);
-		console.log('name = lyric', req.body.lyric);
-		// song.title = req.body.title;
-		// song.allLyrics = req.body.allLyrics;
+		const selectedLyrics = req.body.lyric;
+		console.log('lyric array', selectedLyrics);
+		console.log('line count checker', selectedLyrics.length / 2);
+
+		// const newAline = await new ALine({
+		// 	songId: song.id,
+		// 	lineNumber: 2,
+		// 	likeCount: 0,
+		// 	lyric: 'hard coded',
+		// });
+		// await newAline.save();
+		// song.lyricLines.push(await newAline);
 		// await song.save();
 
-		const newAline = await new ALine({
-			songId: song.id,
-			lineNumber: 2,
-			likeCount: 0,
-			lyric: "to tell me that i'm wrong",
-		});
-		await newAline.save();
+		const createNewLyric = async (lyric, lineNumber) => {
+			// console.log('lyric', lyric);
+			const newLyric = await new ALine({
+				lyric: lyric,
+				likeCount: 0,
+				songId: await song.id,
+				lyricRef: 'line' + lineNumber,
+				lineNumber: lineNumber,
+			});
+			newLyric.createNewLine(newLyric);
+			song.lyricLines.push(await newLyric);
+		};
 
-		song.lyricLines.push(await newAline);
+		const updateLineWithALike = async (lineId) => {
+			// console.log('id to give like', lineId);
+			// updateLine = await ALine.findOne({ id: lineId });
+			// console.log('like count', await updateLine);
+			// const updateLine = await ALine.findByIdAndUpdate(
+			// 	{ _id: lineId },
+			// 	{ likeCount: likeCount + 1 }
+			// );
+			// console.log('line to give a like', await updateLine);
+			//
+			const giveLike = await ALine.findOneAndUpdate(
+				{ _id: lineId },
+				{ $inc: { likeCount: 1 } }
+			);
+			console.log('give like', giveLike);
+			giveLike.addLikeToLine(giveLike);
+
+			// updateLine.addLikeToLine(updateLine);
+			// console.log('id to give like', lineId);
+			// updateLine = await ALine.findOneAndUpdate({ id: lineId });
+			// console.log('line to give a like', await updateLine);
+
+			// updateLine.addLikeToLine(updateLine);
+		};
+
+		for (let i = 1; i <= selectedLyrics.length; i += 2) {
+			console.log('i', i);
+			// check [i] if "", update [i-1] likeCount++
+			if (selectedLyrics[i] === '') {
+				console.log('add like to ', selectedLyrics[i - 1]);
+				updateLineWithALike(selectedLyrics[i - 1]);
+			}
+			// check [i] if !"", get [i-1] lineCount, new Aline [i]
+			if (selectedLyrics[i] !== '') {
+				console.log('create new line');
+				const lineNumber = await ALine.findById(selectedLyrics[i - 1]);
+				console.log('line number', lineNumber.lineNumber);
+				createNewLyric(selectedLyrics[i], lineNumber.lineNumber);
+			}
+			console.log('here', i);
+		}
 
 		await song.save();
 		res.redirect(`/songs/${song.id}`);

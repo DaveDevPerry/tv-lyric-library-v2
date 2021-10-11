@@ -26,4 +26,17 @@ aLineSchema.methods.createLine = function (newLyric) {
 	newLyric.save();
 	console.log('lyric saved?');
 };
+
+aLineSchema.methods.addLikeToLine = function (updateLine) {
+	console.log('add like to existing line', updateLine);
+	updateLine.save();
+	console.log('line updated with like?');
+};
+
+aLineSchema.methods.createNewLine = function (newLyric) {
+	console.log('add new lyric', newLyric);
+	newLyric.save();
+	console.log('new lyric saved?');
+};
+
 module.exports = mongoose.model('ALine', aLineSchema);
