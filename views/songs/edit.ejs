@@ -19,8 +19,11 @@
 					type="text"
 					name="lyric"
 					placeholder="add new lyric here, if different"
-					class="input-create"
+					class="input-create hide"
 				/>
+
+				<i class="far fa-edit add-new-line-btn"></i>
+				<i class="fas fa-undo-alt add-new-line-btn hide"></i>
 			</div>
 		</div>
 		<%}%>
@@ -34,27 +37,54 @@
 </div>
 
 <script>
-	console.log('middleware script');
-	console.log('song', '<%= song.title %>', '<%= song.id %>');
-	const songId = '<%= song.id %>';
-	console.log('song id', songId);
-	const formLines = document.querySelectorAll('.form-line');
+	// display new lyric input onclick change lyric
+	const changeBtns = document.querySelectorAll('.add-new-line-btn');
+	console.log('btns', changeBtns);
 
-	let newAline = {
-		songId: songId,
-	};
-
-	const getLines = () => {
-		formLines.forEach((line, index) => {
-			console.log(line);
-			// get lineNo, from line index
-			const lineNumber = index + 1;
-			console.log('line number', lineNumber);
-			if (line.lastElementChild.value !== '') {
-				console.log('new text', line.lastElementChild.value);
-			} else {
-				console.log('selected text', line.firstElementChild.value);
-			}
+	changeBtns.forEach((btn) => {
+		btn.addEventListener('click', (e) => {
+			console.log('e', e);
+			// console.log('this', this);
+			console.log(e.target.parentElement.firstElementChild);
+			console.log(e.target.parentElement.lastElementChild);
+			// e.target.parentElement.lastElementChild.classList.toggle('hide');
+			// e.target.parentElement.firstElementChild.classList.toggle('hide');
+			// e.target.parentElement.lastElementChild.classList.toggle('hide');
+			e.target.parentElement.childNodes[1].classList.toggle('hide');
+			e.target.parentElement.childNodes[3].classList.toggle('hide');
+			e.target.parentElement.childNodes[5].classList.toggle('hide');
+			e.target.parentElement.childNodes[7].classList.toggle('hide');
+			// e.target.parentElement.lastElementChild.classList.toggle('hide');
+			// e.target.parentElement.lastElementChild.classList.toggle('hide');
+			// e.target.parentElement.childNodes.forEach((child) => {
+			// 	// child.classList.toggle('hide');
+			// 	console.log(child);
+			// });
 		});
-	};
+	});
+
+	// working below
+	// console.log('middleware script');
+	// console.log('song', '<%= song.title %>', '<%= song.id %>');
+	// const songId = '<%= song.id %>';
+	// console.log('song id', songId);
+	// const formLines = document.querySelectorAll('.form-line');
+
+	// let newAline = {
+	// 	songId: songId,
+	// };
+
+	// const getLines = () => {
+	// 	formLines.forEach((line, index) => {
+	// 		console.log(line);
+	// 		// get lineNo, from line index
+	// 		const lineNumber = index + 1;
+	// 		console.log('line number', lineNumber);
+	// 		if (line.lastElementChild.value !== '') {
+	// 			console.log('new text', line.lastElementChild.value);
+	// 		} else {
+	// 			console.log('selected text', line.firstElementChild.value);
+	// 		}
+	// 	});
+	// };
 </script>

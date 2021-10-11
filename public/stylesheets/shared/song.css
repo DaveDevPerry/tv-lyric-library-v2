@@ -25,3 +25,6 @@
 .lyric-line::first-letter {
 	text-transform: capitalize;
 }
+.hide {
+	display: none;
+}
