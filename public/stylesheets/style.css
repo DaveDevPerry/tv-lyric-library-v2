@@ -19,7 +19,8 @@ body {
 	font-size: 1.6rem;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+	justify-content: space-between;
+	/* overflow: hidden; */
 }
 .container {
 	/* border: 2px solid green; */
@@ -29,7 +30,7 @@ body {
 	margin: 0 auto;
 }
 h1 {
-	font-size: 3rem;
+	font-size: 2rem;
 }
 li {
 	list-style: none;

@@ -1,31 +1,60 @@
-<h2 class="page-header"><%= song.title %></h2>
-<!-- <h2 class="page-header"><%= song.lineCount %> Lines</h2> -->
-<!-- <h2 class="page-header"><%= song.id %> song id</h2> -->
+<div class="page-wrapper">
+	<h2 class="page-header"><%= song.title %></h2>
+	<!-- <h2 class="page-header"><%= song.lineCount %> Lines</h2> -->
+	<!-- <h2 class="page-header"><%= song.id %> song id</h2> -->
+	<form action="/songs/<%= song.id %>?_method=PUT" method="POST">
+		// this one is working <% for(let i = 1; i <= song.lineCount; i++){ %>
+		<div class="form-row">
+			<!-- <p><%= i %>:</p> -->
+			<div class="form-line" name="allFormItems">
+				<select name="lyric">
+					<% songLyrics.forEach((lyric)=>{ %> <% if(lyric.lineNumber === i){ %>
+					<option selected value="<%= lyric.id %>">
+						<p><%= lyric.lyric %></p>
+					</option>
+					<% }%> <% }) %>
+				</select>
 
-<div>
-	// this one is working <% for(let i = 1; i <= song.lineCount; i++){ %>
-	<div class="form-row">
-		<!-- <p><%= i %>:</p> -->
-		<div class="form-line">
-			<select name="lyric">
-				<% songLyrics.forEach((lyric)=>{ %> <% if(lyric.lineNumber === i){ %>
-				<option selected value="<%= lyric.id %>">
-					<p><%= lyric.lyric %></p>
-				</option>
-				<% }%> <% }) %>
-			</select>
-
-			<input
-				type="text"
-				name="lyric"
-				placeholder="add new lyric here, if different"
-				class="input-create"
-			/>
+				<input
+					type="text"
+					name="lyric"
+					placeholder="add new lyric here, if different"
+					class="input-create"
+				/>
+			</div>
 		</div>
-	</div>
-	<%}%>
+		<%}%>
+
+		<div class="form-row form-row-end btn-row">
+			<a class="btn btn-danger" href="/songs/<%= song.id %>">Cancel</a>
+			<button class="btn btn-primary" type="submit">Update</button>
+		</div>
+	</form>
+	<!-- <button onclick="getLines()">get Lines</button> -->
 </div>
-<div class="form-row form-row-end btn-row">
-	<a class="btn btn-danger" href="/songs/<%= song.id %>">Cancel</a>
-	<button class="btn btn-primary" type="submit">Update</button>
-</div>
+
+<script>
+	console.log('middleware script');
+	console.log('song', '<%= song.title %>', '<%= song.id %>');
+	const songId = '<%= song.id %>';
+	console.log('song id', songId);
+	const formLines = document.querySelectorAll('.form-line');
+
+	let newAline = {
+		songId: songId,
+	};
+
+	const getLines = () => {
+		formLines.forEach((line, index) => {
+			console.log(line);
+			// get lineNo, from line index
+			const lineNumber = index + 1;
+			console.log('line number', lineNumber);
+			if (line.lastElementChild.value !== '') {
+				console.log('new text', line.lastElementChild.value);
+			} else {
+				console.log('selected text', line.firstElementChild.value);
+			}
+		});
+	};
+</script>

@@ -185,6 +185,41 @@ router.get('/:id/edit', async (req, res) => {
 	}
 });
 
+router.put('/:id', async (req, res) => {
+	let song;
+	try {
+		song = await Song.findOneAndUpdate({ id: req.params.id });
+		console.log('song to update', await song);
+		console.log('body', req.body);
+		// console.log('all form item', req.body.allFormItems);
+		console.log('name = lyric', req.body.lyric);
+		// song.title = req.body.title;
+		// song.allLyrics = req.body.allLyrics;
+		// await song.save();
+
+		const newAline = await new ALine({
+			songId: song.id,
+			lineNumber: 2,
+			likeCount: 0,
+			lyric: "to tell me that i'm wrong",
+		});
+		await newAline.save();
+
+		song.lyricLines.push(await newAline);
+
+		await song.save();
+		res.redirect(`/songs/${song.id}`);
+	} catch {
+		if (song == null) {
+			res.redirect('/');
+		} else {
+			res.render('songs/edit', {
+				song: song,
+				errorMessage: 'Error updating song',
+			});
+		}
+	}
+});
 // router.put('/:id', async (req, res) => {
 // 	let song;
 // 	try {
@@ -204,6 +239,7 @@ router.get('/:id/edit', async (req, res) => {
 // 		}
 // 	}
 // });
+
 // router.delete('/:id', async (req, res) => {
 // 	let song;
 // 	try {
