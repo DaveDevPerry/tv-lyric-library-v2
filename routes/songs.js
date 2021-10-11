@@ -30,23 +30,23 @@ router.post('/', async (req, res) => {
 		const newLyric = await new ALine({
 			lyric: lyric,
 			likeCount: 1,
-			inSong: await song.id,
+			songId: await song.id,
 			lyricRef: 'line' + ((await index) + 1),
 			lineNumber: (await index) + 1,
 		});
 		newLyric.createLine(newLyric);
 		// create song.lyricsLine Object
-		const newInitialLine = await {
-			// user: req.body.user,
-			createdAt: Date.now,
-			lineNumber: newLyric.lyricRef,
-			hello: 'hello',
-			lyricsInLine: [],
-		};
-		await newInitialLine.lyricsInLine.push(await newLyric);
+		// const newInitialLine = await {
+		// 	// user: req.body.user,
+		// 	createdAt: Date.now,
+		// 	lineNumber: newLyric.lyricRef,
+		// 	hello: 'hello',
+		// 	lyricsInLine: [],
+		// };
+		// await newInitialLine.lyricsInLine.push(await newLyric);
 
-		song.lyricLines.push(await newInitialLine);
-		song.lyrics.push(await newLyric);
+		// song.lyricLines.push(await newInitialLine);
+		song.lyricLines.push(await newLyric);
 	};
 
 	try {
@@ -111,17 +111,28 @@ router.post('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
 	try {
-		const song = await Song.findById(req.params.id)
-			.populate([
-				{
-					path: 'lyricLines.lyricsInLine',
-					model: 'ALine',
-					select: '_id lineNumber lyric likeCount createdAt',
-				},
-			])
-			.exec();
+		const song = await Song.findById(req.params.id);
+		// .populate([
+		// 	{
+		// 		path: 'lyricLines.lyricsInLine',
+		// 		model: 'ALine',
+		// 		select: '_id lineNumber lyric likeCount createdAt',
+		// 	},
+		// ])
+		// .exec();
 		// song.lyricLines
-		const lyricLines = await song.lyricLines;
+
+		console.log(await song.id);
+		const lyricLines = await ALine.find({});
+		console.log(await lyricLines);
+		const songLyrics = lyricLines.filter(function (line) {
+			console.log('songId', line.songId);
+			console.log('song Id', song.id);
+			if (line.songId === song.id) {
+				return line;
+			}
+		});
+		console.log(await songLyrics);
 		// await lyricLines
 		// 	.populate([
 		// 		{
@@ -140,6 +151,7 @@ router.get('/:id', async (req, res) => {
 		res.render('songs/show', {
 			song: song,
 			lyricLines: lyricLines,
+			songLyrics: songLyrics,
 			// lyrics: lyrics,
 		});
 	} catch (error) {
@@ -148,14 +160,25 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-// router.get('/:id/edit', async (req, res) => {
-// 	try {
-// 		const song = await Song.findById(req.params.id);
-// 		res.render('songs/edit', { song: song });
-// 	} catch {
-// 		res.redirect('/songs');
-// 	}
-// });
+router.get('/:id/edit', async (req, res) => {
+	try {
+		const song = await Song.findById(req.params.id);
+		console.log(await song.id);
+		const lyricLines = await ALine.find({});
+		console.log(await lyricLines);
+		const songLyrics = lyricLines.filter(function (line) {
+			console.log('songId', line.songId);
+			console.log('song Id', song.id);
+			if (line.songId === song.id) {
+				return line;
+			}
+		});
+		console.log(await songLyrics);
+		res.render('songs/edit', { song: song, songLyrics: songLyrics });
+	} catch {
+		res.redirect('/songs');
+	}
+});
 
 // router.put('/:id', async (req, res) => {
 // 	let song;

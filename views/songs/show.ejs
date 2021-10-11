@@ -1,5 +1,6 @@
 <h2 class="page-header"><%= song.title %></h2>
 <h2 class="page-header"><%= song.lineCount %> Lines</h2>
+<h2 class="page-header"><%= song.id %> song id</h2>
 
 <div>
 	<br />
@@ -7,10 +8,9 @@
 	<!-- works -->
 
 	<ul>
-		<% song.lyricLines.forEach((line) => { %>
+		<% songLyrics.forEach((line) => { %>
 		<li>
-			line <%= line.lyricsInLine[0].lineNumber %> - <%=
-			line.lyricsInLine[0].lyric %> - Likes <%= line.lyricsInLine[0].likeCount
+			line <%= line.lineNumber %> - <%= line.lyric %> - Likes <%= line.likeCount
 			%>
 		</li>
 		<% }) %>
@@ -19,18 +19,14 @@
 	<br />
 
 	<ul>
-		<% song.lyricLines.forEach((lyric)=>{ %>
+		<% songLyrics.forEach((lyric)=>{ %>
 		<li>
 			<form action="/lyric" method="POST" class="form-grow">
 				<div class="form-row">
-					<label><%= lyric.lyricsInLine[0].lineNumber %>:</label>&nbsp;
-					<input
-						type="text"
-						name="lyric"
-						value="<%= lyric.lyricsInLine[0].lyric %>"
-					/>
+					<label><%= lyric.lineNumber %>:</label>&nbsp;
+					<input type="text" name="lyric" value="<%= lyric.lyric %>" />
 					&nbsp;<i class="fas fa-thumbs-up"></i>
-					<span class="blue"><%= lyric.lyricsInLine[0].likeCount %></span>
+					<span class="blue"><%= lyric.likeCount %></span>
 
 					<div class="btn-grid">
 						<button class="btn btn-primary" type="submit">Create</button>
@@ -43,15 +39,15 @@
 
 	<br />
 	<ul>
-		<% song.lyricLines.forEach((lyric)=>{ %>
+		<% songLyrics.forEach((lyric)=>{ %>
 		<li>
 			<form action="/lyric" method="POST" class="form-grow">
 				<div class="form-row">
-					<p><%= lyric.lyricsInLine[0].lineNumber %>:</p>
+					<p><%= lyric.lineNumber %>:</p>
 					&nbsp;
 					<select name="lyric">
-						<% lyric.lyricsInLine.forEach(lyric => { %> <% if(lyric.id ===
-						song.lyric) { %>
+						<% songLyrics.forEach(lyric => { %> <% if(lyric.id === song.lyric) {
+						%>
 						<option selected value="<%= lyric.id %>">
 							<p><%= lyric.lyric %><span><%= lyric.likeCount %></span></p>
 						</option>
@@ -64,7 +60,7 @@
 					<input
 						type="text"
 						name="lyric"
-						value="<% lyric.lyricsInLine[0].lyric %>"
+						value="<% lyric.lyric %>"
 						placeholder="add new lyric here, if not listed above"
 						class="input-create"
 					/>
@@ -81,4 +77,73 @@
 <div class="btn-row">
 	<a class="btn btn-primary" href="/songs/<%= song.id %>/edit">Edit</a>
 	<%- include('../partials/deleteForm', {url: `/songs/${song.id}` }) %>
+</div>
+
+// for loop using song.lineCount 
+<% for(let i = 1; i <= song.lineCount; i++){ %>
+	<% songLyrics.forEach((lyric)=>{ %>
+		<ul>
+		<% if(lyric.lineNumber === i){ %>
+			<li><%= i %> & <%= lyric.lyric %></li>
+		<% }%>	
+		</ul>
+	<% }) %>
+<%}%>
+
+<br/>
+// this one is working
+<% for(let i = 1; i <= song.lineCount; i++){ %>
+	<div class="form-row">
+		<p><%= i %>:</p>
+		<select name="lyric">
+			<% songLyrics.forEach((lyric)=>{ %>
+				<% if(lyric.lineNumber === i){ %>
+					<option selected value="<%= lyric.id %>">
+						<p><%= lyric.lyric %></p>
+					</option>
+				<% }%>
+			<% }) %>
+		</select>
+	
+		<input type="text"	name="lyric" placeholder="add new lyric here, if different" class="input-create"	/>
+	</div>	
+<%}%>
+
+
+
+	<br />
+	<ul>
+		<% songLyrics.forEach((lyric)=>{ %>
+		<li>
+			<form action="/aLine" method="POST" class="form-grow">
+				<div class="form-row">
+					<p><%= lyric.lineNumber %>:</p>
+					&nbsp;
+					<select name="lyric">
+						<% songLyrics.forEach(lyric => { %> <% if(lyric.id === song.lyric) {
+						%>
+						<option selected value="<%= lyric.id %>">
+							<p><%= lyric.lyric %><span><%= lyric.likeCount %></span></p>
+						</option>
+						<% } else { %>
+						<option value="<%= lyric.id %>">
+							<p><%= lyric.lyric %> here<span><%= lyric.likeCount %></span></p>
+						</option>
+						<% } %> <% }) %>
+					</select>
+					<input
+						type="text"
+						name="lyric"
+						value="<% lyric.lyric %>"
+						placeholder="add new lyric here, if not listed above"
+						class="input-create"
+					/>
+					<div class="btn-grid">
+						<button class="btn btn-primary" type="submit">Create</button>
+					</div>
+				</div>
+			</form>
+		</li>
+		<% }) %>
+	</ul>
 </div>

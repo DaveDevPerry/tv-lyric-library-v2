@@ -25,24 +25,31 @@ const songSchema = new mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
+	// lyricLines: [
+	// 	{
+	// 		// user: {
+	// 		// 	type: mongoose.Schema.Types.ObjectId,
+	// 		// 	ref: 'User',
+	// 		// },
+	// 		// createdAt: {
+	// 		// 	type: Date,
+	// 		// 	required: true,
+	// 		// 	default: Date.now,
+	// 		// },
+	// 		lineNumber: Number,
+	// 		lyricsInLine: [
+	// 			{
+	// 				type: mongoose.Schema.Types.ObjectId,
+	// 				ref: 'ALine',
+	// 			},
+	// 		],
+	// 	},
+	// ],
+
 	lyricLines: [
 		{
-			// user: {
-			// 	type: mongoose.Schema.Types.ObjectId,
-			// 	ref: 'User',
-			// },
-			// createdAt: {
-			// 	type: Date,
-			// 	required: true,
-			// 	default: Date.now,
-			// },
-			lineNumber: Number,
-			lyricsInLine: [
-				{
-					type: mongoose.Schema.Types.ObjectId,
-					ref: 'ALine',
-				},
-			],
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'ALine',
 		},
 	],
 

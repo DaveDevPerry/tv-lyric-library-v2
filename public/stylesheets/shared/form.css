@@ -1,16 +1,32 @@
 select {
-	width: 200px;
+	width: 400px;
+	font-size: 1.6rem;
+	padding: 0.5rem;
 }
 option {
-	width: 200px;
+	width: 400px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	font-size: 1.6rem;
+	padding: 0.5rem;
 }
-option p {
-	width: 200px;
+
+input {
+	width: 400px;
+	font-size: 1.6rem;
+	padding: 0.5rem;
+}
+.form-row {
+	border: 1px solid red;
+	font-size: 1.6rem;
+	margin: 0.4rem 0;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
-	background-color: lightgreen;
+	column-gap: 1rem;
+}
+.form-row p {
+	font-weight: bold;
+	text-align: right;
 }
