@@ -1,12 +1,36 @@
 <div class="page-header">
-	<h2 class="page-title">views - index.ejs</h2>
+	<h2 class="page-title">lyric suggestions from fans</h2>
 	<div class="header-wrapper">
 		<div class="blank"></div>
 		<h3 class="artist-name">terrorvision</h3>
 	</div>
 </div>
 <div class="page-content">
-	<a href="/songs" class="nav-link">songs</a>
+	<a href="/songs" class="nav-link btn songs-btn">song list</a>
+	<form class="login-form form">
+		<!-- <div class="login-btn">
+			<button class="btn btn-primary">Log in</button>
+		</div> -->
+		<label class="login-label" for="email">Email</label>
+		<input
+			class="login-input"
+			type="text"
+			name="email"
+			placeholder="dummy email"
+		/>
+		<div class="error email"></div>
+		<label class="login-label" for="password">Password</label>
+		<input
+			class="login-input"
+			type="password"
+			name="password"
+			placeholder="dummy email"
+		/>
+		<div class="error password"></div>
+		<div class="login-btn">
+			<button class="btn btn-primary">Log in</button>
+		</div>
+	</form>
 </div>
 
 <!-- <div class="page-header">gfggdf</div> -->

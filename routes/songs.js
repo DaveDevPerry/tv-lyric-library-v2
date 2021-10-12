@@ -262,7 +262,8 @@ router.put('/:id', async (req, res) => {
 		}
 
 		await song.save();
-		res.redirect(`/songs/${song.id}`);
+		// res.redirect(`/songs/${song.id}`);
+		res.redirect(`/songs`);
 	} catch {
 		if (song == null) {
 			res.redirect('/');

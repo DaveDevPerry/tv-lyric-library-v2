@@ -2,6 +2,7 @@ footer {
 	background-color: #700404;
 	color: white;
 	width: 100%;
+	border-top: 2px solid #ab0202;
 
 	/* padding: 0.5rem; */
 }
@@ -14,4 +15,5 @@ footer {
 	font-weight: 100;
 	color: white;
 	font-family: 'Rock Salt';
+	border-top: 2px solid rgb(190, 190, 190);
 }

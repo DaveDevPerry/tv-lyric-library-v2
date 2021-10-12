@@ -11,14 +11,17 @@
 	align-items: center;
 	margin-bottom: 0.5rem;
 	padding: 0.5rem;
-	background-color: #7004048c;
+	/* background-color: #7004048c; */
 	color: black;
+	font-weight: bolder;
 }
 .song-title {
-	font-family: 'Rock Salt';
+	font-family: 'Caveat', cursive;
 	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-size: 1.4rem;
+	letter-spacing: 1px;
+	font-size: 2.2rem;
+	display: flex;
+	align-items: center;
 }
 .lyric-line-row {
 	/* border: 1px solid red; */
@@ -27,19 +30,23 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	column-gap: 0.5rem;
+	/* column-gap: 0.5rem; */
 }
 .lyric-line-row p:first-child {
 	/* font-weight: bold; */
 	text-align: right;
 	font-size: 1.2rem;
 	/* padding-left: 0.5rem; */
+	display: none;
 }
 .lyric-line {
 	/* width: 400px; */
-	font-size: 1.6rem;
+	font-size: 2.4rem;
 	flex: 1;
 	text-align: left;
+	padding: 0 0.2rem;
+	font-family: 'Caveat', cursive;
+	line-height: 1.6rem;
 }
 .lyric-line::first-letter {
 	text-transform: capitalize;
