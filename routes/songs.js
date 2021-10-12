@@ -156,7 +156,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
 	try {
 		const song = await Song.findById(req.params.id);
-		// console.log(await song.id);
+		console.log('song id', await song.id);
 		const lyricLines = await ALine.find({});
 		// console.log(await lyricLines);
 		const songLyrics = lyricLines.filter(function (line) {
@@ -183,7 +183,8 @@ router.put('/:id', async (req, res) => {
 	let song;
 	let updateLine;
 	try {
-		song = await Song.findOneAndUpdate({ id: req.params.id });
+		song = await Song.findOneAndUpdate({ _id: req.params.id });
+		// song = await Song.findOneAndUpdate({ id: req.params.id });
 		console.log('song to update', await song);
 		const selectedLyrics = req.body.lyric;
 		console.log('lyric array', selectedLyrics);
@@ -255,7 +256,7 @@ router.put('/:id', async (req, res) => {
 		}
 
 		await song.save();
-		res.redirect(`/songs/${song.id}`);
+		res.render(`/songs/${song.id}`);
 	} catch {
 		if (song == null) {
 			res.redirect('/');

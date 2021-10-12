@@ -1,16 +1,22 @@
-<div class="form-row">
-	<div class="form-item">
-		<label>Title</label>
-		<input type="text" name="title" value="<%= song.title %>" />
+<div class="song-form-row">
+	<div class="song-form-item">
+		<label>Song Title</label>
+		<input
+			type="text"
+			name="title"
+			value="<%= song.title %>"
+			class="song-title-input"
+		/>
 	</div>
 </div>
-<div class="form-row">
-	<div class="form-item">
+<div class="song-lyrics-form-row">
+	<div class="song-lyrics-form-item">
 		<label>Lyrics</label>
 		<textarea
 			type="text"
 			name="initialLyrics"
 			value="<%= song.initialLyrics %>"
+			class="song-lyrics-textarea"
 		></textarea>
 	</div>
 </div>

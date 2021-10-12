@@ -1,8 +1,37 @@
-<h2 class="page-header">New Song</h2>
-<form action="/songs" method="POST">
-<%- include('_form_fields') %>
-<div class="form-row form-row-end btn-row">
-  <a class="btn btn-danger" href="/songs">Cancel</a>
-  <button class="btn btn-primary" type="submit">Create</button>
+<div class="page-header">
+	<h2 class="page-title">create song</h2>
+	<div class="header-wrapper">
+		<div class="blank"></div>
+		<h3 class="artist-name">terrorvision</h3>
+	</div>
 </div>
-</form>
+<div class="page-content">
+	<form action="/songs" method="POST" class="new-song-form">
+		<div class="song-form-row">
+			<div class="song-form-item">
+				<label>Song Title</label>
+				<input
+					type="text"
+					name="title"
+					value="<%= song.title %>"
+					class="song-title-input"
+				/>
+			</div>
+		</div>
+		<div class="song-lyrics-form-row">
+			<div class="song-lyrics-form-item">
+				<label>Lyrics</label>
+				<textarea
+					type="text"
+					name="initialLyrics"
+					value="<%= song.initialLyrics %>"
+					class="song-lyrics-textarea"
+				></textarea>
+			</div>
+		</div>
+		<div class="form-btn-row btn-row">
+			<a class="btn btn-danger" href="/songs">Cancel</a>
+			<button class="btn btn-primary" type="submit">Create</button>
+		</div>
+	</form>
+</div>
