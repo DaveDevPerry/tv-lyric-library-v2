@@ -16,20 +16,18 @@
 	margin: 0;
 	box-sizing: border-box;
 }
-body {
-}
 
 html {
 	font-size: 62.5%;
-	height: -webkit-fill-available;
+	/* height: -webkit-fill-available; */
 }
 body {
 	background-color: lightgray;
 	font-size: 1.6rem;
-	/* height: 100vh; */
-	min-height: 100vh;
+	height: 100vh;
+	/* min-height: 100vh;
 	/* mobile viewport bug fix */
-	min-height: -webkit-fill-available;
+	/* min-height: -webkit-fill-available;  */
 	font-family: 'Righteous', cursive;
 
 	/* overflow: hidden; */
@@ -50,7 +48,7 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: stretch;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 .inner-container {
 	/* border: 1px solid green; */
