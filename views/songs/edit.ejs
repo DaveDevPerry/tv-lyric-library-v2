@@ -1,9 +1,18 @@
-<div class="page-wrapper">
-	<h2 class="page-header"><%= song.title %></h2>
-	<!-- <h2 class="page-header"><%= song.lineCount %> Lines</h2> -->
-	<!-- <h2 class="page-header"><%= song.id %> song id</h2> -->
-	<form action="/songs/<%= song.id %>?_method=PUT" method="POST">
-		// this one is working <% for(let i = 1; i <= song.lineCount; i++){ %>
+<div class="page-header">
+	<h2 class="page-title"><%= song.title %></h2>
+	<div class="header-wrapper">
+		<div class="blank"><%= song.lineCount %> \ <%= song.id %></div>
+		<h3 class="artist-name">terrorvision</h3>
+	</div>
+</div>
+
+<div class="page-content">
+	<form
+		action="/songs/<%= song.id %>?_method=PUT"
+		method="POST"
+		class="song-form"
+	>
+		<% for(let i = 1; i <= song.lineCount; i++){ %>
 		<div class="form-row">
 			<!-- <p><%= i %>:</p> -->
 			<div class="form-line" name="allFormItems">
@@ -14,26 +23,22 @@
 					</option>
 					<% }%> <% }) %>
 				</select>
-
 				<input
 					type="text"
 					name="lyric"
 					placeholder="type new lyric here"
 					class="input-create hide"
 				/>
-
 				<i class="far fa-edit add-new-line-btn"></i>
 				<i class="fas fa-undo-alt add-new-line-btn hide"></i>
 			</div>
 		</div>
 		<%}%>
-
-		<div class="form-row form-row-end btn-row">
+		<div class="btn-row form-btn-row">
 			<a class="btn btn-danger" href="/songs/<%= song.id %>">Cancel</a>
 			<button class="btn btn-primary" type="submit">Update</button>
 		</div>
 	</form>
-	<!-- <button onclick="getLines()">get Lines</button> -->
 </div>
 
 <script>

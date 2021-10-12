@@ -1,9 +1,17 @@
-footer{
-  background-color: rgb(121, 9, 9);
-  color: white;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+footer {
+	background-color: #700404;
+	color: white;
+	width: 100%;
+
+	/* padding: 0.5rem; */
+}
+#dev-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1rem;
+	font-style: italic;
+	font-weight: 100;
+	color: white;
+	font-family: 'Rock Salt';
 }

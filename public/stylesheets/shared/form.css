@@ -1,3 +1,14 @@
+.song-form {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: flex-start;
+}
+.song-form div:last-of-type {
+	margin-top: auto;
+}
+
 select {
 	min-width: 282px;
 	flex: 1;
@@ -27,8 +38,8 @@ input {
 .form-row {
 	/* border: 1px solid red; */
 	font-size: 1.4rem;
-	padding: 0.4rem 0.4rem;
-	margin: 0.2rem 0;
+	padding: 0.5rem;
+	/* margin: 0.2rem 0; */
 	/* display: flex;
 	justify-content: flex-start;
 	align-items: center;

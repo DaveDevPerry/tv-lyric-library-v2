@@ -1,17 +1,17 @@
-<a class="btn btn-add" href="/songs/new">Add Song</a>
-
-<br />
-
-<br />
-<% songs.forEach(song => { %>
-<div class="song-row">
-	<div class="song-title"><%= song.title %></div>
-
-	<div class="btn-row">
-		<a class="btn btn-primary" href="/songs/<%= song.id %>">View</a>
-		<a class="btn btn-primary" href="/songs/<%= song.id %>/edit">Edit</a>
-		<%- include('../partials/deleteForm', {url: `/songs/${song.id}` }) %>
+<div class="page-header">
+	<h2 class="page-title">all songs</h2>
+	<div class="header-wrapper">
+		<div class="blank"></div>
+		<a href="/songs/new" class="artist-name">Add Song</a>
 	</div>
 </div>
-
-<% }) %>
+<div class="page-content">
+	<!-- <a class="btn btn-add" href="/songs/new">Add Song</a> -->
+	<div class="song-list-container">
+		<% songs.forEach(song => { %>
+		<a href="/songs/<%= song.id %>" class="song-row">
+			<div class="song-title"><%= song.title %></div>
+		</a>
+		<% }) %>
+	</div>
+</div>

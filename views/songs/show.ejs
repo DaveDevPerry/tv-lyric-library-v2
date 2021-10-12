@@ -1,46 +1,30 @@
-<h2 class="page-header"><%= song.title %></h2>
-<!-- <h2 class="page-header"><%= song.lineCount %> Lines</h2> -->
-<!-- <h2 class="page-header"><%= song.id %> song id</h2> -->
-
-
-
-<br/>
-
-<% for(let i = 1; i <= song.lineCount; i++){ %>
-	<% let lineArr = [] %>
-	<div class="lyric-line-row">
-		<p><%= i %>:</p>
-	
-			
-			<% songLyrics.forEach((lyric)=>{ %>
-		
-				<% if(lyric.lineNumber === i){ %>
-
-				
-					<% lineArr.push(lyric) %>
-				
-				<% }%>
-		
-			
-			<% }) %>
-
-	
+<div class="page-header">
+	<h2 class="page-title"><%= song.title %></h2>
+	<div class="header-wrapper">
+		<div class="blank"><%= song.lineCount %> \ <%= song.id %></div>
+		<h3 class="artist-name">terrorvision</h3>
+	</div>
+</div>
+<div class="page-content">
+	<div class="lyric-list-container">
+		<% for(let i = 1; i <= song.lineCount; i++){ %> <% let lineArr = [] %>
+		<div class="lyric-line-row">
+			<p><%= i %>:</p>
+			<% songLyrics.forEach((lyric)=>{ %> <% if(lyric.lineNumber === i){ %> <%
+			lineArr.push(lyric) %> <% }%> <% }) %>
 			<p class="lyric-line"><%= lineArr[0].lyric %></p>
 			<i class="fas fa-thumbs-up"></i>
 			<span class="blue"><%= lineArr[0].likeCount %></span>
-		
-		
-	
-	</div>	
-	
-<%}%>
-
-
+		</div>
+		<%}%>
+	</div>
+	<div class="btn-row">
+		<a class="btn btn-edit" href="/songs/<%= song.id %>/edit">Edit</a>
+		<a class="btn btn-primary" href="#">Agree</a>
+	</div>
 </div>
 
-
-
-<div class="btn-row">
+<!-- <div class="btn-row">
 	<a class="btn btn-primary" href="/songs/<%= song.id %>/edit">Edit</a>
 	<%- include('../partials/deleteForm', {url: `/songs/${song.id}` }) %>
-</div>
+</div> -->

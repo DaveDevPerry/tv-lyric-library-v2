@@ -13,10 +13,10 @@
 		<link rel="stylesheet" href="/stylesheets/style.css" />
 	</head>
 	<body>
-		<%- include('../partials/header.ejs') %>
-
-		<div class="container"><%- body %></div>
-
-		<%- include('../partials/footer.ejs') %>
+		<div class="container">
+			<%- include('../partials/header.ejs') %>
+			<div class="inner-container"><%- body %></div>
+			<%- include('../partials/footer.ejs') %>
+		</div>
 	</body>
 </html>
