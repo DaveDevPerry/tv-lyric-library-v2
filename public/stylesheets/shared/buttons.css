@@ -34,3 +34,7 @@ button {
 .btn-danger {
 	background-color: #ab0202;
 }
+.add-new-line-btn {
+	padding: 0.5rem;
+	font-size: 1.6rem;
+}

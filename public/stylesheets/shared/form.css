@@ -4,7 +4,6 @@
 	flex-direction: column;
 	align-items: stretch;
 	justify-content: flex-start;
-	row-gap: 1rem;
 }
 .new-song-form {
 	flex: 1;
@@ -22,12 +21,20 @@
 select {
 	min-width: 282px;
 	flex: 1;
-	font-size: 1.4rem;
-	padding: 0.2rem;
+	font-size: 1.6rem;
+	padding: 0.5rem 0;
+	outline: none;
+	border: none;
 }
 select::first-letter {
 	text-transform: capitalize;
 }
+select:nth-child(odd) {
+	background-color: transparent;
+}
+/* select:nth-child(even) {
+	background-color: rgb(173, 177, 180);
+} */
 
 option {
 	min-width: 282px;
@@ -36,7 +43,7 @@ option {
 	justify-content: space-between;
 	align-items: center;
 	font-size: 1.4rem;
-	padding: 0.5rem;
+	padding: 0.5rem 0;
 }
 option p::first-letter {
 	text-transform: capitalize;
@@ -59,7 +66,7 @@ input.song-title-input {
 }
 .form-row {
 	font-size: 1.4rem;
-	padding: 0.5rem;
+	padding: 0 0.5rem;
 	max-width: 645px;
 }
 .form-row:nth-child(odd) {

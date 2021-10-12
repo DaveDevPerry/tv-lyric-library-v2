@@ -167,11 +167,17 @@ router.get('/:id/edit', async (req, res) => {
 			}
 		});
 		// console.log(await songLyrics);
+		console.log('song', song);
+		console.log('songLyrics', songLyrics);
 		res.render('songs/edit', {
 			song: song,
-			songLyrics: songLyrics.sort(function (a, b) {
-				return b.likeCount - a.likeCount;
-			}),
+			songLyrics: songLyrics.sort(
+				(a, b) => parseFloat(b.likeCount) - parseFloat(a.likeCount)
+			),
+			// songLyrics: songLyrics.sort(function (a, b) {
+			// 	console.log('like count', a.likeCount);
+			// 	return b.likeCount - a.likeCount;
+			// }),
 		});
 	} catch {
 		res.redirect('/songs');
@@ -183,7 +189,7 @@ router.put('/:id', async (req, res) => {
 	let song;
 	let updateLine;
 	try {
-		song = await Song.findOneAndUpdate({ _id: req.params.id });
+		song = await Song.findById(req.params.id);
 		// song = await Song.findOneAndUpdate({ id: req.params.id });
 		console.log('song to update', await song);
 		const selectedLyrics = req.body.lyric;
@@ -256,7 +262,7 @@ router.put('/:id', async (req, res) => {
 		}
 
 		await song.save();
-		res.render(`/songs/${song.id}`);
+		res.redirect(`/songs/${song.id}`);
 	} catch {
 		if (song == null) {
 			res.redirect('/');
