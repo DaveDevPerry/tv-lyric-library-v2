@@ -1,9 +1,0 @@
-<h2 class="page-header"><%= line.line %></h2>
-<%= console.log(line.line) %>
-<div class="btn-row">
-  <a class="btn btn-primary" href="/line/<%= line.id %>/edit">Edit</a>
-  <%- include('../partials/deleteForm',
-      {url: `/line/${line.id}` }) %>
-</div>
-
-   
