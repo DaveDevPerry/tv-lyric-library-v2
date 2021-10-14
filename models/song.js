@@ -25,26 +25,6 @@ const songSchema = new mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
-	// lyricLines: [
-	// 	{
-	// 		// user: {
-	// 		// 	type: mongoose.Schema.Types.ObjectId,
-	// 		// 	ref: 'User',
-	// 		// },
-	// 		// createdAt: {
-	// 		// 	type: Date,
-	// 		// 	required: true,
-	// 		// 	default: Date.now,
-	// 		// },
-	// 		lineNumber: Number,
-	// 		lyricsInLine: [
-	// 			{
-	// 				type: mongoose.Schema.Types.ObjectId,
-	// 				ref: 'ALine',
-	// 			},
-	// 		],
-	// 	},
-	// ],
 
 	lyricLines: [
 		{
@@ -59,15 +39,15 @@ const songSchema = new mongoose.Schema({
 	// 		ref: 'Line',
 	// 	},
 	// ],
-	lyrics: [],
-	lines: [],
+	// lyrics: [],
+	// lines: [],
 	// line: {
 	// 	type: mongoose.Schema.Types.ObjectId,
 	// 	required: false,
 	// 	ref: 'Line',
 	// },
 	// postLyrics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lyric' }],
-	allLyricsInLines: [],
+	// allLyricsInLines: [],
 });
 
 songSchema.methods.createLine = function (str) {
