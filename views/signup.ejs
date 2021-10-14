@@ -1,0 +1,61 @@
+<form class="form">
+	<h2>Sign up</h2>
+	<label for="email">Email</label>
+	<input type="text" name="email" required />
+	<div class="error email"></div>
+	<label for="password">Password</label>
+	<input type="password" name="password" required />
+	<div class="error password"></div>
+	<div class="signup-btn">
+		<button class="btn btn-primary">Sign Up</button>
+	</div>
+</form>
+
+<!-- <form class="login-form form">
+	<h3>Sign Up</h3>
+	<label class="login-label" for="email">Email</label>
+	<input class="login-input" type="text" name="email" required autofocus />
+	<div class="error email"></div>
+	<label class="login-label" for="password">Password</label>
+	<input class="login-input" type="password" name="password" required />
+	<div class="error password"></div>
+	<div class="login-btn">
+		<button class="btn btn-primary">Sign Up</button>
+	</div>
+</form> -->
+
+<script>
+	const form = document.querySelector('form');
+	const emailError = document.querySelector('.email.error');
+	const passwordError = document.querySelector('.password.error');
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		// reset error messages on dom  when submit is clicked
+		emailError.textContent = '';
+		passwordError.textContent = '';
+		// get the values from browser
+		const email = form.email.value;
+		const password = form.password.value;
+		// send a request to server
+		try {
+			const res = await fetch('/signup', {
+				method: 'POST',
+				body: JSON.stringify({ email, password }),
+				headers: { 'Content-Type': 'application/json' },
+			});
+			const data = await res.json();
+			console.log(data);
+			// renders form error messages in browser
+			if (data.errors) {
+				emailError.textContent = data.errors.email;
+				passwordError.textContent = data.errors.password;
+			}
+			// redirect to homepage
+			if (data.user) {
+				location.assign('/login');
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	});
+</script>

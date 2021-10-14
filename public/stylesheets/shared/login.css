@@ -1,0 +1,60 @@
+form.login-form h3 {
+	font-size: 2.5rem;
+	font-weight: 400;
+	margin-bottom: 1rem;
+	/* border-bottom: 1px solid white; */
+	text-align: right;
+	color: #700404;
+}
+form.login-form {
+	/* display: none; */
+	/* pointer-events: none; */
+	width: 100%;
+	/* margin: 0 auto; */
+	padding: 2rem;
+	/* box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1); */
+	/* border-radius: 10px; */
+	background: #ab0202;
+	/* border: 2px solid #ab0202; */
+	position: relative;
+}
+form.login-form input {
+	padding: 0.5rem;
+	border-radius: 4px;
+
+	font-size: 1.8rem;
+	width: 100%;
+	border: 1px solid transparent;
+	/* background-color: var(--form-input-background-color); */
+	background-color: transparent;
+	/* color: white; */
+	border: 2px solid #700404;
+}
+form.login-form input:focus {
+	border-color: 2px solid #700404;
+	outline: transparent;
+}
+form.login-form label {
+	display: block;
+	margin: 1rem 0 0.2rem;
+	color: #700404;
+	color: white;
+	font-size: 1.8rem;
+}
+
+.error {
+	color: white;
+	margin: 0 2px 10px 2px;
+	font-size: 1.4rem;
+	font-weight: bold;
+	text-align: right;
+	font-style: italic;
+}
+form.login-form .login-btn {
+	/* margin-top: 2rem; */
+	position: absolute;
+	bottom: 0;
+	/* left: 50%; */
+	right: 0;
+	transform: translateY(100%);
+}

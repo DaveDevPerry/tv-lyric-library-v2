@@ -3,4 +3,30 @@
 		<img src="/images/logo.png" alt="logo" />
 	</a>
 	<h1 id="brand"><a id="home-link" href="/">Some People Say</a></h1>
+	<div class="user-logged-in-name">
+		<% if(user) { %>
+		<a href="/users/<%= user.id %>" class="user-link">
+			<p><%= user.email %></p>
+		</a>
+
+		<a href="/users/<%= user.id %>" class="user-link">
+			<% if(user.coverImagePath) { %>
+			<img
+				src="<%= user.coverImagePath %>"
+				alt="profile pic"
+				class="show-profile-circle"
+			/>
+			<% } else { %>
+			<img
+				src="/images/logo.png"
+				alt="profile pic"
+				class="show-profile-circle"
+			/>
+			<% } %>
+		</a>
+
+		<% } else { %>
+		<p>no user logged in</p>
+		<% } %>
+	</div>
 </header>

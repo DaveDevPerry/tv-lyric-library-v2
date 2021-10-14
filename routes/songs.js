@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Song = require('../models/song');
-const Lyric = require('../models/lyric');
+
 const ALine = require('../models/aLine');
 
 // all songs route

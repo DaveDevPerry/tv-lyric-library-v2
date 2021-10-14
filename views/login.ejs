@@ -1,0 +1,93 @@
+<!-- <form class="form">
+	<h3>Log in</h3>
+	<label for="email">Email</label>
+	<input type="text" name="email" required autofocus />
+	<div class="error email"></div>
+	<label for="password">Password</label>
+	<input type="password" name="password" required />
+	<div class="error password"></div>
+	<div class="login-btn">
+		<button class="btn btn-primary">Log in</button>
+	</div>
+</form> -->
+
+<form class="login-form form">
+	<h3>Log in</h3>
+	<label class="login-label" for="email">Email</label>
+	<input class="login-input" type="text" name="email" required autofocus />
+	<div class="error email"></div>
+	<label class="login-label" for="password">Password</label>
+	<input class="login-input" type="password" name="password" required />
+	<div class="error password"></div>
+	<div class="login-btn">
+		<button class="btn btn-primary">Log in</button>
+	</div>
+</form>
+
+<br />
+
+<p>
+	Not signed up? Create an account
+	<a href="/signup">here</a>
+</p>
+<!-- 
+<form class="login-form form">
+	<div class="login-btn">
+		<button class="btn btn-primary">Log in</button>
+	</div>
+	<label class="login-label" for="email">Email</label>
+	<input
+		class="login-input"
+		type="text"
+		name="email"
+		placeholder="dummy email"
+	/>
+	<div class="error email"></div>
+	<label class="login-label" for="password">Password</label>
+	<input
+		class="login-input"
+		type="password"
+		name="password"
+		placeholder="dummy email"
+	/>
+	<div class="error password"></div>
+	<div class="login-btn">
+		<button class="btn btn-primary">Log in</button>
+	</div>
+</form> -->
+
+<script>
+	const form = document.querySelector('form');
+	const emailError = document.querySelector('.email.error');
+	const passwordError = document.querySelector('.password.error');
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		// reset error messages on dom  when submit is clicked
+		emailError.textContent = '';
+		passwordError.textContent = '';
+		// get the values from browser
+		const email = form.email.value;
+		const password = form.password.value;
+		// send a request to server
+		try {
+			const res = await fetch('/login', {
+				method: 'POST',
+				body: JSON.stringify({ email, password }),
+				headers: { 'Content-Type': 'application/json' },
+			});
+			const data = await res.json();
+			console.log(data);
+			// renders form error messages in browser
+			if (data.errors) {
+				emailError.textContent = data.errors.email;
+				passwordError.textContent = data.errors.password;
+			}
+			// redirect to homepage if valid user
+			if (data.user) {
+				location.assign('/songs');
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	});
+</script>

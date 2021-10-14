@@ -1,0 +1,80 @@
+<div class="user-show-container">
+	<div class="user-show-wrapper">
+		<div class="user-section-wrapper">
+			<img
+				src="<%= user.coverImagePath%>"
+				class="person-cover show-user-profile-pic"
+			/>
+			<h2 class="user-name"><%= user.firstName %> <%= user.lastName %></h2>
+		</div>
+
+		<div class="user-contact-wrapper user-section-wrapper">
+			<table class="user-table">
+				<caption>
+					account details - mandatory
+				</caption>
+				<tbody>
+					<tr class="table-row">
+						<td class="right user-table-cell">email:</td>
+						<td class="height user-table-value"><%= user.email %></td>
+					</tr>
+					<tr class="table-row">
+						<td class="right user-table-cell">password:</td>
+						<td class="height user-table-value">********</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="user-section-wrapper">
+			<table class="user-table">
+				<caption>
+					metrics and notifications - optional
+				</caption>
+				<tbody>
+					<tr class="table-row">
+						<td class="right user-table-cell">username:</td>
+						<td class="height user-table-value"><%= user.username %></td>
+					</tr>
+					<tr class="table-row">
+						<td class="right user-table-cell">date of birth:</td>
+						<td class="height user-table-value">
+							<% if(user.dateOfBirth) { %> <%=
+							user.dateOfBirth.toLocaleDateString(); %> <%} else { %> 7th
+							December <% } %>
+						</td>
+					</tr>
+					<tr class="table-row">
+						<td class="right user-table-cell">mobile:</td>
+						<td class="height user-table-value"><%= user.phoneNbr %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="user-section-wrapper">
+			<table class="user-table">
+				<caption>
+					app preferences
+				</caption>
+				<tbody>
+					<tr class="table-row">
+						<td class="right user-table-cell">notifications:</td>
+						<td class="height user-table-value">
+							<%= user.notifications === true ? 'on' : 'off' %>
+						</td>
+					</tr>
+					<tr class="table-row">
+						<td class="right user-table-cell">color theme:</td>
+						<td class="height user-table-value">not available</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="btn-row hide">
+		<a class="btn btn-primary" href="/users/<%= user.id %>/edit">Edit</a>
+		<%- include('../partials/deleteForm', {url: `/users/${user.id}` }) %>
+	</div>
+</div>
