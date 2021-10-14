@@ -54,7 +54,7 @@ body {
 .inner-container {
 	/* border: 1px solid green; */
 	flex: 1;
-	overflow: hidden;
+	/* overflow: hidden; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;

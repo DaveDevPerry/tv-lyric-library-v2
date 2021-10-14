@@ -46,3 +46,12 @@ a#home-link {
 	column-gap: 1rem;
 	padding-right: 1rem;
 }
+.user-logged-in-name a {
+	color: white;
+}
+.show-profile-circle {
+	height: 40px;
+	width: 40px;
+	border: 2px solid #700404;
+	border-radius: 50%;
+}

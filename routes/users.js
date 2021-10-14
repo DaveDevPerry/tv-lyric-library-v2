@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+// const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
 router.get('/', async (req, res) => {
 	const user = await User.find({});
@@ -45,42 +45,40 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 // update user
-router.put('/:id', async (req, res) => {
-	let user;
-	try {
-		user = await User.findById(req.params.id);
-		user.firstName = req.body.firstName;
-		user.lastName = req.body.lastName;
-		user.dateOfBirth = new Date(req.body.dateOfBirth);
-		user.username = req.body.username;
-		user.email = req.body.email;
-		user.phoneNbr = req.body.phoneNbr;
-		user.notifications = req.body.notifications;
-		if (req.body.cover != null && req.body.cover !== '') {
-			saveCover(user, req.body.cover);
-		}
-		await user.save();
-		res.redirect(`/users/${user.id}`);
-	} catch (err) {
-		console.log(err);
-		if (user == null) {
-			res.redirect('/songs');
-		} else {
-			res.render('users/edit', {
-				user: user,
-				errorMessage: 'error updating user',
-			});
-		}
-	}
-});
+// router.put('/:id', async (req, res) => {
+// 	let user;
+// 	try {
+// 		user = await User.findById(req.params.id);
 
-function saveCover(user, coverEncoded) {
-	if (coverEncoded == null) return;
-	const cover = JSON.parse(coverEncoded);
-	if (cover != null && imageMimeTypes.includes(cover.type)) {
-		user.coverImage = new Buffer.from(cover.data, 'base64');
-		user.coverImageType = cover.type;
-	}
-}
+// 		user.username = req.body.username;
+// 		user.email = req.body.email;
+// 		// user.phoneNbr = req.body.phoneNbr;
+// 		// user.notifications = req.body.notifications;
+// 		// if (req.body.cover != null && req.body.cover !== '') {
+// 		// 	saveCover(user, req.body.cover);
+// 		// }
+// 		await user.save();
+// 		res.redirect(`/users/${user.id}`);
+// 	} catch (err) {
+// 		console.log(err);
+// 		if (user == null) {
+// 			res.redirect('/songs');
+// 		} else {
+// 			res.render('users/edit', {
+// 				user: user,
+// 				errorMessage: 'error updating user',
+// 			});
+// 		}
+// 	}
+// });
+
+// function saveCover(user, coverEncoded) {
+// 	if (coverEncoded == null) return;
+// 	const cover = JSON.parse(coverEncoded);
+// 	if (cover != null && imageMimeTypes.includes(cover.type)) {
+// 		user.coverImage = new Buffer.from(cover.data, 'base64');
+// 		user.coverImageType = cover.type;
+// 	}
+// }
 
 module.exports = router;

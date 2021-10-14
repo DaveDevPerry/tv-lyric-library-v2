@@ -158,6 +158,7 @@ router.get('/:id/edit', async (req, res) => {
 		const song = await Song.findById(req.params.id);
 		console.log('song id', await song.id);
 		const lyricLines = await ALine.find({});
+		const setLyrics = await ALine.find({ songId: req.params.id });
 		// console.log(await lyricLines);
 		const songLyrics = lyricLines.filter(function (line) {
 			// console.log('songId', line.songId);
@@ -166,19 +167,41 @@ router.get('/:id/edit', async (req, res) => {
 				return line;
 			}
 		});
+		// const allSongLyrics = await songLyrics;
+		// const allSongLyrics = await lyricLines;
+		const allSongLyrics = await setLyrics;
+		const allByLineNumber = allSongLyrics.sort(function (a, b) {
+			return a.lineNumber - b.lineNumber;
+		});
+		const byLineAndLikes = await allByLineNumber.sort(function (a, b) {
+			return b.likeCount - a.likeCount;
+		});
+
+		const allByLikes = allSongLyrics.sort(function (a, b) {
+			return b.likeCount - a.likeCount;
+		});
+		const byLikesAndLines = await allByLikes.sort(function (a, b) {
+			return a.lineNumber - b.lineNumber;
+		});
+
 		// console.log(await songLyrics);
-		console.log('song', song);
+		// console.log('song', song);
 		console.log('songLyrics', songLyrics);
 		res.render('songs/edit', {
 			song: song,
-			songLyrics: songLyrics.sort(
-				(a, b) => parseFloat(b.likeCount) - parseFloat(a.likeCount)
-			),
-			// songLyrics: songLyrics.sort(function (a, b) {
-			// 	console.log('like count', a.likeCount);
-			// 	return b.likeCount - a.likeCount;
-			// }),
+			// songLyrics: songLyrics.sort(
+			// 	(a, b) => parseFloat(b.likeCount) - parseFloat(a.likeCount)
+			// ),
+			allSongLyrics: allSongLyrics,
+			allByLineNumber: allByLineNumber,
+			byLineAndLikes: byLineAndLikes,
+			byLikesAndLines: byLikesAndLines,
+			songLyrics: songLyrics.sort(function (a, b) {
+				console.log('like count', a.likeCount);
+				return a.likeCount - b.likeCount;
+			}),
 		});
+		console.log('songLyrics post', songLyrics);
 	} catch {
 		res.redirect('/songs');
 	}
