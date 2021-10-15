@@ -37,18 +37,17 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 // const measurement = require('./models/measurement');
-mongoose
-	.connect(process.env.DATABASE_URL, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		// useCreateIndex: true,
-	})
-	.then((result) => app.listen(3000))
-	.catch((err) => console.log(err));
+mongoose.connect(process.env.DATABASE_URL, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	// useCreateIndex: true,
+});
+// .then((result) => app.listen(3000))
+// .catch((err) => console.log(err));
 
-// const db = mongoose.connection;
-// db.on('error', (error) => console.error(error));
-// db.once('open', () => console.log('connected to mongoose'));
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('connected to mongoose'));
 
 // routes
 app.get('*', checkUser);
@@ -57,4 +56,4 @@ app.use('/', indexRouter);
 app.use('/songs', requireAuth, songRouter);
 app.use(authRoutes);
 
-// app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000);
