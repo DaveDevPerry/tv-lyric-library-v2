@@ -13,6 +13,7 @@ footer a {
 	color: white;
 }
 #dev-link {
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -1,4 +1,4 @@
-<form class="form">
+<!-- <form class="form">
 	<h2>Sign up</h2>
 	<label for="email">Email</label>
 	<input type="text" name="email" required />
@@ -9,7 +9,26 @@
 	<div class="signup-btn">
 		<button class="btn btn-primary">Sign Up</button>
 	</div>
-</form>
+</form> -->
+
+<div class="login-container">
+	<form class="login-form form">
+		<label class="login-label" for="email">Email</label>
+		<input class="login-input" type="text" name="email" required autofocus />
+		<div class="error email"></div>
+		<label class="login-label" for="password">Password</label>
+		<input class="login-input" type="password" name="password" required />
+		<div class="error password"></div>
+		<div class="login-btn">
+			<button class="btn btn-primary">Sign Up</button>
+		</div>
+	</form>
+
+	<p>
+		Got an account? Login
+		<a href="/login">here</a>
+	</p>
+</div>
 
 <!-- <form class="login-form form">
 	<h3>Sign Up</h3>

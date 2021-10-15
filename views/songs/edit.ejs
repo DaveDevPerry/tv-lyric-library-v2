@@ -7,6 +7,11 @@
 </div>
 
 <div class="page-content">
+	<p class="instructions">
+		click on a lyric to select correct lyric or click
+		<i class="far fa-edit i-instructions"></i> to add your correct lyric
+	</p>
+
 	<form
 		action="/songs/<%= song.id %>?_method=PUT"
 		method="POST"
@@ -41,7 +46,7 @@
 		</div>
 	</form>
 
-	<form
+	<!-- <form
 		action="/songs/<%= song.id %>?_method=PUT"
 		method="POST"
 		class="song-form"
@@ -118,24 +123,25 @@
 			<% }) %>
 		</ul>
 	</div>
-</div>
+</div> -->
 
-<script>
-	// display new lyric input onclick change lyric
-	const changeBtns = document.querySelectorAll('.add-new-line-btn');
-	console.log('btns', changeBtns);
+	<script>
+		// display new lyric input onclick change lyric
+		const changeBtns = document.querySelectorAll('.add-new-line-btn');
+		console.log('btns', changeBtns);
 
-	changeBtns.forEach((btn) => {
-		btn.addEventListener('click', (e) => {
-			// console.log('e', e);
+		changeBtns.forEach((btn) => {
+			btn.addEventListener('click', (e) => {
+				// console.log('e', e);
 
-			// console.log(e.target.parentElement.firstElementChild);
-			// console.log(e.target.parentElement.lastElementChild);
+				// console.log(e.target.parentElement.firstElementChild);
+				// console.log(e.target.parentElement.lastElementChild);
 
-			e.target.parentElement.childNodes[1].classList.toggle('hide');
-			e.target.parentElement.childNodes[3].classList.toggle('hide');
-			e.target.parentElement.childNodes[5].classList.toggle('hide');
-			e.target.parentElement.childNodes[7].classList.toggle('hide');
+				e.target.parentElement.childNodes[1].classList.toggle('hide');
+				e.target.parentElement.childNodes[3].classList.toggle('hide');
+				e.target.parentElement.childNodes[5].classList.toggle('hide');
+				e.target.parentElement.childNodes[7].classList.toggle('hide');
+			});
 		});
-	});
-</script>
+	</script>
+</div>

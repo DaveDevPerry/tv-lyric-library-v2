@@ -54,7 +54,7 @@ body {
 .inner-container {
 	/* border: 1px solid green; */
 	flex: 1;
-	/* overflow: hidden; */
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -92,8 +92,9 @@ body {
 	justify-content: flex-start;
 	align-items: stretch;
 	margin-bottom: 1rem;
-	margin-top: 2rem;
+	margin-top: 1rem;
 	row-gap: 1rem;
+	overflow: scroll;
 }
 .nav-link {
 	font-size: 1.6rem;
@@ -145,4 +146,14 @@ a {
 	font-weight: bold;
 	text-align: right;
 	font-style: italic;
+}
+.instructions {
+	font-style: italic;
+	padding: 0 1.5rem 0 1.5rem;
+	color: #700404;
+	font-size: 1.4rem;
+}
+.i-instructions {
+	padding-left: 0.5rem;
+	color: black;
 }

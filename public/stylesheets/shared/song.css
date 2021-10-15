@@ -54,3 +54,8 @@
 .hide {
 	display: none;
 }
+textarea.song-lyrics-textarea {
+	font-size: 1.6rem;
+	padding: 0.5rem;
+	font-family: 'Roboto', sans-serif;
+}

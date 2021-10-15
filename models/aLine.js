@@ -12,7 +12,7 @@ const aLineSchema = new mongoose.Schema({
 	lyric: String,
 	likeCount: {
 		type: Number,
-		default: 0,
+		default: 1,
 	},
 	createdAt: {
 		type: Date,

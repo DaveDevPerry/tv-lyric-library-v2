@@ -6,6 +6,11 @@
 	</div>
 </div>
 <div class="page-content">
+	<p class="instructions">
+		When adding lyrics, separate each line with a comma. <br />
+		Omit any sections that are repeated
+	</p>
+
 	<form action="/songs" method="POST" class="new-song-form">
 		<div class="song-form-row">
 			<div class="song-form-item">
@@ -26,6 +31,7 @@
 					name="initialLyrics"
 					value="<%= song.initialLyrics %>"
 					class="song-lyrics-textarea"
+					placeholder="*** EXAMPLE *** If i had three wishes,i'd wish for five,peace on earth ban the bomb,get along and survive"
 				></textarea>
 			</div>
 		</div>

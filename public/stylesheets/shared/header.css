@@ -31,10 +31,10 @@ a#home-link {
 	display: block;
 	width: 100%;
 	height: 100%;
-
-	font-size: 3rem;
+	padding-left: 1rem;
+	font-size: 2rem;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	color: #700404;
 	font-weight: 700;

@@ -7,6 +7,11 @@
 </div>
 <div class="page-content">
 	<!-- <a class="btn btn-add" href="/songs/new">Add Song</a> -->
+
+	<p class="instructions">
+		select a song below, to review lyrics or add a new song from scratch
+	</p>
+
 	<div class="song-list-container">
 		<% songs.forEach(song => { %>
 		<a href="/songs/<%= song.id %>" class="song-row">
