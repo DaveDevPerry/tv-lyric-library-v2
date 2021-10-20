@@ -46,11 +46,11 @@ const userSchema = new mongoose.Schema({
 	// 	required: false,
 	// },
 
-	// createdAt: {
-	// 	type: Date,
-	// 	required: true,
-	// 	default: Date.now,
-	// },
+	createdAt: {
+		type: Date,
+		required: true,
+		default: Date.now,
+	},
 });
 
 // fire a function before doc is saved to db - hash password in here with bcrypt
@@ -68,6 +68,11 @@ const userSchema = new mongoose.Schema({
 // 		next();
 // 	}
 // });
+// fire a function after doc is saved to db - 'save' or 'remove' etc
+userSchema.post('save', function (doc, next) {
+	console.log('new user was created & saved', doc);
+	next();
+});
 
 userSchema.pre('save', async function (next) {
 	console.log('user about to be created & saved', this);
@@ -75,12 +80,6 @@ userSchema.pre('save', async function (next) {
 	// now hash password
 	this.password = await bcrypt.hash(this.password, salt);
 
-	next();
-});
-
-// fire a function after doc is saved to db - 'save' or 'remove' etc
-userSchema.post('save', function (doc, next) {
-	console.log('new user was created & saved', doc);
 	next();
 });
 

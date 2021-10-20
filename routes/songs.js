@@ -426,19 +426,22 @@ router.put('/:id', async (req, res) => {
 // 		}
 // 	}
 // });
-// router.delete('/:id', async (req, res) => {
-// 	let song;
-// 	try {
-// 		song = await Song.findById(req.params.id);
-// 		await song.remove();
-// 		res.redirect(`/songs`);
-// 	} catch {
-// 		if (song == null) {
-// 			res.redirect('/');
-// 		} else {
-// 			res.redirect(`/songs/${song.id}`);
-// 		}
-// 	}
-// });
+router.delete('/:id', async (req, res) => {
+	let song;
+	try {
+		song = await Song.findById(req.params.id);
+		const lyrics = await ALine.find({ songId: req.params.id });
+		console.log('lyrics in song', lyrics);
+		await lyrics.remove();
+		await song.remove();
+		res.redirect(`/songs`);
+	} catch {
+		if (song == null) {
+			res.redirect('/');
+		} else {
+			res.redirect(`/songs/${song.id}`);
+		}
+	}
+});
 
 module.exports = router;
