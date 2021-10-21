@@ -7,11 +7,22 @@
 </div>
 <div class="page-content">
 	<p class="instructions">
-		When adding lyrics, separate each line with a comma. <br />
+		<%= user.id %>. When adding lyrics, separate each line with a comma. <br />
 		Omit any sections that are repeated
 	</p>
 
 	<form action="/songs" method="POST" class="new-song-form">
+		<div class="song-form-row">
+			<div class="song-form-item">
+				<label>User Id</label>
+				<input
+					type="text"
+					name="userID"
+					value="<%= user.id %>"
+					class="song-title-input"
+				/>
+			</div>
+		</div>
 		<div class="song-form-row">
 			<div class="song-form-item">
 				<label>Song Title</label>

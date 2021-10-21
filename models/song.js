@@ -32,6 +32,9 @@ const songSchema = new mongoose.Schema({
 			ref: 'ALine',
 		},
 	],
+	createdBy: {
+		type: String,
+	},
 
 	// singleLines: [
 	// 	{

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Song = require('../models/song');
-
+const User = require('../models/User');
 const ALine = require('../models/aLine');
 
 // all songs route
@@ -18,29 +18,37 @@ router.get('/', async (req, res) => {
 
 // new song route
 router.get('/new', (req, res) => {
+	console.log('current user? ', res.locals.user.id);
 	res.render('songs/new', { song: new Song() });
 });
 
 // create song - POST route
 router.post('/', async (req, res) => {
 	let song;
+	// console.log('current user? ', res.locals.user.id);
+	const user = await User.findById(req.body.userID);
+	// const userId = req.body;
+	console.log('user id', user);
 	const createLyric = async (lyric, index) => {
 		// console.log('lyric', lyric);
 		const newLyric = await new ALine({
 			lyric: lyric,
 			likeCount: 1,
 			songId: await song.id,
+			userId: await user.id,
 			lyricRef: 'line' + ((await index) + 1),
 			lineNumber: (await index) + 1,
 		});
 		newLyric.createLine(newLyric);
 		song.lyricLines.push(await newLyric);
+		user.linesCreated.push(await newLyric);
 	};
 
 	try {
 		song = await new Song({});
 		song.title = req.body.title;
 		song.initialLyrics = req.body.initialLyrics;
+		song.createdBy = req.body.userID;
 		// splits initial lyrics string into each lyric line string
 		const lyricsToSplit = await song.initialLyrics.split(',');
 		song.lineCount = await lyricsToSplit.length;
@@ -51,7 +59,9 @@ router.post('/', async (req, res) => {
 			// creates a new Aline schema for each individual line
 			createLyric(lyric, index);
 		});
-
+		user.songsCreated.push(await song.id);
+		console.log('user with song id in songsCreated? ', user);
+		await user.save();
 		await song.save();
 		res.redirect('songs');
 	} catch (err) {
@@ -426,22 +436,22 @@ router.put('/:id', async (req, res) => {
 // 		}
 // 	}
 // });
-router.delete('/:id', async (req, res) => {
-	let song;
-	try {
-		song = await Song.findById(req.params.id);
-		const lyrics = await ALine.find({ songId: req.params.id });
-		console.log('lyrics in song', lyrics);
-		await lyrics.remove();
-		await song.remove();
-		res.redirect(`/songs`);
-	} catch {
-		if (song == null) {
-			res.redirect('/');
-		} else {
-			res.redirect(`/songs/${song.id}`);
-		}
-	}
-});
+// router.delete('/:id', async (req, res) => {
+// 	let song;
+// 	try {
+// 		song = await Song.findById(req.params.id);
+// 		const lyrics = await ALine.find({ songId: req.params.id });
+// 		console.log('lyrics in song', lyrics);
+// 		await lyrics.remove();
+// 		await song.remove();
+// 		res.redirect(`/songs`);
+// 	} catch {
+// 		if (song == null) {
+// 			res.redirect('/');
+// 		} else {
+// 			res.redirect(`/songs/${song.id}`);
+// 		}
+// 	}
+// });
 
 module.exports = router;

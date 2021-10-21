@@ -8,6 +8,9 @@ const aLineSchema = new mongoose.Schema({
 	songId: {
 		type: String,
 	},
+	userId: {
+		type: String,
+	},
 	lineNumber: Number,
 	lyric: String,
 	likeCount: {

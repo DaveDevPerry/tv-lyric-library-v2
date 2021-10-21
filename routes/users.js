@@ -4,7 +4,7 @@ const User = require('../models/User');
 // const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
 router.get('/', async (req, res) => {
-	const user = await User.find({});
+	const user = await User.findById(res.locals.user.id);
 	try {
 		res.render('users/index', {
 			user: user,
@@ -12,8 +12,18 @@ router.get('/', async (req, res) => {
 	} catch (err) {
 		console.log(err);
 	}
-	res.render('users/index');
 });
+// router.get('/', async (req, res) => {
+// 	const user = await User.find({});
+// 	try {
+// 		res.render('users/index', {
+// 			user: user,
+// 		});
+// 	} catch (err) {
+// 		console.log(err);
+// 	}
+// 	res.render('users/index');
+// });
 
 router.get('/:id', async (req, res) => {
 	try {

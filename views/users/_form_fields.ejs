@@ -1,30 +1,5 @@
 <div class="form-row">
 	<div class="form-item">
-		<label>First Name</label>
-		<input type="text" name="firstName" value="<%= user.firstName %>" />
-	</div>
-</div>
-
-<div class="form-row">
-	<div class="form-item">
-		<label>Last Name</label>
-		<input type="text" name="lastName" value="<%= user.lastName %>" />
-	</div>
-</div>
-
-<div class="form-row">
-	<div class="form-item">
-		<label>Date of Birth</label>
-		<input
-			type="date"
-			name="dateOfBirth"
-			value="<%= user.dateOfBirth == null ? '' : user.dateOfBirth.toISOString().split('T')[0] %>"
-		/>
-	</div>
-</div>
-
-<div class="form-row">
-	<div class="form-item">
 		<label>Username</label>
 		<input type="text" name="username" value="<%= user.username %>" />
 	</div>
@@ -39,22 +14,6 @@
 	<div class="form-item">
 		<label>Password</label>
 		<input type="password" name="password" />
-	</div>
-</div>
-<div class="form-row">
-	<div class="form-item">
-		<label>Mobile Number</label>
-		<input type="text" name="phoneNbr" value="0<%= user.phoneNbr %>" />
-	</div>
-</div>
-<div class="form-row">
-	<div class="form-item">
-		<label>Notifications</label>
-		<input
-			type="checkbox"
-			name="notifications"
-			value="<%= user.notifications %>"
-		/>
 	</div>
 </div>
 

@@ -15,12 +15,7 @@ const userSchema = new mongoose.Schema({
 	// 	type: Date,
 	// 	required: false,
 	// },
-	// username: {
-	// 	type: String,
-	// 	required: true,
-	// 	minlength: 6,
-	// 	unique: true,
-	// },
+	username: String,
 	email: {
 		type: String,
 		required: [true, 'Please enter an email'],
@@ -51,6 +46,18 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		default: Date.now,
 	},
+	songsCreated: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Song',
+		},
+	],
+	linesCreated: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'ALine',
+		},
+	],
 });
 
 // fire a function before doc is saved to db - hash password in here with bcrypt

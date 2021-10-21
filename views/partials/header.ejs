@@ -7,6 +7,22 @@
 		<% if(user) { %>
 		<p><a href="/logout">Logout</a></p>
 
+		<a href="/users/<%= user.id %>" class="user-link">
+			<% if(user.coverImagePath) { %>
+			<img
+				src="<%= user.coverImagePath %>"
+				alt="profile pic"
+				class="show-profile-circle"
+			/>
+			<% } else { %>
+			<img
+				src="/images/profile-pic.png"
+				alt="profile pic"
+				class="show-profile-circle"
+			/>
+			<% } %>
+		</a>
+
 		<% } else { %>
 		<p><a href="/login">Login</a></p>
 		<% } %>
@@ -14,27 +30,9 @@
 </header>
 
 <!-- 
-<% if(user) { %>
-	<a href="/users/<%= user.id %>" class="user-link">
-		<p><%= user.email %></p>
-	</a>
+	<% if(user) { %>
+		<p><a href="/logout">Logout</a></p>
 
-	<a href="/users/<%= user.id %>" class="user-link">
-		<% if(user.coverImagePath) { %>
-		<img
-			src="<%= user.coverImagePath %>"
-			alt="profile pic"
-			class="show-profile-circle"
-		/>
 		<% } else { %>
-		<img
-			src="/images/profile-pic.png"
-			alt="profile pic"
-			class="show-profile-circle"
-		/>
-		<% } %>
-	</a>
-
-	<% } else { %>
-	<p><a href="/login">Login</a></p>
-	<% } %> -->
+		<p><a href="/login">Login</a></p>
+		<% } %> -->

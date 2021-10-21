@@ -1,58 +1,59 @@
 <div class="user-show-container">
 	<div class="user-show-wrapper">
 		<div class="user-section-wrapper">
+			<% if(user.coverImagePath) { %>
 			<img
-				src="<%= user.coverImagePath%>"
-				class="person-cover show-user-profile-pic"
+				src="<%= user.coverImagePath %>"
+				alt="profile pic"
+				class="person-cover show-user-profile-pic user-pp"
 			/>
-			<h2 class="user-name"><%= user.firstName %> <%= user.lastName %></h2>
+			<% } else { %>
+			<img
+				src="/images/profile-pic.png"
+				alt="profile pic"
+				class="person-cover show-user-profile-pic user-pp"
+			/>
+			<% } %>
+
+			<h2 class="user-name">
+				<%= user.username ? user.username : 'no username' %>
+			</h2>
 		</div>
 
 		<div class="user-contact-wrapper user-section-wrapper">
 			<table class="user-table">
-				<caption>
+				<!-- <caption>
 					account details - mandatory
-				</caption>
+				</caption> -->
 				<tbody>
 					<tr class="table-row">
 						<td class="right user-table-cell">email:</td>
 						<td class="height user-table-value"><%= user.email %></td>
 					</tr>
 					<tr class="table-row">
-						<td class="right user-table-cell">password:</td>
-						<td class="height user-table-value">********</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<div class="user-section-wrapper">
-			<table class="user-table">
-				<caption>
-					metrics and notifications - optional
-				</caption>
-				<tbody>
-					<tr class="table-row">
 						<td class="right user-table-cell">username:</td>
 						<td class="height user-table-value"><%= user.username %></td>
 					</tr>
-					<tr class="table-row">
-						<td class="right user-table-cell">date of birth:</td>
-						<td class="height user-table-value">
-							<% if(user.dateOfBirth) { %> <%=
-							user.dateOfBirth.toLocaleDateString(); %> <%} else { %> 7th
-							December <% } %>
-						</td>
-					</tr>
-					<tr class="table-row">
-						<td class="right user-table-cell">mobile:</td>
-						<td class="height user-table-value"><%= user.phoneNbr %></td>
-					</tr>
+					<!-- <tr class="table-row">
+						<td class="right user-table-cell">username:</td>
+						<td class="height user-table-value">********</td>
+					</tr> -->
 				</tbody>
 			</table>
 		</div>
 
-		<div class="user-section-wrapper">
+		<div class="user-section-wrapper user-metrics-wrapper">
+			<div class="metric-wrapper">
+				<p class="metric-title">Songs added</p>
+				<p class="metric-count"><%= user.songsCreated.length %></p>
+			</div>
+			<div class="metric-wrapper">
+				<p class="metric-title">Lyrics added</p>
+				<p class="metric-count"><%= user.linesCreated.length %></p>
+			</div>
+		</div>
+
+		<div class="user-section-wrapper hide">
 			<table class="user-table">
 				<caption>
 					app preferences
@@ -74,7 +75,8 @@
 	</div>
 
 	<div class="btn-row hide">
+		<a class="btn btn-primary" href="/songs">Cancel</a>
 		<a class="btn btn-primary" href="/users/<%= user.id %>/edit">Edit</a>
-		<%- include('../partials/deleteForm', {url: `/users/${user.id}` }) %>
+		<!-- <%- include('../partials/deleteForm', {url: `/users/${user.id}` }) %> -->
 	</div>
 </div>
