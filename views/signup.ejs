@@ -12,7 +12,7 @@
 </form> -->
 
 <div class="login-container">
-	<form class="login-form form">
+	<form class="signup-form form">
 		<!-- <label class="login-label" for="username">Username</label>
 		<input
 			class="login-input"
@@ -53,7 +53,7 @@
 </form> -->
 
 <script>
-	const form = document.querySelector('form');
+	const form = document.querySelector('.signup-form');
 	const emailError = document.querySelector('.email.error');
 	const passwordError = document.querySelector('.password.error');
 	form.addEventListener('submit', async (e) => {
@@ -72,7 +72,7 @@
 				headers: { 'Content-Type': 'application/json' },
 			});
 			const data = await res.json();
-			console.log(data);
+			console.log('signup post data', data);
 			// renders form error messages in browser
 			if (data.errors) {
 				emailError.textContent = data.errors.email;
@@ -83,7 +83,7 @@
 				location.assign('/login');
 			}
 		} catch (err) {
-			console.log(err);
+			console.log('signup err', err);
 		}
 	});
 </script>

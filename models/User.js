@@ -60,21 +60,6 @@ const userSchema = new mongoose.Schema({
 	],
 });
 
-// fire a function before doc is saved to db - hash password in here with bcrypt
-// userSchema.pre('save', async function (next) {
-// 	console.log('user about to be created & saved', this);
-// 	console.log(this.password);
-// 	console.log(this.password[0]);
-// 	if (this.password[0] === '$') {
-// 		next();
-// 	} else {
-// 		const salt = await bcrypt.genSalt();
-// 		// now hash password
-// 		this.password = await bcrypt.hash(this.password, salt);
-
-// 		next();
-// 	}
-// });
 // fire a function after doc is saved to db - 'save' or 'remove' etc
 userSchema.post('save', function (doc, next) {
 	console.log('new user was created & saved', doc);
@@ -104,14 +89,6 @@ userSchema.statics.login = async function (email, password) {
 	}
 	throw Error('incorrect email');
 };
-
-// userSchema.virtual('coverImagePath').get(function () {
-// 	if (this.coverImage != null && this.coverImageType != null) {
-// 		return `data:${
-// 			this.coverImageType
-// 		};charset=utf-8;base64,${this.coverImage.toString('base64')}`;
-// 	}
-// });
 
 const User = mongoose.model('user', userSchema);
 module.exports = User;
