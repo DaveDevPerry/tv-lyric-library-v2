@@ -1,13 +1,26 @@
+<!-- <form class="form">
+	<h3>Log in</h3>
+	<label for="email">Email</label>
+	<input type="text" name="email" required autofocus />
+	<div class="error email"></div>
+	<label for="password">Password</label>
+	<input type="password" name="password" required />
+	<div class="error password"></div>
+	<div class="login-btn">
+		<button class="btn btn-primary">Log in</button>
+	</div>
+</form> -->
+
 <div class="login-container">
 	<form class="login-form form">
 		<label class="login-label" for="email">Email</label>
-		<input class="login-input" type="text" name="email" required />
+		<input class="login-input" type="text" name="email" required autofocus />
 		<div class="error email"></div>
 		<label class="login-label" for="password">Password</label>
 		<input class="login-input" type="password" name="password" required />
 		<div class="error password"></div>
 		<div class="login-btn">
-			<button class="btn btn-primary">Log in</button>
+			<button class="btn btn-login">Log in</button>
 		</div>
 	</form>
 
@@ -17,8 +30,34 @@
 	</p>
 </div>
 
+<!-- 
+<form class="login-form form">
+	<div class="login-btn">
+		<button class="btn btn-primary">Log in</button>
+	</div>
+	<label class="login-label" for="email">Email</label>
+	<input
+		class="login-input"
+		type="text"
+		name="email"
+		placeholder="dummy email"
+	/>
+	<div class="error email"></div>
+	<label class="login-label" for="password">Password</label>
+	<input
+		class="login-input"
+		type="password"
+		name="password"
+		placeholder="dummy email"
+	/>
+	<div class="error password"></div>
+	<div class="login-btn">
+		<button class="btn btn-primary">Log in</button>
+	</div>
+</form> -->
+
 <script>
-	const form = document.querySelector('.login-form');
+	const form = document.querySelector('form');
 	const emailError = document.querySelector('.email.error');
 	const passwordError = document.querySelector('.password.error');
 	form.addEventListener('submit', async (e) => {

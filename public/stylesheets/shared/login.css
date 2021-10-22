@@ -1,7 +1,7 @@
 .login-container {
 	flex: 1;
 	display: flex;
-	border: 1px solid green;
+	/* border: 1px solid green; */
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: stretch;

@@ -36,7 +36,7 @@ form.form {
 	margin: 0 auto;
 	padding: 2rem;
 	box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-	border-radius: 10px;
+	border-radius: 10px 10px 0 10px;
 	/* background: white; */
 	/* border: 1px solid white; */
 }
@@ -46,7 +46,7 @@ form.form input {
 
 	font-size: 1.8rem;
 	width: 100%;
-	border: 1px solid transparent;
+	/* border: 1px solid transparent; */
 	background-color: var(--form-input-background-color);
 	color: white;
 }
@@ -68,9 +68,9 @@ form.form label {
 	text-align: right;
 	font-style: italic;
 }
-.login-btn {
+/* .login-btn {
 	margin-top: 2rem;
-}
+} */
 .show-profile-xsmall {
 	border-radius: 10px;
 	/* margin-bottom: 1rem; */

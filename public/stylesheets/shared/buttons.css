@@ -30,6 +30,9 @@ button {
 .btn-primary {
 	background-color: rgb(12, 156, 12);
 }
+.btn-login {
+	background-color: rgb(12, 156, 12);
+}
 .btn-edit {
 	background-color: rgb(29, 29, 235);
 }
