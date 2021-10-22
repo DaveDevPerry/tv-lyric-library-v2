@@ -54,6 +54,9 @@ app.get('*', checkUser);
 app.use('/', indexRouter);
 app.use('/users', requireAuth, userRouter);
 app.use('/songs', requireAuth, songRouter);
+// app.use('/', indexRouter);
+// app.use('/users', requireAuth, userRouter);
+// app.use('/songs', requireAuth, songRouter);
 app.use(authRoutes);
 
 app.listen(process.env.PORT || 3000);

@@ -43,7 +43,7 @@ form.login-form input {
 	border: 2px solid #700404;
 }
 form.login-form input:focus {
-	border-color: 2px solid #700404;
+	border: 2px solid #700404;
 	outline: transparent;
 }
 form.login-form label {

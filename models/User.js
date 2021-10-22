@@ -75,6 +75,21 @@ userSchema.pre('save', async function (next) {
 	next();
 });
 
+// userSchema.pre('save', async function (next) {
+// 	console.log('user about to be created & saved', this);
+// 	console.log(this.password);
+// 	console.log(this.password[0]);
+// 	if (this.password[0] === '$') {
+// 		next();
+// 	} else {
+// 		const salt = await bcrypt.genSalt();
+// 		// now hash password
+// 		this.password = await bcrypt.hash(this.password, salt);
+
+// 		next();
+// 	}
+// });
+
 // static method to login user
 userSchema.statics.login = async function (email, password) {
 	const user = await this.findOne({ email });
