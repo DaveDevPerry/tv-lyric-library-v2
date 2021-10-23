@@ -72,6 +72,7 @@ router.put('/:id', async (req, res) => {
 		});
 
 		console.log('user with username? ', user);
+		res.redirect(`${user.id}`);
 	} catch (err) {
 		console.log(err);
 	}

@@ -12,11 +12,30 @@
 		select a song below, to review lyrics or add a new song from scratch
 	</p>
 
-	<div class="song-list-container">
+	<div class="song-options-wrapper">
+		<a href="/songs/new" class="song-btn"><i class="fas fa-plus-square"></i></a>
+		<div class="song-search-wrapper">
+			<form action="/songs" action="GET" id="search-form">
+				<input
+					id="search-input"
+					type="text"
+					name="title"
+					value="<%= searchOptions.title %>"
+					placeholder="search song title"
+				/><button class="song-btn" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- <div class="song-list-container">
 		<% songs.forEach(song => { %>
 		<a href="/songs/<%= song.id %>" class="song-row">
 			<div class="song-title"><%= song.title %></div>
 		</a>
 		<% }) %>
-	</div>
+	</div> -->
+
+	<%- include('../partials/songList', { songs: songs, }) %>
 </div>

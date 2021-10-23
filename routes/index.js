@@ -7,7 +7,11 @@ const router = express.Router();
 // 	// res.render('index');
 // });
 router.get('/', (req, res) => {
-	res.render('index');
+	if (res.locals.user) {
+		res.redirect('songs');
+	} else {
+		res.render('index');
+	}
 });
 
 module.exports = router;

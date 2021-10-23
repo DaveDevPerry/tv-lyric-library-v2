@@ -5,10 +5,30 @@ const User = require('../models/User');
 const ALine = require('../models/aLine');
 
 // all songs route
+// router.get('/', async (req, res) => {
+// 	try {
+// 		const songs = await Song.find({});
+// 		res.render('songs/index', {
+// 			songs: songs,
+// 		});
+// 	} catch {
+// 		res.redirect('/');
+// 	}
+// });
+
+// All songs route
 router.get('/', async (req, res) => {
+	const songs = await Song.find({});
+	let query = Song.find();
+	if (req.query.title != null && req.query.title != '') {
+		query = query.regex('title', new RegExp(req.query.title, 'i'));
+	}
+
 	try {
-		const songs = await Song.find({});
+		const song = await query.exec();
 		res.render('songs/index', {
+			song: song,
+			searchOptions: req.query,
 			songs: songs,
 		});
 	} catch {

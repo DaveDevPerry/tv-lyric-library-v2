@@ -1,0 +1,16 @@
+<table id="songs-table">
+	<thead>
+		<th class="left">song</th>
+	</thead>
+	<tbody>
+		<% songs.forEach(song => { %>
+		<tr>
+			<td>
+				<a href="/songs/<%= song.id %>">
+					<div class="song-title"><%= song.title %></div>
+				</a>
+			</td>
+		</tr>
+		<% }) %>
+	</tbody>
+</table>

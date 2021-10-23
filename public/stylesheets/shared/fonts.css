@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'Terrorvision';
+	src: url('../../fonts/Terrorvision.woff') format('woff2'),
+		url('../../fonts/Terrorvision.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}

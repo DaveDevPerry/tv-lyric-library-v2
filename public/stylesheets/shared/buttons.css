@@ -52,3 +52,10 @@ button {
 	margin: 2rem;
 	font-family: 'Caveat';
 }
+.song-btn {
+	padding: 0.5rem 1.5rem;
+	background-color: #700404;
+	color: white;
+	font-size: 2rem;
+	/* height: 41px; */
+}

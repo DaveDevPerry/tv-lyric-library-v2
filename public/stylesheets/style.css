@@ -1,9 +1,10 @@
+@import './shared/fonts.css';
 @import './shared/header.css';
 @import './shared/index.css';
 @import './shared/login.css';
 @import './shared/signup.css';
 @import './shared/song.css';
-@import './shared//user.css';
+@import './shared/user.css';
 @import './shared/buttons.css';
 @import './shared/form.css';
 @import './shared/footer.css';
@@ -161,7 +162,7 @@ a {
 }
 .instructions {
 	font-style: italic;
-	padding: 0 1.5rem 0 1.5rem;
+	padding: 0 1rem;
 	color: #700404;
 	font-size: 1.4rem;
 }

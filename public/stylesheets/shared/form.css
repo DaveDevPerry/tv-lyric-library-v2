@@ -47,7 +47,7 @@ option p::first-letter {
 }
 
 input {
-	min-width: 272px;
+	/* min-width: 272px; */
 	/* max-width: 350px; */
 	font-size: 1.6rem;
 	padding: 0.2rem;
@@ -143,4 +143,12 @@ label {
 }
 .login-label {
 	color: white;
+}
+#search-form input#search-input {
+	border: 1px solid;
+	/* height: 41px; */
+	width: unset;
+	border: 1px solid #700404;
+	padding: 0.5rem;
+	flex: 1;
 }
