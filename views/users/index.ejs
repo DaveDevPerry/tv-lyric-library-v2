@@ -21,77 +21,36 @@
 		<div class="user-contact-wrapper user-section-wrapper">
 			<table class="user-table">
 				<caption>
-					mandatory
+					all users
 				</caption>
+				<thead>
+					<th></th>
+					<th class="left">email</th>
+					<th>joined</th>
+					<th class="left">username</th>
+					<th>songs</th>
+					<th>lyrics</th>
+				</thead>
 				<tbody>
+					<% users.forEach((user,index)=> { %>
 					<tr class="table-row">
-						<td class="right user-table-cell">email:</td>
+						<td class="right user-table-cell"><%= index +1 %></td>
 						<td class="height user-table-value"><%= user.email %></td>
-					</tr>
-					<tr class="table-row">
-						<td class="right user-table-cell">password:</td>
-						<td class="height user-table-value">********</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+						<td class="height center user-table-value">
+							<%= user.createdAt.toLocaleDateString() %>
+						</td>
 
-		<div class="user-section-wrapper">
-			<table class="user-table">
-				<caption>
-					for metrics and notifications - optional
-				</caption>
-				<tbody>
-					<tr class="table-row">
-						<td class="right user-table-cell">username:</td>
 						<td class="height user-table-value"><%= user.username %></td>
-					</tr>
-					<tr class="table-row">
-						<td class="right user-table-cell">date of birth:</td>
-						<td class="height user-table-value">
-							<% if(user.dateOfBirth) { %> <%=
-							user.dateOfBirth.toLocaleDateString(); %> <%} else { %> 7th
-							December <% } %>
+						<td class="height right user-table-value">
+							<%= user.songsCreated.length %>
+						</td>
+						<td class="height right user-table-value">
+							<%= user.linesCreated.length %>
 						</td>
 					</tr>
-					<tr class="table-row">
-						<td class="right user-table-cell">mobile:</td>
-						<td class="height user-table-value"><%= user.phoneNbr %></td>
-					</tr>
+					<%})%>
 				</tbody>
 			</table>
 		</div>
-
-		<div class="user-section-wrapper">
-			<table class="user-table">
-				<caption>
-					app preferences
-				</caption>
-				<tbody>
-					<tr class="table-row">
-						<td class="right user-table-cell">notifications:</td>
-						<td class="height user-table-value">
-							<%= user.notifications === true ? 'on' : 'off' %>
-						</td>
-					</tr>
-					<tr class="table-row">
-						<td class="right user-table-cell">color theme:</td>
-						<td class="height user-table-value">not available</td>
-					</tr>
-					<tr class="table-row">
-						<td class="right user-table-cell">account created:</td>
-						<td class="height user-table-value">
-							<% if(user.createdAt) { %> <%= user.createdAt.toLocaleDateString()
-							%> <%} else { %> error <% } %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-
-	<div class="btn-row">
-		<a class="btn btn-primary" href="/users/<%= user.id %>/edit">Edit</a>
-		<%- include('../partials/deleteForm', {url: `/users/${user.id}` }) %>
 	</div>
 </div>

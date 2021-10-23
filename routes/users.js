@@ -6,9 +6,11 @@ const User = require('../models/User');
 
 router.get('/', async (req, res) => {
 	const user = await User.findById(res.locals.user.id);
+	const users = await User.find({});
 	try {
 		res.render('users/index', {
 			user: user,
+			users: users,
 		});
 	} catch (err) {
 		console.log(err);

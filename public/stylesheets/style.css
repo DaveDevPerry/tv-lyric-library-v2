@@ -118,6 +118,7 @@ li {
 }
 a {
 	text-decoration: none;
+	color: black;
 }
 .line-list {
 	display: flex;
@@ -167,4 +168,16 @@ a {
 .i-instructions {
 	padding-left: 0.5rem;
 	color: black;
+}
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
+th {
+	padding: 0 0.5rem;
+}
+.center {
+	text-align: center;
 }

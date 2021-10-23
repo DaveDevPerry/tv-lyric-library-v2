@@ -1,6 +1,12 @@
 /* .btn.btn-login {
 	color: black;
 } */
-.about-wrapper {
+.about-wrapper,
+.signup-text {
 	padding: 2rem;
+}
+.signup-link {
+	text-decoration: underline;
+	color: #700404;
+	font-weight: bold;
 }
