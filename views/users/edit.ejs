@@ -1,12 +1,32 @@
-<h2 class="page-header">Edit User</h2>
-<form
-	action="/users/<%= user.id %>?_method=PUT"
-	method="POST"
-	class="person-form"
->
-	<%- include('_form_fields') %>
-	<div class="btn-row">
-		<a class="btn btn-cancel" href="/users/<%= user.id %>">Cancel</a>
-		<button class="btn btn-primary" type="submit">Update</button>
+<div class="page-header">
+	<h2 class="page-title"><%= user.email %></h2>
+	<div class="header-wrapper">
+		<div class="blank"><%= user.id %></div>
+		<h3 class="artist-name">terrorvision</h3>
 	</div>
-</form>
+</div>
+
+<div class="page-content">
+	<p class="instructions">
+		<%= !user.username ? 'Please add your username' : '' %>
+	</p>
+
+	<form
+		action="/users/<%= user.id %>?_method=PUT"
+		method="POST"
+		class="song-form"
+	>
+		<div class="form-row">
+			<div class="form-line user-form-line">
+				<label class="user-edit">Username</label>
+				<input c type="text" name="username" value="<%= user.username %>" />
+			</div>
+		</div>
+
+		<div class="btn-row form-btn-row">
+			<a class="btn btn-danger" href="/users/<%= user.id %>">Cancel</a>
+			<button class="btn btn-primary" type="submit">Update</button>
+			<!-- <%- include('../partials/deleteForm', {url: `/users/${user.id}`}) %> -->
+		</div>
+	</form>
+</div>

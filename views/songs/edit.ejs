@@ -46,103 +46,24 @@
 			<%- include('../partials/deleteForm', {url: `/songs/${song.id}`}) %>
 		</div>
 	</form>
-
-	<!-- <form
-		action="/songs/<%= song.id %>?_method=PUT"
-		method="POST"
-		class="song-form"
-	>
-		<% for(let i = 1; i <= song.lineCount; i++){ %>
-		<div class="form-row">
-			<div class="form-line" name="allFormItems">
-				<select name="lyric">
-					<% byLikesAndLines.forEach((lyric)=>{ %> <% if(lyric.lineNumber ===
-					i){ %>
-					<option selected label="<%= lyric.lyric %>" value="<%= lyric.id %>">
-						<p>
-							<%= lyric.lineNumber %> - <%= lyric.lyric %> -
-							<%=lyric.likeCount%>
-						</p>
-					</option>
-					<% }%> <% }) %>
-				</select>
-				<input
-					type="text"
-					name="lyric"
-					placeholder="type new lyric here"
-					class="input-create hide"
-				/>
-				<i class="far fa-edit add-new-line-btn"></i>
-				<i class="fas fa-undo-alt add-new-line-btn hide"></i>
-			</div>
-		</div>
-		<%}%>
-		<div class="btn-row form-btn-row">
-			<a class="btn btn-danger" href="/songs">Cancel</a>
-			<button class="btn btn-primary" type="submit">Update</button>
-		</div>
-	</form>
-
-	<div>
-		<div>all song lyrics</div>
-		<ul>
-			<% allSongLyrics.forEach((lyric) => { %>
-			<li>
-				<%=lyric.lyric%> - line:<%= lyric.lineNumber %> - likes:<%=
-				lyric.likeCount%>
-			</li>
-			<% }) %>
-		</ul>
-		<br />
-		<div>all song lyrics by line</div>
-		<ul>
-			<% allByLineNumber.forEach((lyric) => { %>
-			<li>
-				<%=lyric.lyric%> - line:<%= lyric.lineNumber %> - likes:<%=
-				lyric.likeCount%>
-			</li>
-			<% }) %>
-		</ul>
-		<br />
-		<div>all song lyrics by line and likes</div>
-		<ul>
-			<% byLineAndLikes.forEach((lyric) => { %>
-			<li>
-				<%=lyric.lyric%> - line:<%= lyric.lineNumber %> - likes:<%=
-				lyric.likeCount%>
-			</li>
-			<% }) %>
-		</ul>
-		<br />
-		<div>all song lyrics by likes and lines</div>
-		<ul>
-			<% byLikesAndLines.forEach((lyric) => { %>
-			<li>
-				<%=lyric.lyric%> - line:<%= lyric.lineNumber %> - likes:<%=
-				lyric.likeCount%>
-			</li>
-			<% }) %>
-		</ul>
-	</div>
-</div> -->
-
-	<script>
-		// display new lyric input onclick change lyric
-		const changeBtns = document.querySelectorAll('.add-new-line-btn');
-		console.log('btns', changeBtns);
-
-		changeBtns.forEach((btn) => {
-			btn.addEventListener('click', (e) => {
-				// console.log('e', e);
-
-				// console.log(e.target.parentElement.firstElementChild);
-				// console.log(e.target.parentElement.lastElementChild);
-
-				e.target.parentElement.childNodes[1].classList.toggle('hide');
-				e.target.parentElement.childNodes[3].classList.toggle('hide');
-				e.target.parentElement.childNodes[5].classList.toggle('hide');
-				e.target.parentElement.childNodes[7].classList.toggle('hide');
-			});
-		});
-	</script>
 </div>
+
+<script>
+	// display new lyric input onclick change lyric
+	const changeBtns = document.querySelectorAll('.add-new-line-btn');
+	console.log('btns', changeBtns);
+
+	changeBtns.forEach((btn) => {
+		btn.addEventListener('click', (e) => {
+			// console.log('e', e);
+
+			// console.log(e.target.parentElement.firstElementChild);
+			// console.log(e.target.parentElement.lastElementChild);
+
+			e.target.parentElement.childNodes[1].classList.toggle('hide');
+			e.target.parentElement.childNodes[3].classList.toggle('hide');
+			e.target.parentElement.childNodes[5].classList.toggle('hide');
+			e.target.parentElement.childNodes[7].classList.toggle('hide');
+		});
+	});
+</script>

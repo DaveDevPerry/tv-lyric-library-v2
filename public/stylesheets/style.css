@@ -96,8 +96,17 @@ body {
 	margin-bottom: 1rem;
 	margin-top: 1rem;
 	row-gap: 1rem;
-	overflow: scroll;
+	/* overflow: scroll; */
+
+	-ms-overflow-style: none; /* for Internet Explorer, Edge */
+	scrollbar-width: none; /* for Firefox */
+	overflow-y: scroll;
 }
+
+.page-content::-webkit-scrollbar {
+	display: none; /* for Chrome, Safari, and Opera */
+}
+
 .nav-link {
 	font-size: 1.6rem;
 	text-transform: uppercase;

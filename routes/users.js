@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+
 // const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
 router.get('/', async (req, res) => {
@@ -32,7 +33,15 @@ router.get('/:id', async (req, res) => {
 		// const people = await Person.find({});
 
 		// console.log('children of', children.children);
-		const user = await User.findById(req.params.id);
+		const user = await User.findById(req.params.id)
+			.populate([
+				{
+					path: 'songsCreated',
+					model: 'Song',
+					select: '_id title',
+				},
+			])
+			.exec();
 
 		res.render('users/show', {
 			user: user,
@@ -49,6 +58,18 @@ router.get('/:id/edit', async (req, res) => {
 		res.render('users/edit', {
 			user: user,
 		});
+	} catch (err) {
+		console.log(err);
+	}
+});
+
+router.put('/:id', async (req, res) => {
+	try {
+		const user = await User.findByIdAndUpdate(req.params.id, {
+			username: req.body.username,
+		});
+
+		console.log('user with username? ', user);
 	} catch (err) {
 		console.log(err);
 	}

@@ -53,6 +53,14 @@
 			</div>
 		</div>
 
+		<div class="user-section-wrapper">
+			<ul class="user-song-list">
+				<% user.songsCreated.forEach((song) => { %>
+				<li><%= song.title %></li>
+				<%}) %>
+			</ul>
+		</div>
+
 		<div class="user-section-wrapper hide">
 			<table class="user-table">
 				<caption>

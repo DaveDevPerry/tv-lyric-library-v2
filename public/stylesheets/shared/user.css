@@ -117,9 +117,9 @@ form.form label {
 }
 .user-name {
 	text-align: center;
-	font-family: 'Gala Script';
+	/* font-family: 'Gala Script'; */
 	font-size: 4.5rem;
-	text-transform: capitalize;
+	/* text-transform: capitalize; */
 	line-height: 4.5rem;
 }
 .user-section-wrapper {
@@ -163,6 +163,7 @@ caption {
 	text-align: left;
 	font-weight: 300;
 	padding: 0 0.5rem;
+	font-family: 'Roboto';
 }
 .user-children-list-wrapper {
 	background-color: transparent;
@@ -202,4 +203,8 @@ caption {
 p.metric-count {
 	font-size: 4rem;
 	color: #700404;
+}
+
+.user-edit {
+	color: black;
 }
