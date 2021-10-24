@@ -23,6 +23,7 @@ app.use(cookieParser());
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
 const songRouter = require('./routes/songs');
+const lineRouter = require('./routes/lines');
 
 // view engine
 app.set('view engine', 'ejs');
@@ -54,6 +55,7 @@ app.get('*', checkUser);
 app.use('/', indexRouter);
 app.use('/users', requireAuth, userRouter);
 app.use('/songs', requireAuth, songRouter);
+// app.use('/lines', lineRouter);
 // app.use('/', indexRouter);
 // app.use('/users', requireAuth, userRouter);
 // app.use('/songs', requireAuth, songRouter);

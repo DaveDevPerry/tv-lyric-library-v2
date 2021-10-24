@@ -25,6 +25,7 @@
 				</caption>
 				<thead>
 					<th></th>
+					<th></th>
 					<th class="left">email</th>
 					<th>joined</th>
 					<th class="left">username</th>
@@ -35,6 +36,14 @@
 					<% users.forEach((user,index)=> { %>
 					<tr class="table-row">
 						<td class="right user-table-cell"><%= index +1 %></td>
+						<td class="center">
+							<% if(user.coverImagePath){ %>
+							<img
+								src="<%= user.coverImagePath%>"
+								class="person-cover user-pp-thumb"
+							/>
+							<% } else { %> - <%}%>
+						</td>
 						<td class="height user-table-value"><%= user.email %></td>
 						<td class="height center user-table-value">
 							<%= user.createdAt.toLocaleDateString() %>
