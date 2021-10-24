@@ -32,14 +32,14 @@ const userSchema = new mongoose.Schema({
 	// 	type: Number,
 	// 	required: false,
 	// },
-	// coverImage: {
-	// 	type: Buffer,
-	// 	required: false,
-	// },
-	// coverImageType: {
-	// 	type: String,
-	// 	required: false,
-	// },
+	coverImage: {
+		type: Buffer,
+		required: false,
+	},
+	coverImageType: {
+		type: String,
+		required: false,
+	},
 
 	createdAt: {
 		type: Date,
@@ -66,29 +66,29 @@ userSchema.post('save', function (doc, next) {
 	next();
 });
 
-userSchema.pre('save', async function (next) {
-	console.log('user about to be created & saved', this);
-	const salt = await bcrypt.genSalt();
-	// now hash password
-	this.password = await bcrypt.hash(this.password, salt);
-
-	next();
-});
-
 // userSchema.pre('save', async function (next) {
 // 	console.log('user about to be created & saved', this);
-// 	console.log(this.password);
-// 	console.log(this.password[0]);
-// 	if (this.password[0] === '$') {
-// 		next();
-// 	} else {
-// 		const salt = await bcrypt.genSalt();
-// 		// now hash password
-// 		this.password = await bcrypt.hash(this.password, salt);
+// 	const salt = await bcrypt.genSalt();
+// 	// now hash password
+// 	this.password = await bcrypt.hash(this.password, salt);
 
-// 		next();
-// 	}
+// 	next();
 // });
+
+userSchema.pre('save', async function (next) {
+	console.log('user about to be created & saved', this);
+	console.log(this.password);
+	console.log(this.password[0]);
+	if (this.password[0] === '$') {
+		next();
+	} else {
+		const salt = await bcrypt.genSalt();
+		// now hash password
+		this.password = await bcrypt.hash(this.password, salt);
+
+		next();
+	}
+});
 
 // static method to login user
 userSchema.statics.login = async function (email, password) {
@@ -104,6 +104,14 @@ userSchema.statics.login = async function (email, password) {
 	}
 	throw Error('incorrect email');
 };
+
+userSchema.virtual('coverImagePath').get(function () {
+	if (this.coverImage != null && this.coverImageType != null) {
+		return `data:${
+			this.coverImageType
+		};charset=utf-8;base64,${this.coverImage.toString('base64')}`;
+	}
+});
 
 const User = mongoose.model('user', userSchema);
 module.exports = User;

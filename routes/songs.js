@@ -19,6 +19,7 @@ const ALine = require('../models/aLine');
 // All songs route
 router.get('/', async (req, res) => {
 	const songs = await Song.find({});
+	// const users = await User.find({});
 	let query = Song.find();
 	if (req.query.title != null && req.query.title != '') {
 		query = query.regex('title', new RegExp(req.query.title, 'i'));
@@ -30,6 +31,7 @@ router.get('/', async (req, res) => {
 			song: song,
 			searchOptions: req.query,
 			songs: songs,
+			// users: users,
 		});
 	} catch {
 		res.redirect('/');

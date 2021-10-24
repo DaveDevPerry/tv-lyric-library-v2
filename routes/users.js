@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-
+const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 // const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
 router.get('/', async (req, res) => {
@@ -65,16 +65,64 @@ router.get('/:id/edit', async (req, res) => {
 	}
 });
 
-router.put('/:id', async (req, res) => {
-	try {
-		const user = await User.findByIdAndUpdate(req.params.id, {
-			username: req.body.username,
-		});
+// router.put('/:id', async (req, res) => {
+// 	try {
+// 		const user = await User.findByIdAndUpdate(req.params.id, {
+// 			username: req.body.username,
+// 		});
 
-		console.log('user with username? ', user);
-		res.redirect(`${user.id}`);
+// 		console.log('user with username? ', user);
+// 		res.redirect(`${user.id}`);
+// 	} catch (err) {
+// 		console.log(err);
+// 	}
+// });
+
+// update user - works but hashes password again
+// router.put('/:id', async (req, res) => {
+// 	let user;
+// 	try {
+// 		user = await User.findById(req.params.id);
+// 		user.username = req.body.username;
+// 		if (req.body.cover != null && req.body.cover !== '') {
+// 			saveCover(user, req.body.cover);
+// 		}
+// 		await user.save();
+// 		res.redirect(`/users/${user.id}`);
+// 	} catch (err) {
+// 		console.log(err);
+// 		if (user == null) {
+// 			res.redirect('/');
+// 		} else {
+// 			res.render('users/edit', {
+// 				user: user,
+// 				errorMessage: 'error updating user',
+// 			});
+// 		}
+// 	}
+// });
+
+// update user - works
+router.put('/:id', async (req, res) => {
+	let user;
+	try {
+		user = await User.findByIdAndUpdate(req.params.id);
+		user.username = req.body.username;
+		if (req.body.cover != null && req.body.cover !== '') {
+			saveCover(user, req.body.cover);
+		}
+		await user.save();
+		res.redirect(`/users/${user.id}`);
 	} catch (err) {
 		console.log(err);
+		if (user == null) {
+			res.redirect('/');
+		} else {
+			res.render('users/edit', {
+				user: user,
+				errorMessage: 'error updating user',
+			});
+		}
 	}
 });
 
@@ -114,5 +162,13 @@ router.put('/:id', async (req, res) => {
 // 		user.coverImageType = cover.type;
 // 	}
 // }
+function saveCover(user, coverEncoded) {
+	if (coverEncoded == null) return;
+	const cover = JSON.parse(coverEncoded);
+	if (cover != null && imageMimeTypes.includes(cover.type)) {
+		user.coverImage = new Buffer.from(cover.data, 'base64');
+		user.coverImageType = cover.type;
+	}
+}
 
 module.exports = router;

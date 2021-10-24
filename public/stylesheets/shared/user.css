@@ -1,3 +1,16 @@
+:root {
+	--person-cover-width: 200px;
+	--person-cover-width-large: 325px;
+	--person-cover-aspect-ratio: 1;
+}
+.person-cover {
+	width: var(--person-cover-width);
+	height: calc(var(--person-cover-width) / var(--person-cover-aspect-ratio));
+}
+.person-cover-large {
+	--person-cover-width: var(--person-cover-width-large);
+}
+
 .show-profile-circle {
 	height: 40px;
 	width: 40px;
@@ -7,6 +20,12 @@
 .user-pp {
 	height: 150px;
 	width: 150px;
+	border: 2px solid #700404;
+	border-radius: 50%;
+}
+.user-pp-thumb {
+	height: 20px;
+	width: 20px;
 	border: 2px solid #700404;
 	border-radius: 50%;
 }
