@@ -23,7 +23,7 @@ app.use(cookieParser());
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
 const songRouter = require('./routes/songs');
-const lineRouter = require('./routes/lines');
+// const lineRouter = require('./routes/lines');
 
 // view engine
 app.set('view engine', 'ejs');

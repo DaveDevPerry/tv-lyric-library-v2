@@ -2,6 +2,7 @@
 	<thead>
 		<!-- <th></th> -->
 		<th class="left">song</th>
+		<th><i class="far fa-edit"></i></th>
 	</thead>
 	<tbody>
 		<% songs.forEach(song => { %>
@@ -10,6 +11,9 @@
 				<a href="/songs/<%= song.id %>">
 					<div class="song-title"><%= song.title %></div>
 				</a>
+			</td>
+			<td>
+				<div class="song-review-count right"><%= song.reviewCount %></div>
 			</td>
 		</tr>
 		<% }) %>

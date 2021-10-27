@@ -30,7 +30,9 @@ router.get('/', async (req, res) => {
 		res.render('songs/index', {
 			song: song,
 			searchOptions: req.query,
-			songs: songs,
+			songs: songs.sort(function (a, b) {
+				return a.reviewCount - b.reviewCount;
+			}),
 			// users: users,
 		});
 	} catch {
@@ -69,6 +71,7 @@ router.post('/', async (req, res) => {
 	try {
 		song = await new Song({});
 		song.title = req.body.title;
+		song.reviewCount = song.reviewCount + 1;
 		song.initialLyrics = req.body.initialLyrics;
 		song.createdBy = req.body.userID;
 		// splits initial lyrics string into each lyric line string
@@ -241,25 +244,19 @@ router.get('/:id/edit', async (req, res) => {
 
 // update song
 router.put('/:id', async (req, res) => {
+	// console.log('start');
+	// const allIds = req.body.lyricId;
+	// console.log('all ids', allIds);
+
 	let song;
 	let updateLine;
 	try {
 		song = await Song.findById(req.params.id);
 		// song = await Song.findOneAndUpdate({ id: req.params.id });
-		console.log('song to update', await song);
+		// console.log('song to update', await song);
 		const selectedLyrics = req.body.lyric;
-		console.log('lyric array', selectedLyrics);
-		console.log('line count checker', selectedLyrics.length / 2);
-
-		// const newAline = await new ALine({
-		// 	songId: song.id,
-		// 	lineNumber: 2,
-		// 	likeCount: 0,
-		// 	lyric: 'hard coded',
-		// });
-		// await newAline.save();
-		// song.lyricLines.push(await newAline);
-		// await song.save();
+		// console.log('lyric array', selectedLyrics);
+		// console.log('line count checker', selectedLyrics.length / 2);
 
 		const createNewLyric = async (lyric, lineNumber) => {
 			// console.log('lyric', lyric);
@@ -275,28 +272,12 @@ router.put('/:id', async (req, res) => {
 		};
 
 		const updateLineWithALike = async (lineId) => {
-			// console.log('id to give like', lineId);
-			// updateLine = await ALine.findOne({ id: lineId });
-			// console.log('like count', await updateLine);
-			// const updateLine = await ALine.findByIdAndUpdate(
-			// 	{ _id: lineId },
-			// 	{ likeCount: likeCount + 1 }
-			// );
-			// console.log('line to give a like', await updateLine);
-			//
 			const giveLike = await ALine.findOneAndUpdate(
 				{ _id: lineId },
 				{ $inc: { likeCount: 1 } }
 			);
 			console.log('give like', giveLike);
 			giveLike.addLikeToLine(giveLike);
-
-			// updateLine.addLikeToLine(updateLine);
-			// console.log('id to give like', lineId);
-			// updateLine = await ALine.findOneAndUpdate({ id: lineId });
-			// console.log('line to give a like', await updateLine);
-
-			// updateLine.addLikeToLine(updateLine);
 		};
 
 		for (let i = 1; i <= selectedLyrics.length; i += 2) {
@@ -315,7 +296,7 @@ router.put('/:id', async (req, res) => {
 			}
 			console.log('here', i);
 		}
-
+		song.reviewCount = song.reviewCount + 1;
 		await song.save();
 		// res.redirect(`/songs/${song.id}`);
 		res.redirect(`/songs`);
@@ -330,6 +311,76 @@ router.put('/:id', async (req, res) => {
 		}
 	}
 });
+
+// working update song - before agree lines btn submit
+// router.put('/:id', async (req, res) => {
+// 	const allIds = req.body.lyricId;
+// 	console.log('all ids', allIds);
+// 	console.log('now');
+// 	let song;
+// 	let updateLine;
+// 	try {
+// 		song = await Song.findById(req.params.id);
+// 		// song = await Song.findOneAndUpdate({ id: req.params.id });
+// 		console.log('song to update', await song);
+// 		const selectedLyrics = req.body.lyric;
+// 		console.log('lyric array', selectedLyrics);
+// 		console.log('line count checker', selectedLyrics.length / 2);
+
+// 		const createNewLyric = async (lyric, lineNumber) => {
+// 			// console.log('lyric', lyric);
+// 			const newLyric = await new ALine({
+// 				lyric: lyric,
+// 				likeCount: 0,
+// 				songId: await song.id,
+// 				lyricRef: 'line' + lineNumber,
+// 				lineNumber: lineNumber,
+// 			});
+// 			newLyric.createNewLine(newLyric);
+// 			song.lyricLines.push(await newLyric);
+// 		};
+
+// 		const updateLineWithALike = async (lineId) => {
+
+// 			const giveLike = await ALine.findOneAndUpdate(
+// 				{ _id: lineId },
+// 				{ $inc: { likeCount: 1 } }
+// 			);
+// 			console.log('give like', giveLike);
+// 			giveLike.addLikeToLine(giveLike);
+// 		};
+
+// 		for (let i = 1; i <= selectedLyrics.length; i += 2) {
+// 			console.log('i', i);
+// 			// check [i] if "", update [i-1] likeCount++
+// 			if (selectedLyrics[i] === '') {
+// 				console.log('add like to ', selectedLyrics[i - 1]);
+// 				updateLineWithALike(selectedLyrics[i - 1]);
+// 			}
+// 			// check [i] if !"", get [i-1] lineCount, new Aline [i]
+// 			if (selectedLyrics[i] !== '') {
+// 				console.log('create new line');
+// 				const lineNumber = await ALine.findById(selectedLyrics[i - 1]);
+// 				console.log('line number', lineNumber.lineNumber);
+// 				createNewLyric(selectedLyrics[i], lineNumber.lineNumber);
+// 			}
+// 			console.log('here', i);
+// 		}
+// 		song.reviewCount = song.reviewCount + 1;
+// 		await song.save();
+// 		// res.redirect(`/songs/${song.id}`);
+// 		res.redirect(`/songs`);
+// 	} catch {
+// 		if (song == null) {
+// 			res.redirect('/');
+// 		} else {
+// 			res.render('songs/edit', {
+// 				song: song,
+// 				errorMessage: 'Error updating song',
+// 			});
+// 		}
+// 	}
+// });
 
 // router.put('/:id', async (req, res) => {
 // 	let song;
@@ -459,22 +510,26 @@ router.put('/:id', async (req, res) => {
 // 		}
 // 	}
 // });
-// router.delete('/:id', async (req, res) => {
-// 	let song;
-// 	try {
-// 		song = await Song.findById(req.params.id);
-// 		const lyrics = await ALine.find({ songId: req.params.id });
-// 		console.log('lyrics in song', lyrics);
-// 		await lyrics.remove();
-// 		await song.remove();
-// 		res.redirect(`/songs`);
-// 	} catch {
-// 		if (song == null) {
-// 			res.redirect('/');
-// 		} else {
-// 			res.redirect(`/songs/${song.id}`);
-// 		}
-// 	}
-// });
+
+router.delete('/:id', async (req, res) => {
+	console.log('delete');
+	let song;
+	try {
+		song = await Song.findById(req.params.id);
+		const lyrics = await ALine.find({ songId: req.params.id });
+		// console.log('lyrics in song', lyrics);
+		// await lyrics.remove();
+		// await song.remove();
+		// res.redirect(`/songs`);
+		console.log('deleted song id', song.id);
+		console.log('deleted aline', lyrics);
+	} catch {
+		if (song == null) {
+			res.redirect('/');
+		} else {
+			res.redirect(`/songs/${song.id}`);
+		}
+	}
+});
 
 module.exports = router;

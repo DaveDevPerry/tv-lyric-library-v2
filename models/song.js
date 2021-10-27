@@ -35,6 +35,10 @@ const songSchema = new mongoose.Schema({
 	createdBy: {
 		type: String,
 	},
+	reviewCount: {
+		type: Number,
+		default: 0,
+	},
 
 	// singleLines: [
 	// 	{

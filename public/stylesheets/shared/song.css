@@ -85,4 +85,5 @@ input#search-input {
 #songs-table th {
 	border-bottom: 1px solid;
 	padding-left: 0;
+	padding-right: 0;
 }

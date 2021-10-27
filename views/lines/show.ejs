@@ -7,17 +7,12 @@
 </div>
 <div class="page-content">
 	<p class="instructions">
-		these lyrics are voted the most accurate for this song. please click edit and change any lyrics you think are different. leave all correct lyrics and click update.
+		these lyrics are voted the most accurate for this song
 	</p>
 
-	<!-- <form
-		action="/songs/<%= song.id %>?_method=PUT"
-		method="POST"
-		class="song-form"
-	> -->
-		<!-- <form ></form> -->
-		<!-- <form> -->
-		<!-- <% for(let i = 1; i <= song.lineCount; i++){ %> <% let lineArr = [] %>
+	
+	<form ></form>
+		<% for(let i = 1; i <= song.lineCount; i++){ %> <% let lineArr = [] %>
 		<div class="lyric-line-row">
 			<p><%= i %>:</p>
 			<% songLyrics.forEach((lyric)=>{ %> <% if(lyric.lineNumber === i){ %> <%
@@ -39,18 +34,16 @@
 		</div>
 		<%}%>
 		<div class="to-hide">
-			<textarea name="ids" id="song-ids"></textarea>
+			<textarea name="ids" id="song-ids">khjk</textarea>
 		</div>
 		<div class="btn-row form-btn-row">
 			<a class="btn btn-danger" href="/songs/<%= song.id %>">Cancel</a>
 			<a class="btn btn-edit" href="/songs/<%= song.id %>/edit">Edit</a>
-			<button class="btn btn-primary" type="submit" onclick="getLines()">
-				agree
-			</button>
-			 <button class="btn btn-primary" type="submit">agree</button> 
-		</div> -->
+			<button class="btn btn-primary" onclick="getLines()">agree</button>
+			<!-- <button class="btn btn-primary" type="submit">agree</button> -->
+		</div>
 
-		<div class="lyric-list-container">
+		<!-- <div class="lyric-list-container">
 		<% for(let i = 1; i <= song.lineCount; i++){ %> <% let lineArr = [] %>
 		<div class="lyric-line-row">
 			<p><%= i %>:</p>
@@ -64,23 +57,28 @@
 	</div>
 
 	<div class="btn-row">
-		<a class="btn btn-danger" href="/songs">Cancel</a>
 		<a class="btn btn-edit" href="/songs/<%= song.id %>/edit">Edit</a>
-		<% if(user.id === '6170b917dc84c1608f6fb62b') { %>
-			<%-include('../partials/deleteForm', {url: `/songs/${song.id}`}) %> <%} %>
-		<!-- <a class="btn btn-primary" href="/songs">Agree</a> -->
+		<a class="btn btn-primary" href="/songs">Agree</a>
 	</div>
-</div>
+</div> -->
 
+		<!-- <div class="btn-row">
+	<a class="btn btn-primary" href="/songs/<%= song.id %>/edit">Edit</a>
+	<%- include('../partials/deleteForm', {url: `/songs/${song.id}` }) %>
+</div> -->
 
+		<!-- .textContent += " This is the text from javascript."; -->
+		<script>
+			function getLines() {
+				const ids = document.querySelector('#song-ids');
+				const lines = document.querySelectorAll('.lyric-id');
+				console.log(lines);
+				lines.forEach((line) => {
+					console.log(line.value);
+					ids.textContent += (`${line.value},`);
+				});
+				console.log('line ids', ids.value);
+			}
+		</script>
+	</form>
 </div>
-<script>
-	function getLines() {
-		const ids = document.querySelector('#song-ids');
-		const lines = document.querySelectorAll('.lyric-id');
-		lines.forEach((line) => {
-			ids.textContent += `${line.value},`;
-		});
-		console.log('line ids', ids.value);
-	}
-</script>

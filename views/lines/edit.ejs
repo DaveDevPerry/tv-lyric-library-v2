@@ -8,11 +8,8 @@
 
 <div class="page-content">
 	<p class="instructions">
-		Go through each line. If you think a lyric is wrong then either: Click on
-		that lyric to view all suggestion so far, and chose correct lyrics. or Click
-		<i class="far fa-edit i-instructions"></i> to write the lyrics you think it
-		should be. When you have been through each line. Smash update button. FOR
-		ANY LYRICS YOU ARE UNSURE, PLEASE SELECT OR ADD CLOSEST TO WHAT YOU THINK
+		click on a lyric to select correct lyric or click
+		<i class="far fa-edit i-instructions"></i> to add your correct lyric
 	</p>
 
 	<form
@@ -46,6 +43,7 @@
 			<!-- <a class="btn btn-danger" href="/songs/<%= song.id %>">Cancel</a> -->
 			<a class="btn btn-danger" href="/songs">Cancel</a>
 			<button class="btn btn-primary" type="submit">Update</button>
+			<%- include('../partials/deleteForm', {url: `/songs/${song.id}`}) %>
 		</div>
 	</form>
 </div>

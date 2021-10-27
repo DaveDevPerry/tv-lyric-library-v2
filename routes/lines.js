@@ -6,16 +6,40 @@
 
 // // All songs route
 // router.get('/', async (req, res) => {
-
 // 	// const users = await User.find({});
-
+// 	const song = await Song.findOne({});
+// 	// res.send('hi');
 // 	try {
-//     const lines = await ALine.find({});
+// 		// const lines = await ALine.find({});
 // 		res.render('lines/index', {
-// 			lines: lines,
+// 			song: song,
 // 		});
 // 	} catch {
 // 		res.redirect('/');
+// 	}
+// });
+
+// router.post('/', async (req, res) => {
+// 	const song = await Song.findOne({});
+// 	// res.send('hi');
+// 	try {
+// 		// const lines = await ALine.find({});
+// 		res.render('lines/index', {
+// 			song: song,
+// 		});
+// 	} catch {
+// 		res.redirect('/');
+// 	}
+// });
+
+// router.put('/:id', async (req, res) => {
+// 	const song = await Song.findById(req.params.id);
+// 	try {
+// 		res.render('lines/index', {
+// 			song: song,
+// 		});
+// 	} catch (err) {
+// 		console.log(err);
 // 	}
 // });
 
@@ -261,4 +285,4 @@
 // 	}
 // });
 
-// module.exports = router;
+module.exports = router;
