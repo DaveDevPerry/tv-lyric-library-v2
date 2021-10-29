@@ -84,12 +84,15 @@ input#search-input {
 	/* height: 41px; */
 	width: 100px;
 }
-#songs-table {
-	/* border: 1px solid; */
-	padding: 0 1rem;
-}
+
 #songs-table th {
 	border-bottom: 1px solid;
 	padding-left: 0;
 	padding-right: 0;
+}
+#songs-table {
+	/* border: 1px solid; */
+	padding: 0 1rem;
+	border-collapse: collapse;
+	margin: 0 1rem;
 }

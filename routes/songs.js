@@ -18,7 +18,7 @@ const ALine = require('../models/aLine');
 
 // All songs route
 router.get('/', async (req, res) => {
-	const songs = await Song.find({});
+	// const songs = await Song.find({});
 	// const users = await User.find({});
 	let query = Song.find();
 	if (req.query.title != null && req.query.title != '') {
@@ -26,9 +26,9 @@ router.get('/', async (req, res) => {
 	}
 
 	try {
-		const song = await query.exec();
+		const songs = await query.exec();
 		res.render('songs/index', {
-			song: song,
+			// song: song,
 			searchOptions: req.query,
 			songs: songs.sort(function (a, b) {
 				return a.reviewCount - b.reviewCount;

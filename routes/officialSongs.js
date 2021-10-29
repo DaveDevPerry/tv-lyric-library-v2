@@ -7,7 +7,7 @@ const User = require('../models/User');
 
 // All songs route
 router.get('/', async (req, res) => {
-	const songs = await Song.find({});
+	// const songs = await Song.find({});
 	// const users = await User.find({});
 	let query = Song.find();
 	if (req.query.title != null && req.query.title != '') {
@@ -15,9 +15,9 @@ router.get('/', async (req, res) => {
 	}
 
 	try {
-		const song = await query.exec();
+		const songs = await query.exec();
 		res.render('officialSongs/index', {
-			song: song,
+			// song: song,
 			searchOptions: req.query,
 			songs: songs,
 			// songs: songs.sort(function (a, b) {
@@ -26,6 +26,11 @@ router.get('/', async (req, res) => {
 			// 	return aTitle < bTitle ? -1 : aTitle > bTitle ? 1 : 0;
 			// }),
 			// users: users,
+			songs: songs.sort(function (a, b) {
+				let nameA = a.title.toUpperCase();
+				let nameB = b.title.toUpperCase();
+				return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+			}),
 		});
 	} catch (err) {
 		console.log(err);
@@ -51,6 +56,7 @@ router.post('/', async (req, res) => {
 		song.fromReleaseTitle = req.body.fromReleaseTitle;
 		song.createdBy = req.body.userID;
 		song.lyrics = req.body.lyrics;
+		song.source = req.body.source;
 
 		// user.songsCreated.push(await song.id);
 
