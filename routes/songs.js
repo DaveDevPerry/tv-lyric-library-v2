@@ -312,6 +312,37 @@ router.put('/:id', async (req, res) => {
 	}
 });
 
+// router.delete('/:id', async (req, res) => {
+// 	console.log('delete');
+// 	let song;
+// 	let user;
+// 	try {
+// 		song = await Song.findById(req.params.id);
+// 		user = await User.findById(song.createdBy);
+
+// 		const userLyrics = user.linesCreated;
+// 		const lyrics = await ALine.find({ songId: req.params.id });
+// 		// console.log('lyrics in song', lyrics);
+// 		// await lyrics.remove();
+// 		// await song.remove();
+// 		// res.redirect(`/songs`);
+// 		console.log('user id', user.id);
+// 		console.log('user lyric arr', user.linesCreated);
+// 		console.log('deleted song id', song.id);
+// 		console.log('deleted aline', lyrics);
+// 		lyrics.forEach((lyric) => {
+// 			console.log('lyric id', lyric.id);
+
+// 		});
+// 	} catch {
+// 		if (song == null) {
+// 			res.redirect('/');
+// 		} else {
+// 			res.redirect(`/songs/${song.id}`);
+// 		}
+// 	}
+// });
+
 // working update song - before agree lines btn submit
 // router.put('/:id', async (req, res) => {
 // 	const allIds = req.body.lyricId;
@@ -511,25 +542,12 @@ router.put('/:id', async (req, res) => {
 // 	}
 // });
 
-router.delete('/:id', async (req, res) => {
-	console.log('delete');
-	let song;
-	try {
-		song = await Song.findById(req.params.id);
-		const lyrics = await ALine.find({ songId: req.params.id });
-		// console.log('lyrics in song', lyrics);
-		// await lyrics.remove();
-		// await song.remove();
-		// res.redirect(`/songs`);
-		console.log('deleted song id', song.id);
-		console.log('deleted aline', lyrics);
-	} catch {
-		if (song == null) {
-			res.redirect('/');
-		} else {
-			res.redirect(`/songs/${song.id}`);
-		}
-	}
-});
-
 module.exports = router;
+
+// .update(
+//   {_id: req.user._id},
+//   { $pull: {posts: req.body.post_id } }
+// )
+// .then( err => {
+//   ...
+// });

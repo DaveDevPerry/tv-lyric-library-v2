@@ -4,6 +4,12 @@
 	flex: 1;
 	/* padding-top: 2rem; */
 }
+.official-lyric-list-container {
+	padding: 1rem;
+}
+.official-lyric-list-container li {
+	text-align: center;
+}
 
 .song-row {
 	display: flex;

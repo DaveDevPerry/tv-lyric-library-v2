@@ -1,0 +1,27 @@
+<div class="page-header">
+	<h2 class="page-title"><%= song.title %></h2>
+	<div class="header-wrapper">
+		<div class="blank"><%= song.lineCount %> \ <%= song.id %></div>
+		<h3 class="artist-name">terrorvision</h3>
+	</div>
+</div>
+<div class="page-content">
+	<p class="instructions">
+		these are the official lyrics from album notes or official Tv releases
+	</p>
+
+	<div class="official-lyric-list-container">
+		<% const splitLyrics = song.lyrics.split(','); %>
+		<ul>
+			<% splitLyrics.forEach((lyric) => { %>
+			<li><%= lyric %></li>
+			<% }) %>
+		</ul>
+	</div>
+
+	<div class="btn-row">
+		<a class="btn btn-primary" href="/officialSongs">Cheers</a>
+		<% if(user.id === '6170b917dc84c1608f6fb62b') { %>
+		<%-include('../partials/deleteForm', {url: `/songs/${song.id}`}) %> <%} %>
+	</div>
+</div>

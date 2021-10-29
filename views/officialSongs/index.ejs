@@ -1,0 +1,45 @@
+<div class="page-header">
+	<h2 class="page-title">official lyrics for songs</h2>
+	<div class="header-wrapper">
+		<div class="blank"></div>
+		<!-- <div class="artist-name">&nbsp;</div> -->
+		<!-- <a href="/officialSongs/new" class="artist-name">Add Song</a> -->
+	</div>
+</div>
+<div class="page-content">
+	<!-- <a class="btn btn-add" href="/songs/new">Add Song</a> -->
+
+	<p class="instructions">
+		these are the official lyrics from album notes or various official
+		TERRORVISION printings.
+	</p>
+
+	<div class="song-options-wrapper">
+		<a href="/officialSongs/new" class="song-btn"
+			><i class="fas fa-plus-square"></i
+		></a>
+		<div class="song-search-wrapper">
+			<form action="/officialSongs" action="GET" id="search-form">
+				<input
+					id="search-input"
+					type="text"
+					name="title"
+					value="<%= searchOptions.title %>"
+					placeholder="search song title"
+				/><button class="song-btn" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- <div class="song-list-container">
+		<% songs.forEach(song => { %>
+		<a href="/songs/<%= song.id %>" class="song-row">
+			<div class="song-title"><%= song.title %></div>
+		</a>
+		<% }) %>
+	</div> -->
+
+	<%- include('../partials/officialSongList', { songs: songs, }) %>
+</div>
