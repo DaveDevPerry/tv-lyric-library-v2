@@ -42,9 +42,10 @@ aLineSchema.methods.createNewLine = function (newLyric) {
 	console.log('new lyric saved?');
 };
 
-// aLineSchema.methods.deleteLine = function(deleteLyric){
-// 	console.log('deleting a line', deleteLyric)
-
-// }
+aLineSchema.methods.deleteLine = function (deleteLyric) {
+	console.log('deleting a line', deleteLyric);
+	deleteLyric.remove();
+	console.log('deleted Lyric?');
+};
 
 module.exports = mongoose.model('ALine', aLineSchema);

@@ -86,6 +86,9 @@ router.post('/', async (req, res) => {
 		});
 		user.songsCreated.push(await song.id);
 		console.log('user with song id in songsCreated? ', user);
+		// if (req.body.cover != null && req.body.cover !== '') {
+		// 	saveCover(person, req.body.cover);
+		// }
 		await user.save();
 		await song.save();
 		res.redirect('songs');
@@ -309,6 +312,63 @@ router.put('/:id', async (req, res) => {
 				errorMessage: 'Error updating song',
 			});
 		}
+	}
+});
+
+router.delete('/:id', async (req, res) => {
+	const songId = req.params.id;
+	try {
+		// deletes all song lyrics from aline schema
+		const lyricsToDelete = await ALine.find({ songId: songId });
+		let lyricsIdArr = [];
+		let userIdArr = [];
+		lyricsToDelete.forEach((lyric) => {
+			lyricsIdArr.push(lyric.id);
+			userIdArr.push(lyric.userId);
+		});
+		// console.log('lyricsId arr', lyricsIdArr);
+		// console.log('user id arr', userIdArr);
+		const deleteLyricFromALine = async (lyricId) => {
+			const getLyric = await ALine.findById(lyricId);
+			getLyric.deleteLine(getLyric);
+		};
+		lyricsIdArr.forEach((lyricId) => {
+			deleteLyricFromALine(lyricId);
+		});
+
+		const song = await Song.findByIdAndDelete(songId);
+		// if (!song) return res.sendStatus(404);
+		// return res.send(song);
+
+		// delete song from song
+		// await Song.findByIdAndDelete(songId, function (err, docs) {
+		// 	if (err) {
+		// 		console.log(err);
+		// 	} else {
+		// 		console.log('deleted: ', docs);
+		// 	}
+		// });
+
+		// ----  REMOVE FROM USER LATER ------//
+		// delete all associations from user.linesCreated
+
+		// delete song association from user.songsCreated
+		// const user = await User.findById(userIdArr[0]);
+		// // console.log('user that created song', deleteFromUser.id);
+		// const songsCreatedByUserArr = await user.songsCreated;
+		// console.log(songsCreatedByUserArr[0], songId);
+		// songsCreatedByUserArr.forEach((song, index) => {
+		// 	if (song == songId) {
+		// 		console.log('yes', index);
+		// 		user.songsCreated.splice(index, 1)
+		// 	} else {
+		// 		console.log('no');
+		// 	}
+		// });
+
+		res.redirect('/songs');
+	} catch (err) {
+		res.send(err.message);
 	}
 });
 
