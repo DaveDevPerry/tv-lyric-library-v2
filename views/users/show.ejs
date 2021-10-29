@@ -7,12 +7,19 @@
 				alt="profile pic"
 				class="person-cover show-user-profile-pic user-pp"
 			/>
+			<a class="user-edit-link" href="/users/<%= user.id %>/edit">
+				<i class="fas fa-user-edit"></i>
+			</a>
+
 			<% } else { %>
 			<img
 				src="/images/profile-pic.png"
 				alt="profile pic"
 				class="person-cover show-user-profile-pic user-pp"
 			/>
+			<a class="user-edit-link" href="/users/<%= user.id %>/edit">
+				<i class="fas fa-user-edit"></i>
+			</a>
 			<% } %>
 
 			<h2 class="user-name">
@@ -80,12 +87,6 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
-
-	<div class="btn-row hide">
-		<!-- <a class="btn btn-primary" href="/songs">Songs</a> -->
-		<a class="btn btn-primary" href="/users/<%= user.id %>/edit">Edit</a>
-		<!-- <%- include('../partials/deleteForm', {url: `/users/${user.id}` }) %> -->
 	</div>
 </div>
 

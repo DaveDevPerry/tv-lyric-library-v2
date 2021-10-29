@@ -6,6 +6,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	/* padding: 0.5rem; */
+	padding: 5px 0;
 }
 .logo {
 	background-color: #700404;
@@ -48,6 +49,11 @@ a#home-link {
 }
 .user-logged-in-name a {
 	color: white;
+}
+.user-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .show-profile-circle {
 	height: 40px;
