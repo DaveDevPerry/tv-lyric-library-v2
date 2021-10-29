@@ -42,6 +42,8 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	/* background by SVGBackgrounds.com */
+
+	overflow: none;
 }
 .container {
 	/* border: 2px solid green; */
@@ -55,6 +57,7 @@ body {
 	justify-content: space-between;
 	align-items: stretch;
 	/* overflow: hidden; */
+	overflow: none;
 }
 .inner-container {
 	/* border: 1px solid green; */

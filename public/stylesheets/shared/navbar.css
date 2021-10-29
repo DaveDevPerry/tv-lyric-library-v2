@@ -14,9 +14,9 @@ nav {
 }
 .nav-bar {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	/* align-items: center; */
-	border-top: 2px solid rgb(190, 190, 190);
+	/* border-top: 2px solid rgb(190, 190, 190); */
 	width: 100%;
 }
 .nav-link {
@@ -27,4 +27,7 @@ nav {
 	font-weight: 100;
 	color: white;
 	/* flex: 1; */
+}
+.nav-link-icon {
+	height: 50px;
 }
