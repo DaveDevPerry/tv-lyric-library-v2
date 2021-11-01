@@ -1,0 +1,16 @@
+/* #official-songs-table {
+
+	padding: 0 1rem;
+	border-collapse: collapse;
+	margin: 0 1rem;
+	table-layout: fixed;
+}
+#official-songs-table tbody {
+	display: block;
+	width: 100%;
+	overflow: auto;
+	height: 300px;
+}
+#official-songs-table thead tr {
+	display: block;
+} */
