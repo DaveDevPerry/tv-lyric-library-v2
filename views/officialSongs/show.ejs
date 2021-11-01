@@ -7,11 +7,11 @@
 </div>
 <div class="page-content">
 	<p class="instructions">
-		these are the official lyrics from album notes or official Tv releases
+		<!-- these are the official lyrics from album notes or official Tv releases -->
 	</p>
 
 	<div class="official-lyric-list-container">
-		<% const splitLyrics = song.lyrics.split(','); %>
+		<% const splitLyrics = song.lyrics.split('/'); %>
 		<ul>
 			<% splitLyrics.forEach((lyric) => { %>
 			<li><%= lyric %></li>

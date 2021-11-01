@@ -75,7 +75,7 @@ router.post('/', async (req, res) => {
 		song.initialLyrics = req.body.initialLyrics;
 		song.createdBy = req.body.userID;
 		// splits initial lyrics string into each lyric line string
-		const lyricsToSplit = await song.initialLyrics.split(',');
+		const lyricsToSplit = await song.initialLyrics.split('/');
 		song.lineCount = await lyricsToSplit.length;
 		// console.log('lyrics to split', lyricsToSplit);
 		lyricsToSplit.forEach(async (lyric, index) => {
