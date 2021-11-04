@@ -96,3 +96,6 @@ input#search-input {
 	border-collapse: collapse;
 	margin: 0 1rem;
 }
+.choices {
+	background-color: yellow;
+}

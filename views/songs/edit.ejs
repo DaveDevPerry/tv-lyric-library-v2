@@ -9,7 +9,8 @@
 <div class="page-content">
 	<p class="instructions">
 		Go through each line. If you think a lyric is wrong then either: Click on
-		that lyric to view all suggestion so far, and chose correct lyrics. or Click
+		that lyric (if highlighted yellow) to view all suggestion so far, and chose
+		correct lyrics. or Click
 		<i class="far fa-edit i-instructions"></i> to write the lyrics you think it
 		should be. When you have been through each line. Smash update button. FOR
 		ANY LYRICS YOU ARE UNSURE, PLEASE SELECT OR ADD CLOSEST TO WHAT YOU THINK
@@ -26,6 +27,7 @@
 			<div class="form-line" name="allFormItems">
 				<select name="lyric">
 					<% songLyrics.forEach((lyric)=>{ %> <% if(lyric.lineNumber === i){ %>
+
 					<option selected value="<%= lyric.id %>">
 						<p><%= lyric.lyric %></p>
 					</option>
@@ -67,5 +69,13 @@
 			e.target.parentElement.childNodes[5].classList.toggle('hide');
 			e.target.parentElement.childNodes[7].classList.toggle('hide');
 		});
+	});
+
+	// highlight all instances of select boxes with more than 1 option
+	const selects = document.querySelectorAll('select');
+	selects.forEach((select) => {
+		if (select.length > 1) {
+			select.classList.add('choices');
+		}
 	});
 </script>
