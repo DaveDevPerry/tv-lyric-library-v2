@@ -56,6 +56,7 @@ module.exports.signup_post = async (req, res) => {
 			maxAge: maxAge * 1000,
 		});
 		res.status(201).json({ user: user._id });
+		res.redirect('/songs');
 	} catch (err) {
 		const errors = handleErrors(err);
 		res.status(400).json({ errors });
