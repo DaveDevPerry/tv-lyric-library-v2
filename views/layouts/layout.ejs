@@ -53,10 +53,14 @@
 		<link rel="stylesheet" href="/stylesheets/style.css" />
 	</head>
 	<body>
+		<!-- <img src="/images/bg_left.png" alt="background" id="bg-left" /> -->
+		<div class="border border-left"></div>
 		<div class="container">
 			<%- include('../partials/header.ejs') %>
 			<div class="inner-container"><%- body %></div>
 			<%- include('../partials/navbar.ejs') %>
 		</div>
+		<div class="border border-right"></div>
+		<!-- <img src="/images/bg_right.png" alt="background" id="bg-right" /> -->
 	</body>
 </html>

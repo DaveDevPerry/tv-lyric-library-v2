@@ -26,6 +26,7 @@ button {
 	text-align: center;
 	font-weight: 100;
 	font-family: 'Righteous';
+	border-radius: 5px;
 }
 .btn-primary {
 	background-color: rgb(12, 156, 12);
@@ -37,7 +38,9 @@ button {
 	background-color: rgb(29, 29, 235);
 }
 .btn-danger {
-	background-color: #ab0202;
+	/* background-color: #ab0202; */
+	/* background-color: #ab0202; */
+	background-color: #981034;
 }
 .add-new-line-btn {
 	padding: 0.5rem;
@@ -57,5 +60,7 @@ button {
 	background-color: #700404;
 	color: white;
 	font-size: 2rem;
+	border-radius: 0 5px 5px 0;
+	border: 1px solid #700404;
 	/* height: 41px; */
 }

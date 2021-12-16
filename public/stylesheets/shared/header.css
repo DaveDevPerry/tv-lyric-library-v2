@@ -1,20 +1,22 @@
 header {
 	/* background-color: rgb(190, 190, 190); */
-	background-color: #700404;
+	/* background-color: #700404; */
 	color: #700404;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	/* padding: 0.5rem; */
-	padding: 5px 0;
-	border-bottom: 2px solid #ab0202;
+	padding: 0 0 5px 0;
+	/* border-bottom: 2px solid #ab0202; */
+	/* border-bottom: 2px solid #981034; */
 }
 .logo {
 	background-color: #700404;
 	height: 5rem;
 	width: 5rem;
-	color: white;
+	/* color: white; */
+	color: black;
 	display: grid;
 	place-content: center;
 }
@@ -23,25 +25,31 @@ header {
 	height: 100%;
 }
 #brand {
-	width: 100%;
+	/* width: 100%; */
 	height: 100%;
-
-	/* font-family: 'Terrorvision'; */
-	font-family: 'Caveat', cursive;
+	padding: 0.5rem 1rem;
+	font-family: 'Terrorvision';
+	/* font-family: 'Caveat', cursive; */
 	text-transform: uppercase;
-	letter-spacing: 0.5px;
+	/* letter-spacing: 0.5px; */
+	/* border: 1px solid; */
+	background-color: black;
 }
 a#home-link {
 	display: block;
 	width: 100%;
 	height: 100%;
-	padding-left: 0.5rem;
-	font-size: 2.6rem;
+	/* padding-left: 0.5rem; */
+	/* font-size: 2.6rem; */
+	font-size: 3.2rem;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	color: #700404;
 	color: white;
+	font-weight: lighter;
+	/* padding: 0.5rem; */
+	/* color: black; */
 	/* font-weight: 700; */
 }
 .user-logged-in-name {
@@ -53,6 +61,7 @@ a#home-link {
 }
 .user-logged-in-name a {
 	color: white;
+	color: black;
 	font-size: 1.2rem;
 }
 .user-link {

@@ -26,9 +26,11 @@ form.login-form {
 	padding: 2rem;
 	/* box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1); */
 	/* border-radius: 10px; */
-	background: #ab0202;
+	/* background: #ab0202; */
+	background-color: #981034;
 	/* border: 2px solid #ab0202; */
 	position: relative;
+	border-radius: 5px;
 }
 form.login-form input {
 	padding: 0.5rem;
@@ -65,7 +67,7 @@ form.login-form label {
 form.login-form .login-btn {
 	/* margin-top: 2rem; */
 	position: absolute;
-	bottom: 0;
+	bottom: -1rem;
 	/* left: 50%; */
 	right: 0;
 	transform: translateY(100%);
