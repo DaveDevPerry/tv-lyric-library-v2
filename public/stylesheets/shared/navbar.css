@@ -11,6 +11,7 @@ nav {
 	/* padding: 0 0.5rem; */
 	border-radius: 5px;
 	margin-bottom: 5px;
+	padding: 0 10px;
 }
 .nav-link a {
 	color: white;
@@ -34,12 +35,56 @@ nav {
 	font-size: 1rem;
 	/* font-style: italic; */
 	font-weight: 100;
-	color: white;
+	color: black;
 	flex: 1;
 	position: relative;
-	background-color: #981034;
+	/* background-color: #981034; */
+	/* background-color: black; */
+	border-radius: 10px;
+	border: 2px solid black;
+	position: relative;
+}
+.nav-link:first-child::before {
+	position: absolute;
+	content: '';
 	background-color: black;
-	border-radius: 5px;
+	top: 0;
+	left: -15px;
+	height: 100%;
+	width: 3px;
+	margin-left: 10px;
+}
+.nav-link:first-child::after {
+	position: absolute;
+	content: '';
+	background-color: black;
+	top: 50%;
+	left: -13px;
+	transform: translateY(-50%);
+	height: 50%;
+	width: 3px;
+	margin-left: 10px;
+}
+.nav-link:last-child::before {
+	position: absolute;
+	content: '';
+	background-color: black;
+	top: 0;
+	right: -15px;
+	height: 100%;
+	width: 3px;
+	margin-right: 10px;
+}
+.nav-link:last-child::after {
+	position: absolute;
+	content: '';
+	background-color: black;
+	top: 50%;
+	right: -13px;
+	transform: translateY(-50%);
+	height: 50%;
+	width: 3px;
+	margin-right: 10px;
 }
 .nav-link .bg-link-text {
 	position: absolute;
@@ -55,4 +100,17 @@ nav {
 .nav-link-icon {
 	height: 40px;
 	width: 40px;
+}
+#terror-fi-link {
+	background-color: black;
+	width: max-content;
+	border-radius: 5px;
+	margin: 5px;
+}
+#tv-times-link {
+	/* border: 1px solid black; */
+	width: max-content;
+}
+#middle-nav {
+	justify-content: space-evenly;
 }

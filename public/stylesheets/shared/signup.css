@@ -1,7 +1,7 @@
 .signup-container {
 	flex: 1;
 	display: flex;
-	border: 1px solid green;
+	/* border: 1px solid green; */
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: stretch;
@@ -25,7 +25,8 @@ form.signup-form {
 	padding: 2rem;
 	/* box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1); */
 	/* border-radius: 10px; */
-	background: #ab0202;
+	/* background: #ab0202; */
+	background-color: #981034;
 	/* border: 2px solid #ab0202; */
 	position: relative;
 }
@@ -64,7 +65,7 @@ form.signup-form label {
 form.signup-form .signup-btn {
 	/* margin-top: 2rem; */
 	position: absolute;
-	bottom: 0;
+	bottom: -1rem;
 	/* left: 50%; */
 	right: 0;
 	transform: translateY(100%);
