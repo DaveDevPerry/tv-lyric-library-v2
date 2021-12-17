@@ -70,7 +70,7 @@ input.song-title-input {
 .form-row {
 	font-size: 1.4rem;
 	padding: 0 0.5rem;
-	max-width: 645px;
+	/* max-width: 645px; */
 }
 /* .form-row:nth-child(odd) {
 	background-color: rgb(188, 191, 194);
