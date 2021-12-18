@@ -6,3 +6,11 @@
 	font-style: normal;
 	font-display: swap;
 }
+@font-face {
+	font-family: '1942';
+	src: url('../../fonts/1942.ttf');
+	/* url('../../fonts/Terrorvision.woff') format('woff'); */
+	font-weight: bolder;
+	font-style: normal;
+	font-display: swap;
+}

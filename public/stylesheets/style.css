@@ -139,7 +139,9 @@ body {
 .page-content {
 	/* border: 1px solid black; */
 	flex: 1;
-	font-family: 'Roboto', sans-serif;
+	/* font-family: 'Roboto', sans-serif; */
+	font-family: '1942', sans-serif;
+	font-weight: bold;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -216,9 +218,10 @@ a {
 	padding: 0 1rem;
 	color: #700404;
 	color: black;
-	/* font-weight: bold; */
+	font-weight: bold;
 	font-size: 1.8rem;
 	text-align: center;
+	font-family: '1942';
 }
 .instructions strong {
 	color: #700404;
