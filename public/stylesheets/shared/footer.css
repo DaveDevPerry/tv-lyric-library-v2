@@ -21,6 +21,6 @@ footer a {
 	font-style: italic;
 	font-weight: 100;
 	color: white;
-	font-family: 'Rock Salt';
+	/* font-family: 'Rock Salt'; */
 	border-top: 2px solid rgb(190, 190, 190);
 }
