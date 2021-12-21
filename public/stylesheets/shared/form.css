@@ -15,9 +15,11 @@
 	align-items: stretch;
 	justify-content: flex-start;
 	row-gap: 1rem;
-	max-width: 645px;
-	background-color: #ab0202;
+	/* max-width: 645px; */
+	/* background-color: #ab0202; */
+	background-color: #981034;
 	padding: 1rem 0.5rem;
+	border-radius: 5px;
 }
 .song-form div:last-of-type {
 	margin-top: auto;
@@ -98,12 +100,12 @@ input.song-title-input {
 .song-form-row {
 	font-size: 1.4rem;
 	padding: 0 1rem;
-	max-width: 645px;
+	/* max-width: 645px; */
 }
 .song-lyrics-form-row {
 	font-size: 1.4rem;
 	padding: 0 1rem;
-	max-width: 645px;
+	/* max-width: 645px; */
 	flex: 1;
 }
 /* .song-form-row:nth-child(odd) {

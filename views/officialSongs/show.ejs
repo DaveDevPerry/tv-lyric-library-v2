@@ -18,15 +18,9 @@
 			<% }) %>
 		</ul>
 	</div>
-
-	<!-- <div class="btn-row">
-		<a class="btn btn-primary" href="/officialSongs">Cheers</a>
-		<% if(user.id === '6170b917dc84c1608f6fb62b') { %>
-		<%-include('../partials/deleteForm', {url: `/songs/${song.id}`}) %> <%} %>
-	</div> -->
 </div>
 <div class="btn-row">
 	<a class="btn btn-primary" href="/officialSongs">Cheers</a>
-	<% if(user.id === '6170b917dc84c1608f6fb62b') { %>
+	<% if(user.id === process.env.ADMIN_ID) { %>
 	<%-include('../partials/deleteForm', {url: `/songs/${song.id}`}) %> <%} %>
 </div>

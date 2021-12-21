@@ -25,20 +25,12 @@
 		</div>
 		<%}%>
 	</div>
-
-	<!-- <div class="btn-row">
-		<a class="btn btn-danger" href="/songs">back</a>
-		<a class="btn btn-edit" href="/songs/<%= song.id %>/edit">Edit</a> -->
-	<!-- <% if(user.id === '6170b917dc84c1608f6fb62b') { %>
-		<%-include('../partials/deleteForm', {url: `/songs/${song.id}`}) %> <%} %> -->
-	<!-- <a class="btn btn-primary" href="/songs">Agree</a> -->
-	<!-- </div> -->
 </div>
 
 <div class="btn-row">
 	<a class="btn btn-danger" href="/songs">back</a>
 	<a class="btn btn-edit" href="/songs/<%= song.id %>/edit">Edit</a>
-	<% if(user.id === '6170b917dc84c1608f6fb62b') { %>
+	<% if(user.id === process.env.ADMIN_ID) { %>
 	<%-include('../partials/deleteForm', {url: `/songs/${song.id}`}) %> <%} %>
 	<!-- <a class="btn btn-primary" href="/songs">Agree</a> -->
 </div>

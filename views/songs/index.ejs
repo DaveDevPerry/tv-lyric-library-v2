@@ -3,6 +3,7 @@
 	<div class="header-wrapper">
 		<div class="blank"></div>
 		<div class="artist-name"><%= songs.length %> songs</div>
+
 		<!-- <a href="/songs/new" class="artist-name">Add Song</a> -->
 	</div>
 </div>
@@ -12,6 +13,14 @@
 	<p class="instructions">select a song below to review lyrics</p>
 
 	<div class="song-options-wrapper">
+		<% if(user.id === process.env.ADMIN_ID) { %>
+		<div class="add-song-container">
+			<a href="/songs/new" class="add-song-btn"
+				><i class="fas fa-plus-square"></i
+			></a>
+		</div>
+
+		<% } %>
 		<!-- <a href="/songs/new" class="song-btn"><i class="fas fa-plus-square"></i></a> -->
 
 		<div class="song-search-wrapper">
