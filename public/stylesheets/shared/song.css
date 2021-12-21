@@ -6,6 +6,8 @@
 }
 .official-lyric-list-container {
 	padding: 1rem;
+	font-family: 'Roboto', cursive;
+	font-weight: lighter;
 }
 .official-lyric-list-container li {
 	text-align: center;
@@ -22,7 +24,9 @@
 	font-weight: bolder;
 }
 .song-title {
-	font-family: 'Caveat', cursive;
+	/* font-family: 'Caveat', cursive; */
+	font-family: 'Roboto', cursive;
+	font-weight: lighter;
 	text-transform: uppercase;
 	/* letter-spacing: 1px; */
 	font-size: 2rem;
@@ -100,4 +104,9 @@ input#search-input {
 }
 .choices {
 	background-color: yellow;
+}
+
+.song-review-count {
+	font-family: 'Roboto';
+	font-weight: lighter;
 }

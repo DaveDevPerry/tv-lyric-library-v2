@@ -137,7 +137,9 @@ textarea.song-lyrics-textarea {
 }
 label {
 	font-size: 1.4rem;
-	font-family: 'Righteous';
+	/* font-family: 'Righteous'; */
+	/* font-family: 'Caveat'; */
+	font-family: 'Roboto';
 	padding-bottom: 0.5rem;
 	color: white;
 }

@@ -14,7 +14,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
 *,
 *::before,
@@ -35,7 +35,9 @@ body {
 	/* min-height: 100vh;
 	/* mobile viewport bug fix */
 	/* min-height: -webkit-fill-available;  */
-	font-family: 'Righteous', cursive;
+	/* font-family: 'Righteous', cursive; */
+	/* font-family: 'Caveat', cursive; */
+	font-family: 'Roboto', cursive;
 	/* background-color: #e7e2e2; */
 	background-color: #e7e7e7;
 	/* overflow: hidden; */
@@ -115,7 +117,7 @@ body {
 } */
 .page-title {
 	font-size: 1.6rem;
-	font-weight: 100;
+	font-weight: 400;
 	color: white;
 	text-align: left;
 	padding: 0.2rem 0.5rem;
@@ -218,10 +220,11 @@ a {
 	padding: 0 1rem;
 	color: #700404;
 	color: black;
-	font-weight: bold;
+	font-weight: lighter;
 	font-size: 1.8rem;
 	text-align: center;
-	font-family: '1942';
+	/* font-family: '1942'; */
+	font-family: 'Roboto';
 }
 .instructions strong {
 	color: #700404;
@@ -239,6 +242,7 @@ a {
 }
 th {
 	padding: 0 0.5rem;
+	font-size: 2.2rem;
 }
 .center {
 	text-align: center;

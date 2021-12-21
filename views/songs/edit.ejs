@@ -8,13 +8,19 @@
 
 <div class="page-content">
 	<p class="instructions">
+		If line is wrong then (if yellow) click on line to choose from all submitted
+		lines so far. If line is still wrong then click
+		<i class="far fa-edit i-instructions"></i> to write the lyrics you think it
+		should be. When you have been through each line. Smash update button.
+	</p>
+	<!-- <p class="instructions">
 		Go through each line. If you think a lyric is wrong then either: Click on
 		that lyric (if highlighted yellow) to view all suggestion so far, and chose
 		correct lyrics. or Click
 		<i class="far fa-edit i-instructions"></i> to write the lyrics you think it
 		should be. When you have been through each line. Smash update button. FOR
 		ANY LYRICS YOU ARE UNSURE, PLEASE SELECT OR ADD CLOSEST TO WHAT YOU THINK
-	</p>
+	</p> -->
 
 	<form
 		action="/songs/<%= song.id %>?_method=PUT"
@@ -44,12 +50,18 @@
 			</div>
 		</div>
 		<%}%>
-		<div class="btn-row form-btn-row">
-			<!-- <a class="btn btn-danger" href="/songs/<%= song.id %>">Cancel</a> -->
+		<!-- <div class="btn-row form-btn-row">
+		
 			<a class="btn btn-danger" href="/songs">Cancel</a>
 			<button class="btn btn-primary" type="submit">Update</button>
-		</div>
+		</div> -->
 	</form>
+</div>
+
+<div class="btn-row form-btn-row">
+	<!-- <a class="btn btn-danger" href="/songs/<%= song.id %>">Cancel</a> -->
+	<a class="btn btn-danger" href="/songs">Cancel</a>
+	<button class="btn btn-primary" type="submit">Update</button>
 </div>
 
 <script>
