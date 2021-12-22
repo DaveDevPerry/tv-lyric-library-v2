@@ -10,7 +10,7 @@
 	font-family: '1942';
 	src: url('../../fonts/1942.ttf');
 	/* url('../../fonts/Terrorvision.woff') format('woff'); */
-	font-weight: bolder;
+	font-weight: 100;
 	font-style: normal;
 	font-display: swap;
 }
