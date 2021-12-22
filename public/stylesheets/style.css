@@ -141,8 +141,8 @@ body {
 .page-content {
 	/* border: 1px solid black; */
 	flex: 1;
-	/* font-family: 'Roboto', sans-serif; */
-	font-family: '1942', sans-serif;
+	font-family: 'Roboto', sans-serif;
+	/* font-family: '1942', sans-serif; */
 	font-weight: bold;
 	display: flex;
 	flex-direction: column;
@@ -224,7 +224,7 @@ a {
 	padding: 0 1rem;
 	color: #700404;
 	color: black;
-	font-weight: lighter;
+	/* font-weight: lighter; */
 	font-size: 1.8rem;
 	text-align: center;
 	/* font-family: '1942'; */
@@ -250,4 +250,7 @@ th {
 }
 .center {
 	text-align: center;
+}
+.fa-edit {
+	font-size: 1.6rem;
 }
