@@ -14,3 +14,9 @@
 	font-style: normal;
 	font-display: swap;
 }
+
+@font-face {
+	font-family: 'Egypte';
+	src: url('../../fonts/EGYPTE.ttf');
+	font-display: swap;
+}

@@ -30,6 +30,7 @@ button {
 	/* font-family: 'Caveat'; */
 	/* font-family: '1942'; */
 	font-family: 'Terrorvision';
+	/* font-family: 'Egypte'; */
 	letter-spacing: 1ch;
 	border-radius: 5px;
 	cursor: pointer;
@@ -38,7 +39,10 @@ button {
 	background-color: rgb(12, 156, 12);
 }
 .btn-login {
-	background-color: rgb(12, 156, 12);
+	background-color: rgb(74, 156, 74);
+}
+.btn-login-home {
+	background-color: rgb(74, 156, 74);
 }
 .btn-edit {
 	background-color: rgb(29, 29, 235);
@@ -81,4 +85,39 @@ button {
 }
 .add-song-container {
 	flex: 1;
+}
+
+.btn-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+.hyrogliphics {
+	/* border: 1px solid black; */
+	border: 1px solid rgb(74, 156, 74);
+	border-radius: 15px;
+	padding: 0.5rem 1rem;
+
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: rgb(74, 156, 74);
+}
+.hyro-blank {
+	/* border: 1px solid black; */
+	border: 1px solid rgb(74, 156, 74);
+	width: 30px;
+}
+.hyro-text {
+	font-size: 2.5rem;
+	font-family: 'Egypte';
+	text-transform: uppercase;
+	text-align: center;
+	/* font-weight: 100; */
+	/* font-family: 'Egypte'; */
+	/* letter-spacing: 1ch; */
+	/* border-radius: 5px; */
+	/* cursor: pointer; */
 }

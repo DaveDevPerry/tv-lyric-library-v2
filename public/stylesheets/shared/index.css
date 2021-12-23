@@ -6,7 +6,7 @@
 	padding: 1rem;
 }
 .signup-link {
-	text-decoration: underline;
+	/* text-decoration: none; */
 	color: #700404;
 	font-weight: bold;
 }
