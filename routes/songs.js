@@ -43,6 +43,7 @@ router.get('/', async (req, res) => {
 // new song route
 router.get('/new', (req, res) => {
 	console.log('current user? ', res.locals.user.id);
+	// console.log('current user? ', res.locals.user);
 	res.render('songs/new', { song: new Song() });
 });
 
@@ -95,6 +96,7 @@ router.post('/', async (req, res) => {
 	} catch (err) {
 		res.send('oh');
 		console.log(err);
+		console.log(err.message);
 	}
 });
 // // create song - POST route

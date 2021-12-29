@@ -106,7 +106,13 @@ userSchema.statics.login = async function (email, password) {
 };
 
 userSchema.virtual('coverImagePath').get(function () {
+	// if (this.coverImage) {
+	// 	console.log('here');
+	// 	return;
+	// }
+	// console.log('cover image', coverImage);
 	if (this.coverImage != null && this.coverImageType != null) {
+		// console.log('cover Image type', coverImageType);
 		return `data:${
 			this.coverImageType
 		};charset=utf-8;base64,${this.coverImage.toString('base64')}`;
