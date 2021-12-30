@@ -64,11 +64,20 @@ form.login-form label {
 	text-align: right;
 	font-style: italic;
 }
+
 form.login-form .login-btn {
-	/* margin-top: 2rem; */
 	position: absolute;
 	bottom: -1rem;
-	/* left: 50%; */
+
 	right: 0;
 	transform: translateY(100%);
 }
+
+/* form.login-form .btn-container {
+	
+	position: absolute;
+	bottom: -1rem;
+	
+	right: 0;
+	transform: translateY(100%);
+} */

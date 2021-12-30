@@ -43,6 +43,7 @@ button {
 }
 .btn-login-home {
 	background-color: rgb(74, 156, 74);
+	border-radius: 15px;
 }
 .btn-edit {
 	background-color: rgb(29, 29, 235);
