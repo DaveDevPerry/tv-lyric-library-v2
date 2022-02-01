@@ -24,6 +24,8 @@ const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
 const songRouter = require('./routes/songs');
 const officialSongRouter = require('./routes/officialSongs');
+// const apiRouter = require('./routes/api');
+const apiRouter = require('./api-routes');
 // const lineRouter = require('./routes/lines');
 
 // view engine
@@ -37,6 +39,8 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
+
+app.use(bodyParser.json());
 
 // const measurement = require('./models/measurement');
 mongoose.connect(process.env.DATABASE_URL, {
@@ -54,9 +58,13 @@ db.once('open', () => console.log('connected to mongoose'));
 // routes
 app.get('*', checkUser);
 app.use('/', indexRouter);
+
 app.use('/users', requireAuth, userRouter);
 app.use('/songs', requireAuth, songRouter);
 app.use('/officialSongs', requireAuth, officialSongRouter);
+
+app.use('/api', requireAuth, apiRouter);
+
 // app.use('/lines', lineRouter);
 // app.use('/', indexRouter);
 // app.use('/users', requireAuth, userRouter);

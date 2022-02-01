@@ -1,0 +1,18 @@
+<div class="page-header">
+	<h2 class="page-title">API</h2>
+	<div class="header-wrapper">
+		<div class="blank"></div>
+		<div class="artist-name"><%= songs.length %> songs</div>
+	</div>
+</div>
+<div class="page-content">
+	<!-- <a class="btn btn-add" href="/songs/new">Add Song</a> -->
+
+	<p class="instructions">api here</p>
+
+	<div>
+		<% songs.forEach(song => { %>
+		<div><%= song.title %></div>
+		<% }) %>
+	</div>
+</div>
