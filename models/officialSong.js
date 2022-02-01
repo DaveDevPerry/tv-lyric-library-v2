@@ -5,6 +5,7 @@ const officialSongSchema = new mongoose.Schema({
 		type: Date,
 		required: true,
 		default: Date.now,
+		select: false,
 	},
 	title: {
 		type: String,
@@ -13,6 +14,7 @@ const officialSongSchema = new mongoose.Schema({
 	},
 	createdBy: {
 		type: String,
+		select: false,
 	},
 	fromReleaseTitle: {
 		type: String,
@@ -25,6 +27,14 @@ const officialSongSchema = new mongoose.Schema({
 	source: {
 		type: String,
 		required: true,
+	},
+	__v: {
+		type: Number,
+		select: false,
+	},
+	_id: {
+		type: mongoose.Schema.ObjectId,
+		select: false,
 	},
 });
 

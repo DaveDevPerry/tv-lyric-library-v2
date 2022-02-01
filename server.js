@@ -63,7 +63,8 @@ app.use('/users', requireAuth, userRouter);
 app.use('/songs', requireAuth, songRouter);
 app.use('/officialSongs', requireAuth, officialSongRouter);
 
-app.use('/api', requireAuth, apiRouter);
+app.use('/api', apiRouter);
+// app.use('/api', requireAuth, apiRouter);
 
 // app.use('/lines', lineRouter);
 // app.use('/', indexRouter);

@@ -17,6 +17,11 @@ exports.index = function (req, res) {
 		});
 	});
 };
+
+// User.findOne({username: 'joe'}).deselect(['password']).exec(function(err, doc) {
+//     user = doc.toJSON();
+//   });
+
 // Handle create contact actions
 // exports.new = function (req, res) {
 //     let song = new Contact();
