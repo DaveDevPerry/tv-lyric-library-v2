@@ -28,14 +28,14 @@ const officialSongSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	__v: {
-		type: Number,
-		select: false,
-	},
-	_id: {
-		type: mongoose.Schema.ObjectId,
-		select: false,
-	},
+	// __v: {
+	// 	type: Number,
+	// 	select: false,
+	// },
+	// _id: {
+	// 	type: mongoose.Schema.ObjectId,
+	// 	select: false,
+	// },
 });
 
 module.exports = mongoose.model('OfficialSong', officialSongSchema);

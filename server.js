@@ -25,7 +25,7 @@ const userRouter = require('./routes/users');
 const songRouter = require('./routes/songs');
 const officialSongRouter = require('./routes/officialSongs');
 // const apiRouter = require('./routes/api');
-const apiRouter = require('./api-routes');
+// const apiRouter = require('./api-routes');
 // const lineRouter = require('./routes/lines');
 
 // view engine
@@ -63,7 +63,7 @@ app.use('/users', requireAuth, userRouter);
 app.use('/songs', requireAuth, songRouter);
 app.use('/officialSongs', requireAuth, officialSongRouter);
 
-app.use('/api', apiRouter);
+// app.use('/api', apiRouter);
 // app.use('/api', requireAuth, apiRouter);
 
 // app.use('/lines', lineRouter);

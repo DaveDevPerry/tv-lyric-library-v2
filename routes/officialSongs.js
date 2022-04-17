@@ -70,8 +70,11 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+	console.log(req.params.id, 'song id');
+	const song = await Song.findById(req.params.id);
 	try {
-		const song = await Song.findById(req.params.id);
+		// const song = await Song.findById(req.params.id);
+		console.log(song, 'song');
 
 		res.render('officialSongs/show', {
 			song: song,
