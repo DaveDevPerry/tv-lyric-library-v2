@@ -54,7 +54,7 @@ body {
 	/* border: 1px solid; */
 	flex: 1;
 }
-.border-left {
+/* .border-left {
 	background-image: url('../images/bg_left.webp');
 	background-repeat: no-repeat;
 	background-position: right;
@@ -65,7 +65,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: left;
 	background-size: cover;
-}
+} */
 #bg-left {
 	/* position: absolute;
 	top: 0;
