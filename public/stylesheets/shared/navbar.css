@@ -11,12 +11,12 @@ nav {
 	/* padding: 0 0.5rem; */
 	border-radius: 5px;
 	margin-bottom: 5px;
-	padding: 0 10px;
+	padding: 0 5px;
 }
 .nav-link a {
 	color: white;
 	/* border: 2px solid white; */
-	width: 100%;
+	/* width: 100%; */
 	text-align: center;
 }
 .nav-bar {
@@ -25,12 +25,12 @@ nav {
 	align-items: center;
 	/* border-top: 2px solid rgb(190, 190, 190); */
 	width: 100%;
-	column-gap: 2rem;
+	column-gap: 1rem;
 }
 .nav-link {
 	/* width: 100%; */
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	font-size: 1rem;
 	/* font-style: italic; */
@@ -87,15 +87,27 @@ nav {
 	margin-right: 10px;
 }
 .nav-link .bg-link-text {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	color: grey;
-	display: none;
+	/* position: absolute; */
+	/* top: 50%; */
+	/* left: 50%; */
+	/* transform: translate(-50%, -50%); */
+	/* color: grey; */
+	/* display: none; */
+	font-size: 1.4rem;
+	flex: 1;
+	text-align: center;
+	color: black;
 }
 .link {
-	z-index: 5;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* font-size: 1rem; */
+	/* font-style: italic; */
+	/* font-weight: 100; */
+	color: black;
+	flex: 1;
+
 }
 .nav-link-icon {
 	height: 40px;

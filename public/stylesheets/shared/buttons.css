@@ -25,13 +25,13 @@ button {
 	color: white;
 	font-size: 2.5rem;
 	text-align: center;
-	font-weight: 100;
+	/* font-weight: 100; */
 	/* font-family: 'Righteous'; */
 	/* font-family: 'Caveat'; */
 	/* font-family: '1942'; */
-	font-family: 'Terrorvision';
+	/* font-family: 'Terrorvision'; */
 	/* font-family: 'Egypte'; */
-	letter-spacing: 1ch;
+	/* letter-spacing: 1ch; */
 	border-radius: 5px;
 	cursor: pointer;
 }
@@ -43,7 +43,7 @@ button {
 }
 .btn-login-home {
 	background-color: rgb(74, 156, 74);
-	border-radius: 15px;
+	border-radius: 10px;
 }
 .btn-edit {
 	background-color: rgb(29, 29, 235);
@@ -68,12 +68,15 @@ button {
 }
 .song-btn {
 	padding: 0.5rem 1.5rem;
-	background-color: #700404;
-	color: white;
+	/* background-color: #700404; */
+	color: black;
 	font-size: 2rem;
-	border-radius: 0 5px 5px 0;
-	border: 1px solid #700404;
+	border-radius: 0 10px 10px 0;
+	border: 2px solid black;
+	border-left: none;
+	/* border: 1px solid #700404; */
 	/* height: 41px; */
+	background-color:  transparent;
 }
 .add-song-btn {
 	padding: 0.5rem 1.5rem;
@@ -84,9 +87,9 @@ button {
 	border: 1px solid #700404;
 	/* height: 41px; */
 }
-.add-song-container {
+/* .add-song-container {
 	flex: 1;
-}
+} */
 
 .btn-container {
 	display: flex;
@@ -97,7 +100,7 @@ button {
 .hyrogliphics {
 	/* border: 1px solid black; */
 	border: 1px solid rgb(74, 156, 74);
-	border-radius: 15px;
+	border-radius: 10px;
 	padding: 0.5rem 1rem;
 
 	width: 150px;

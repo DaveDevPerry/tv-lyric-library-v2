@@ -149,11 +149,19 @@ label {
 	color: white;
 }
 #search-form input#search-input {
+	color: black;
 	border: 1px solid;
 	/* height: 41px; */
 	width: unset;
-	border: 1px solid #700404;
-	border-radius: 5px 0 0 5px;
+	/* border: 1px solid #700404; */
+	border: 2px solid black;
+	border-radius: 10px 0 0 10px;
 	padding: 0.5rem;
 	flex: 1;
+	border-right: none;
+	outline: none;
+}
+.song-search-wrapper{
+	min-width: 300px;
+	width: 80%;
 }
