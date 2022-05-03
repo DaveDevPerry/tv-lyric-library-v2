@@ -6,7 +6,7 @@
 	justify-content: flex-start;
 }
 .song-form .form-row {
-	border-bottom: 1px solid #700404;
+	border-bottom: 1px solid var(--red);
 }
 .new-song-form {
 	flex: 1;
@@ -17,7 +17,7 @@
 	row-gap: 1rem;
 	/* max-width: 645px; */
 	/* background-color: #ab0202; */
-	background-color: #981034;
+	background-color: var(--red);
 	padding: 1rem 0.5rem;
 	border-radius: 5px;
 }
@@ -153,7 +153,7 @@ label {
 	border: 1px solid;
 	/* height: 41px; */
 	width: unset;
-	/* border: 1px solid #700404; */
+	/* border: 1px solid var(--red); */
 	border: 2px solid black;
 	border-radius: 10px 0 0 10px;
 	padding: 0.5rem;

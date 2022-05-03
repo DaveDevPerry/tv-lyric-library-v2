@@ -14,19 +14,19 @@
 .show-profile-circle {
 	height: 40px;
 	width: 40px;
-	border: 2px solid #700404;
+	border: 2px solid var(--red);
 	border-radius: 50%;
 }
 .user-pp {
 	height: 150px;
 	width: 150px;
-	border: 2px solid #700404;
+	border: 2px solid var(--red);
 	border-radius: 50%;
 }
 .user-pp-thumb {
 	height: 20px;
 	width: 20px;
-	border: 2px solid #700404;
+	border: 2px solid var(--red);
 	border-radius: 50%;
 }
 /* form.form h2 {
@@ -234,7 +234,7 @@ caption {
 }
 p.metric-count {
 	font-size: 4rem;
-	color: #700404;
+	color: var(--red);
 }
 
 .user-edit {

@@ -36,13 +36,13 @@ button {
 	cursor: pointer;
 }
 .btn-primary {
-	background-color: rgb(12, 156, 12);
+	background-color: var(--green);
 }
 .btn-login {
-	background-color: rgb(74, 156, 74);
+	background-color: var(--green);
 }
 .btn-login-home {
-	background-color: rgb(74, 156, 74);
+	background-color: var(--green);
 	border-radius: 10px;
 }
 .btn-edit {
@@ -51,7 +51,7 @@ button {
 .btn-danger {
 	/* background-color: #ab0202; */
 	/* background-color: #ab0202; */
-	background-color: #981034;
+	background-color: var(--red);
 }
 .add-new-line-btn {
 	padding: 0.5rem;
@@ -68,23 +68,23 @@ button {
 }
 .song-btn {
 	padding: 0.5rem 1.5rem;
-	/* background-color: #700404; */
+	/* background-color: var(--red); */
 	color: black;
 	font-size: 2rem;
 	border-radius: 0 10px 10px 0;
 	border: 2px solid black;
 	border-left: none;
-	/* border: 1px solid #700404; */
+	/* border: 1px solid var(--red); */
 	/* height: 41px; */
 	background-color:  transparent;
 }
 .add-song-btn {
 	padding: 0.5rem 1.5rem;
-	background-color: #700404;
+	background-color: var(--red);
 	color: white;
 	font-size: 2rem;
 	border-radius: 5px;
-	border: 1px solid #700404;
+	border: 1px solid var(--red);
 	/* height: 41px; */
 }
 /* .add-song-container {
@@ -99,7 +99,7 @@ button {
 }
 .hyrogliphics {
 	/* border: 1px solid black; */
-	border: 1px solid rgb(74, 156, 74);
+	border: 1px solid var(--green);
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
 
@@ -107,11 +107,11 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: rgb(74, 156, 74);
+	color: var(--green);
 }
 .hyro-blank {
 	/* border: 1px solid black; */
-	border: 1px solid rgb(74, 156, 74);
+	border: 1px solid var(--green);
 	width: 30px;
 }
 .hyro-text {

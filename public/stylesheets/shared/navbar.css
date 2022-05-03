@@ -1,6 +1,6 @@
 nav {
-	/* background-color: #700404; */
-	/* background-color: #981034; */
+	/* background-color: var(--red); */
+	/* background-color: var(--red); */
 	color: white;
 	width: 100%;
 	/* border-top: 2px solid #ab0202; */
@@ -38,7 +38,7 @@ nav {
 	color: black;
 	flex: 1;
 	position: relative;
-	/* background-color: #981034; */
+	/* background-color: var(--red); */
 	/* background-color: black; */
 	border-radius: 10px;
 	border: 2px solid black;

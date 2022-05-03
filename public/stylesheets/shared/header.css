@@ -1,7 +1,7 @@
 header {
 	/* background-color: rgb(190, 190, 190); */
-	/* background-color: #700404; */
-	color: #700404;
+	/* background-color: var(--red); */
+	color: var(--red);
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -9,10 +9,10 @@ header {
 	/* padding: 0.5rem; */
 	/* padding: 0 0 5px 0; */
 	/* border-bottom: 2px solid #ab0202; */
-	/* border-bottom: 2px solid #981034; */
+	/* border-bottom: 2px solid var(--red); */
 }
 .logo {
-	background-color: #700404;
+	background-color: var(--red);
 	height: 5rem;
 	width: 5rem;
 	/* color: white; */
@@ -45,7 +45,7 @@ a#home-link {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	color: #700404;
+	color: var(--red);
 	color: white;
 	font-weight: lighter;
 	/* padding: 0.5rem; */
@@ -72,6 +72,6 @@ a#home-link {
 .show-profile-circle {
 	height: 40px;
 	width: 40px;
-	border: 2px solid #700404;
+	border: 2px solid var(--red);
 	border-radius: 50%;
 }

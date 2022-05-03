@@ -1,12 +1,23 @@
 /* .btn.btn-login {
 	color: black;
 } */
+.page-content.home-page-content{
+	/* border: 1px solid black; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
+.page-content.home-page-content p{
+	text-align: center;
+}
 .about-wrapper,
 .signup-text {
 	padding: 1rem;
 }
 .signup-link {
 	/* text-decoration: none; */
-	color: #700404;
+	color: var(--red);
 	font-weight: bold;
 }
