@@ -69,53 +69,6 @@ Describe and show how to run the tests with code examples. -->
 <!-- 1.Player data is added in users.json
 2.Every draw is added in draws.json -->
 
-```javascript
-// {
-// 		"date": "19/02/2022",
-// 		"day": "Saturday",
-// 		"numbers": [33,34,44,50,56,57],
-// 		"bonusBall": 26,
-// 		"winner": false
-// 	}
-```
-
-<!-- 3.Countdown timer is reset in var nextDraw located in countdownTimer function -->
-
-```javascript
-// const nextDraw = 'Feb 23, 2022 19:45:00';
-```
-
-<!-- 4.Winner is added in draw object -->
-
-```javascript
-// {
-// 		"date": "19/02/2022",
-// 		"day": "Saturday",
-// 		"numbers": [33,34,44,50,56,57],
-// 		"bonusBall": 26,
-// 		"winner": "WINNERS NAME"
-// 	}
-```
-
-<!-- 5.To begin a new game, add start date in startDateInput.mjs -->
-
-```javascript
-// const gameStartDates = [
-// 	'08/08/2020',
-// 	'30/09/2020',
-// 	'26/12/2020',
-// 	'10/02/2021',
-// 	'24/03/2021',
-// 	'12/05/2021',
-// 	'10/07/2021',
-// 	'11/08/2021',
-// 	'09/10/2021',
-// 	'13/11/2021',
-// 	'18/12/2021',
-// 	'02/02/2022',
-// ];
-```
-
 ## Contact
 
 If you want to contact me you can reach me at [daveperry.tech](https://daveperry.tech)
