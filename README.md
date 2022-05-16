@@ -1,6 +1,6 @@
 ![Screenshot](sps.webp)
 
-Project Link: [some People Say](bit.ly/SomePeopleSay)
+Project Link: [Some People Say](https://bit.ly/SomePeopleSay)
 
 # Some People Say
 
